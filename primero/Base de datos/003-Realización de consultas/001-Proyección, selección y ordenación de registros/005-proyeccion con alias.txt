@@ -1,0 +1,4 @@
+SELECT 
+nombre AS 'Nombre de clientes',
+apellidos AS 'Apellidos del cliente'
+FROM clientes;

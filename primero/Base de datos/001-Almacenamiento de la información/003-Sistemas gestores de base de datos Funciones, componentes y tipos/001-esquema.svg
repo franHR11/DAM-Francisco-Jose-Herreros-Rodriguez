@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg7329"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="001-esquema.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7331"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.2097881"
+     inkscape:cx="632.18733"
+     inkscape:cy="306.81676"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs7326" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.727251;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="path7871"
+       cx="131.87819"
+       cy="105.52557"
+       rx="19.707027"
+       ry="7.6397285" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.727251;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="ellipse8496"
+       cx="131.87819"
+       cy="99.274879"
+       rx="19.707027"
+       ry="7.6397285" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.727251;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="ellipse8498"
+       cx="131.87819"
+       cy="92.503304"
+       rx="19.707027"
+       ry="7.6397285" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.727251;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="ellipse8500"
+       cx="131.87819"
+       cy="86.252617"
+       rx="19.707027"
+       ry="7.6397285" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="path8502"
+       cx="142.23488"
+       cy="74.50399"
+       r="11.514253" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:6.59469px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.535707;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="136.04121"
+       y="75.571236"
+       id="text8506"><tspan
+         sodipodi:role="line"
+         id="tspan8504"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.535707"
+         x="136.04121"
+         y="75.571236">SQL</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="rect8508"
+       width="53.280941"
+       height="14.846824"
+       x="168.22408"
+       y="53.161205"
+       ry="7.4234118" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:12.3472px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="173.25284"
+       y="64.775253"
+       id="text8668"><tspan
+         sodipodi:role="line"
+         id="tspan8666"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.003"
+         x="173.25284"
+         y="64.775253">cli</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="rect8670"
+       width="53.280941"
+       height="14.846824"
+       x="168.22408"
+       y="72.677597"
+       ry="7.4234118" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:5.53013px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.449229;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="172.30505"
+       y="80.973267"
+       id="text8674"><tspan
+         sodipodi:role="line"
+         id="tspan8672"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.449229"
+         x="172.30505"
+         y="80.973267">workbench</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="rect9402"
+       width="53.280941"
+       height="14.846824"
+       x="168.22408"
+       y="91.980904"
+       ry="7.4234118" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:5.53013px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.449229;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       x="172.30505"
+       y="100.27657"
+       id="text9406"><tspan
+         sodipodi:role="line"
+         id="tspan9404"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.449229"
+         x="172.30505"
+         y="100.27657">phpMyAdmin</tspan></text>
+  </g>
+</svg>

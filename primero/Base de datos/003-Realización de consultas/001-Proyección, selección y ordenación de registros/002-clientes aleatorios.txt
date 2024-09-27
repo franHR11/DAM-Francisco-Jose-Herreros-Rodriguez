@@ -1,0 +1,59 @@
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Juan', 'Pérez García', 'juan.perez@gmail.com', 'Madrid', '1985-04-23');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Ana', 'López Fernández', 'ana.lopez@hotmail.com', 'Barcelona', '1992-08-15');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Carlos', 'Martínez Ruiz', 'carlos.martinez@yahoo.com', 'Valencia', '1988-12-05');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Laura', 'Gómez Sánchez', 'laura.gomez@outlook.com', 'Sevilla', '1990-07-10');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('David', 'Fernández López', 'david.fernandez@correo.com', 'Bilbao', '1983-01-17');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Sofía', 'García Ortega', 'sofia.garcia@gmail.com', 'Zaragoza', '1995-11-22');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Miguel', 'Rodríguez Pérez', 'miguel.rodriguez@hotmail.com', 'Málaga', '1986-03-19');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Elena', 'Moreno Díaz', 'elena.moreno@outlook.com', 'Murcia', '1993-09-14');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Luis', 'Sánchez Torres', 'luis.sanchez@correo.com', 'Valladolid', '1991-05-28');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Marta', 'Jiménez Romero', 'marta.jimenez@gmail.com', 'Granada', '1989-06-12');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Pablo', 'Ruiz Castro', 'pablo.ruiz@gmail.com', 'Alicante', '1987-10-30');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Sara', 'Domínguez Serrano', 'sara.dominguez@hotmail.com', 'Córdoba', '1994-04-12');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Manuel', 'Ortega Morales', 'manuel.ortega@yahoo.com', 'Vigo', '1980-07-21');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Lucía', 'Santos Molina', 'lucia.santos@outlook.com', 'Santander', '1996-09-05');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Adrián', 'Navarro Gutiérrez', 'adrian.navarro@correo.com', 'Toledo', '1992-03-10');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Carmen', 'Ramos Iglesias', 'carmen.ramos@gmail.com', 'Almería', '1990-12-22');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Iván', 'Mendoza Sáez', 'ivan.mendoza@hotmail.com', 'Salamanca', '1984-11-11');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Nuria', 'Vega López', 'nuria.vega@outlook.com', 'Burgos', '1991-06-18');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Raúl', 'Gil Jiménez', 'raul.gil@gmail.com', 'Logroño', '1988-02-14');
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `email`, `poblacion`, `fechadenacimiento`)
+VALUES ('Patricia', 'Reyes Cruz', 'patricia.reyes@correo.com', 'Huelva', '1995-05-07');

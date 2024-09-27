@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etiqueta atributo1="valor" atributo2="otrovalor">
+
+    <elemento>
+
+       <articulo>
+            Hola
+       </articulo>
+        
+    <elemento>
+
+    </elemento>
+        <subelemento>
+            
+        </subelemento>
+    </elemento>
+
+</etiqueta>

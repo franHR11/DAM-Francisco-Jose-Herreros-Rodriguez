@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jocarsa:pieza xmlns:jocarsa="http://www.ejemplo.com/jocarsa" xmlns:fhr="http://www.ejemplo.com/fhr">>
+	<jocarsa:nombre>Camiseta Azul</jocarsa:nombre>
+	<fhr:precio>3.90</fhr:precio>
+	<fhr:color>Azul</fhr:color>
+</jocarsa:pieza>

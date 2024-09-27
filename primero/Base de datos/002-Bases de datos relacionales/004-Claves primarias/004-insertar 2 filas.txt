@@ -1,0 +1,1 @@
+INSERT INTO  empleados VALUES ('Francisco Jose','Herreros Rodriguez',628639354,'franhr1113@gmail.com');

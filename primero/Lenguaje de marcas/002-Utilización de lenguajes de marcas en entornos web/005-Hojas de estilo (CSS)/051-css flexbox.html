@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>La web de Francisco Jose</title>
+        <meta charset="utf-8">
+        <style>
+            @font-face {
+                font-family: titulo;
+                src: url(fuentes/titulo.otf);
+            }
+            @font-face {
+                font-family: parrafo;
+                src: url(fuentes/parrafo.ttf);
+            }
+            .flexbox2columnas
+                {
+	             display: flex;
+	            flex-direction: row;
+	            flex-wrap: nowrap;
+	            justify-content: center;
+	            align-items: center;
+	            align-content: stretch;
+                }
+            
+
+            body{
+
+             color:indigo;  
+             background:aliceblue;
+            }
+            header,main,footer{
+                width:800px;
+                margin:auto;
+            }
+            #inicio img{
+                width:100%;
+
+            }
+            #quiensoy img{
+                width: 40%;
+            }
+            header,h3{
+               text-align: center; 
+            }
+            p{
+                text-align: justify;
+            }
+            nav ul{
+                list-style-type: none;
+                padding: 0px;
+            }
+            nav ul li{
+                display: inline-block;
+                padding: 10px;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color:inherit;
+            }
+            article{
+                width: 30%;
+                display: inline-block;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+            article img{
+                width: 100%;
+            }
+            body{
+                font-family: parrafo,sans-serif;
+
+            }
+            h1{
+                font-family: titulo,cursive;
+                font-weight: normal;
+                font-size: 64px;
+                padding: 0px;
+                margin: 0px;
+            }
+            h2{
+                font-size: 20px;
+                padding: 0px;
+                margin: 0px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>la web de Francisco Jose</h1>
+            <h2>Estudiante de programacion</h2>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#quiensoy">Quien soy</a></li>
+                    <li><a href="#proximosproyectos">Proximos proyectos</a></li>
+                    <li><a href="#blog">Blog</a></li> 
+                    <li><a href="#contacto">Contacto</a></li>      
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+                <section id="inicio">
+                    <h3>Inicio</h3>
+                    <img src="imagenes/fhrbaner.jpg" alt="pancarta de la web de francisco jose">
+                </section>
+
+                <section id="quiensoy">
+                    <h3>Quien soy</h3>  
+                    <div class="flexbox2columnas">
+                    <img src="imagenes/fhrdibujo.jpg" alt="francisco jose"> 
+                    <p>Soy una persona que me gusta la tecnologia y la programacion</p>
+                </div>
+                </section>
+
+                <section id="proximosproyectos">
+                    <h3>Proximos proyectos</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                               <th>Inicio del proyecto</th> 
+                               <th>Nombre del proyecto</th>
+                               <th>Duracion</th>
+                               <th>Lugar</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                           <tr>
+                            <td>2024-09-17</td>
+                            <td>proyecto en HTML</td>
+                            <td>10 horas</td>
+                            <td>Web PCpro</td>
+                           </tr>
+                           <tr>
+                            <td>2024-09-18</td>
+                            <td>proyecto en Python</td>
+                            <td>45 horas</td>
+                            <td>Web DQ</td>
+                           </tr>  
+                           <tr>
+                            <td>2024-09-19</td>
+                            <td>proyecto en Java</td>
+                            <td>10 horas</td>
+                            <td>Web Farm</td>
+                           </tr>  
+                           <tr>
+                            <td>2024-09-20</td>
+                            <td>proyecto en CSS</td>
+                            <td>10 horas</td>
+                            <td>Web PCpro</td>
+                           </tr>       
+
+                        </tbody>
+
+                    </table>    
+                </section>
+
+                <section id="blog">
+                    <h3>Blog</h3>
+                        <article>
+                        <img src="imagenes/fhrdibujo.jpg" alt="francisco jose"> 
+                        <h4>Titulo del articulo</h4>
+                        <time>2024-09-17</time>
+                        <p>contenido del articulo 1</p>
+                        </article>
+                        <article>
+                            <img src="imagenes/fhrdibujo.jpg" alt="francisco jose"> 
+                            <h4>Titulo del articulo</h4>
+                            <time>2024-09-17</time>
+                            <p>contenido del articulo 2</p>
+                        </article>
+                        <article>
+                            <img src="imagenes/fhrdibujo.jpg" alt="francisco jose"> 
+                            <h4>Titulo del articulo</h4>
+                            <time>2024-09-17</time>
+                            <p>contenido del articulo 3</p>
+                        </article>
+                        
+                </section>
+
+                <section id="contacto">
+                    <h3>Contacto</h3>
+
+                    <form>
+                        <fieldset>
+                            <legend>Envia tu mensaje</legend>
+                        <label for="nombre">Introduce tu nombre</label>
+                        <input type="text" name="nombre" id="nombre">
+                        <label for="email">Introduce tu Email</label>
+                        <input type="text" name="email" id="email">
+                        <label for="mensaje">Introduce tu Mensaje</label>
+                        <textarea id="mensaje" name="mensaje"></textarea>
+                        <input type="submit"> 
+                        </fieldset>
+                    </form>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12338.996064842164!2d-0.4096499716496099!3d39.36191994792323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1726835564843!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                </section>
+
+        </main>
+        <footer>
+            <ul>
+               <li><a href="politica.html">Politica de privacidad</a></li> 
+               <li><a href="terminos.html">Terminos de uso</a></li> 
+               <li><a href="datos.html">Proteccion de datos</a></li> 
+               <li><a href="cookies.html">Politica de cookies</a></li> 
+            </ul>
+            <ul>
+                <li><a href="https://www.facebook.com/franhrgames?locale=es_ES">Facebook</a></li> 
+                <li><a href="https://www.instagram.com/franhrgames/">Instagram</a></li> 
+                <li><a href="https://www.youtube.com/@franhrgame">Youtube</a></li> 
+                <li><a href="https://github.com/franHR11?tab=repositories">Github</a></li> 
+             </ul>
+
+        </footer>
+    </body>
+
+
+</html>
+
+

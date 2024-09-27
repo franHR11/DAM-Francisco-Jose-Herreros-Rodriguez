@@ -1,0 +1,1 @@
+CREATE TABLE `miempresa`.`clientes` (`Identificador` INT NOT NULL AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `apellidos` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `poblacion` VARCHAR(255) NOT NULL , `fechadenacimiento` DATE NOT NULL , PRIMARY KEY (`Identificador`)) ENGINE = InnoDB;

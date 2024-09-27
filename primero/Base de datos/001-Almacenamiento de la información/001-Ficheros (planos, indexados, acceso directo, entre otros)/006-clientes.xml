@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientes>
+    <cliente>
+        <nombre>
+            FranHR
+        </nombre>
+        <apellidos>
+            Herreros
+        </apellidos>
+        <telefono>
+            64364456
+        </telefono>
+        <email>
+            info@pcprogramacion.es
+        </email>
+    </cliente>
+    <cliente>
+        <nombre>
+            FranHR
+        </nombre>
+        <apellidos>
+            Herreros
+        </apellidos>
+        <telefono>
+            64364456
+        </telefono>
+        <email>
+            info@josevicentecarratala.com
+        </email>
+    </cliente>
+</clientes>

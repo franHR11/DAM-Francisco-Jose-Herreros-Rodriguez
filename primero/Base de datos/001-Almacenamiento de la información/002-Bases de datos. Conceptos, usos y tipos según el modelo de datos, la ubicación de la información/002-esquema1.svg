@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg464"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="002-esquema1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview466"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.104894"
+     inkscape:cx="588.29171"
+     inkscape:cy="390.08266"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs461">
+    <marker
+       style="overflow:visible"
+       id="Arrow1"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow1"
+       markerWidth="4.0606604"
+       markerHeight="6.7071066"
+       viewBox="0 0 4.0606602 6.7071068"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         id="path5057"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:1"
+       id="rect1193"
+       width="34.482944"
+       height="28.616055"
+       x="126.79666"
+       y="65.254181"
+       ry="4.2331815" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:1"
+       id="rect637"
+       width="46.695656"
+       height="31.369902"
+       x="120.69031"
+       y="85.967896"
+       ry="4.2331815" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="path1247"
+       cx="144.03813"
+       cy="108.4776"
+       rx="11.494315"
+       ry="3.8314383" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="ellipse1249"
+       cx="144.03813"
+       cy="103.80804"
+       rx="11.494315"
+       ry="3.8314383" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="ellipse1251"
+       cx="144.03813"
+       cy="99.018738"
+       rx="11.494315"
+       ry="3.8314383" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="ellipse1253"
+       cx="144.03813"
+       cy="94.588638"
+       rx="11.494315"
+       ry="3.8314383" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="rect1995"
+       width="34.482944"
+       height="28.616055"
+       x="187.41582"
+       y="65.254181"
+       ry="4.2331815" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="rect1997"
+       width="46.695656"
+       height="31.369902"
+       x="181.30946"
+       y="85.967896"
+       ry="4.2331815" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.003;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1)"
+       d="M 181.34948,103.12029 H 167.46465"
+       id="path2053" />
+  </g>
+</svg>
