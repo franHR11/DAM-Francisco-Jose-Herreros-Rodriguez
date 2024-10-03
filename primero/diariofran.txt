@@ -1,0 +1,6 @@
+2024-10-01/esto es una prueba de escritura en un archivo de texto
+2024-10-02/esto es una prueba de escritura en un archivo de texto en otra liea con otro dia
+2024-10-03/esto es un mensaje con bucle infinito
+04-10-2024/esto es otro mensaje con bucle
+& C:/Users/franh/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/franh/Desktop/DAM/DAM/primero/Programacion/005-Lectura y escritura de información/003-Apertura y cierre de ficheros. Modos de acceso. Escritura y lectura de información en ficheros/002-bucle infinito.py"/& C:/Users/franh/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/franh/Desktop/DAM/DAM/primero/Programacion/005-Lectura y escritura de información/003-Apertura y cierre de ficheros. Modos de acceso. Escritura y lectura de información en ficheros/002-bucle infinito.py"
+2024-10-10/elisabeth es una cerdita
