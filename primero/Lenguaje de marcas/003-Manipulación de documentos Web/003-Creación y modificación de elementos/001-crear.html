@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id="contenedor">
+    </div>
+    <script>
+      var titulo = document.createElement("h1")                     // Creo un elemento de título en la memoria
+      titulo.textContent = "Titulo Javascript"                      // Al titulo le doy contenido de texto
+      document.querySelector("#contenedor").appendChild(titulo)     // En el documento le pongo el titulo como hijo
+      
+      var parrafo = document.createElement("p")                     // Creo un elemento de título en la memoria
+      parrafo.textContent = "Este texto está creado en Javascript"  // Al titulo le doy contenido de texto
+      document.querySelector("#contenedor").appendChild(parrafo)    // En el documento le pongo un parrafo como hijo
+    </script>
+  </body>
+</html>

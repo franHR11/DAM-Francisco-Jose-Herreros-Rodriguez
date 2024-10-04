@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Aprendiendo Javascript por Francisco Jose</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <script>
+      // Esto es un comentario de una unica linea
+        // Esto es otro comentario de una unica linea
+      
+      /*
+        Esto es un comentario multilinea
+        Esto sigue siéndolo
+        Y esto lo sigue siendo una vez más
+      */
+      fetch("http://127.0.0.1:5000")  // Nos conectamos a Python
+      .then(function(response){       // Cuando el servidor me de ok
+        return response.json()        // Quiero avisar de que la respuesta viene en json
+      })
+      .then(function(datos){          // Cuando la respuesta haya sido interpretada como json
+        console.log(datos)            // De momento pon la respuesta en la consola
+      })
+    </script>
+  </body>
+</html>
