@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Aprendiendo Javascript por Francisco Jose</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <input id="operando1">
+    <input id="operando2">
+    <button>calcula</button>
+    <script>
+        var boton = document.querySelector("button")          // Con esto selecciono el boton
+        boton.onclick = function(){                           // Cuando sobre el boton haga click
+          var op1 = document.querySelector("#operando1")      // Selecciono el input 1
+          var valor1 = op1.value                              // Y tomo su valor
+          var op2 = document.querySelector("#operando2")      // Selecciono el input 2
+          var valor2 = op2.value                              // Y tomo su valor
+        }
+    </script>
+  </body>
+</html>

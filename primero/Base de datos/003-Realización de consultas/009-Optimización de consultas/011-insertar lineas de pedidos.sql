@@ -1,0 +1,1 @@
+INSERT INTO `productos` (`identificador`, `nombre`, `descripcion`, `precio`) VALUES (NULL, 'pepinos', 'pepinos verdes', '1');

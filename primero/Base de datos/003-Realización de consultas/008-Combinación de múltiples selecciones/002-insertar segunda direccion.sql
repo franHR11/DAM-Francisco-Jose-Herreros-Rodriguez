@@ -1,0 +1,1 @@
+INSERT INTO `direcciones` (`id`, `calle`, `codigopostal`, `pais`, `empleados_nombre`) VALUES (NULL, '2 calle del cliente', '45095', 'españa', '1');
