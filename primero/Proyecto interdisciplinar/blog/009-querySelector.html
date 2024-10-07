@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Blog</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background:rgb(38, 169, 169);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header,main,footer {
+        background-color: #fdfafa;
+        padding: 20px;
+        margin: auto;
+        width: 800px;
+        text-align: center;
+      }
+      article {
+        background: rgb(174, 245, 245);text-align: justify;
+        box-sizing: border-box;padding: 20px; margin: 10px 0px;
+      }
+
+       </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blog</h1>
+      <h2>El blog de Francisco Jose</h2>
+    </header>
+
+   <main>
+
+        <section>            
+        </section>
+
+   </main>
+
+<footer>
+    <p> (c) 2024 Francisco Jose</p>
+</footer>
+<script>
+
+    fetch('http://127.0.0.1:5000')
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(entradas){
+        console.log(entradas)
+        entradas.forEach(function(entrada){
+        let secciom = document.querySelector('section')
+        secciom.innerHTML += `
+            <article>
+                <h3>`+entrada.titulo+`</h3>
+                <time>`+entrada.fecha+`</time>
+                <p>`+entrada.contenido+`</p>
+            </article>
+        `    
+        })
+    })
+</script>
+    
+
+
+  </body>
+</html>

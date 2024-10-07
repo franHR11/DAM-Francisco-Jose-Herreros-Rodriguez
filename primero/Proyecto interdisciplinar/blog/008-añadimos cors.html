@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Blog</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background:rgb(38, 169, 169);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header,main,footer {
+        background-color: #fdfafa;
+        padding: 20px;
+        margin: auto;
+        width: 800px;
+        text-align: center;
+      }
+      article {
+        background: rgb(174, 245, 245);text-align: justify;
+        box-sizing: border-box;padding: 20px; margin: 10px 0px;
+      }
+
+       </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blog</h1>
+      <h2>El blog de Francisco Jose</h2>
+    </header>
+
+   <main>
+
+        <section>
+
+
+            <article>
+                <h3>Crear un articulo</h3>
+                <time>2024-10-02</time>
+                <p>Este es el primer articulo de mi blog</p>
+            </article>
+
+            <article>
+                <h3>Crear segundo articulo</h3>
+                <time>2024-10-02</time>
+                <p>Este es el segundo articulo de mi blog</p>
+            </article>
+
+            <article>
+                <h3>Crear tercer articulo</h3>
+                <time>2024-10-02</time>
+                <p>Este es el tercer articulo de mi blog</p>
+            </article>
+            
+        </section>
+
+   </main>
+
+<footer>
+    <p> (c) 2024 Francisco Jose</p>
+</footer>
+<script>
+
+    fetch('http://127.0.0.1:5000')
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(datos){
+        console.log(datos);
+    })
+</script>
+    
+
+
+  </body>
+</html>
