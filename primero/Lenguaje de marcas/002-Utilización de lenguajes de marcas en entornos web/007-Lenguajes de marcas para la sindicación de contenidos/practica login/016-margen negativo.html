@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title>Inicio de Sesion</title>
+    <style>
+
+        html,body{
+            background-image: url('fondo.jpg');
+            background-size: cover; /* Esto hace que la imagen cubra todo el fondo */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            height: 100vh; /* Hace que el cuerpo ocupe toda la altura del viewport */
+            margin:0; /* Quita los márgenes */
+            padding: 0px; /* Quita el padding */
+          } 
+        main{
+            width: 500px;
+            height: 600px;
+            background:rgba(255,255,255,0.2);
+            box-sizing:border-box;
+            padding:20px;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -250px;
+            margin-top: -300px;
+
+        }                
+
+
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <form>
+
+            <h1>INICIAR SESION</h1>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Contraseña">
+        </form>
+            <input type="checkbox" id="recordar">Recordar
+            <a href="#">Olvidé mi contraseña</a>
+            <input type="submit" value="Acceder">
+            <p>No tengo cuenta</p>
+            <a href="#">Registrarme</a>
+
+    </main>
+
+
+</body>
+</html>

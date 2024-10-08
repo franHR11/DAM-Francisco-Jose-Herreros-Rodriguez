@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title>Inicio de Sesion</title>
+    <style>
+        @font-face {
+            font-family: 'titulo';
+            src: url('titulo.ttf') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        html,body{
+            background-image: url('fondo.jpg');
+            background-size: cover; /* Esto hace que la imagen cubra todo el fondo */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            height: 100vh; /* Hace que el cuerpo ocupe toda la altura del viewport */
+            margin:0; /* Quita los márgenes */
+            padding: 0px; /* Quita el padding */
+          } 
+        main{
+            width: 500px;
+            height: 600px;
+            background:rgba(255,255,255,0.2);
+            box-sizing:border-box;
+            padding:20px;
+            position:absolute; /* Posiciona el elemento */
+            top: 50%;
+            left: 50%; /* Me llevo la esquina al centro */
+            margin-left: -250px; /* Me llevo la esquina al centro */
+            margin-top: -300px; /* Me llevo la esquina al centro */
+            backdrop-filter: blur(5px); /* Desenfoca el fondo */
+            text-align: center; /* Centra el texto */
+            color: white;
+            font-family: 'titulo', sans-serif;
+            border:1px solid white;
+            border-radius: 20px;
+        }                
+        input[type=email],input[type=password],input[type=submit]{
+            width:100%;/* Hace que los inputs ocupen todo el ancho */
+            margin: 10px 0px;   /* Añade margen arriba y abajo */
+            padding: 10px 0px; /* Añade padding arriba y abajo */
+            border: none;
+            background: none;
+            border-bottom: 1px solid white;
+            outline:none;
+          } 
+
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <form>
+
+            <h1>INICIAR SESION</h1>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Contraseña">
+        </form>
+            <input type="checkbox" id="recordar">Recordar
+            <a href="#">Olvidé mi contraseña</a>
+            <input type="submit" value="Acceder">
+            <p>No tengo cuenta</p>
+            <a href="#">Registrarme</a>
+
+    </main>
+
+
+</body>
+</html>
