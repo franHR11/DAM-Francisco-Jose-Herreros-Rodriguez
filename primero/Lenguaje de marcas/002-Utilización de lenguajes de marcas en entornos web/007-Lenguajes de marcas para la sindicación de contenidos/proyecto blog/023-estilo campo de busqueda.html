@@ -1,0 +1,82 @@
+<!doctype html>                         <!-- Declaración de tipo de documento -->
+<html lang="es">                        <!-- Inicio de etiqueta html con atributo lang -->          
+  <head>                                <!-- Inicio de cabecera -->
+    <title>Proyecto Blog</title>        <!-- Título de la página -->
+  <meta charset="utf-8">                 <!-- Metaetiqueta para definir el juego de caracteres -->
+  <style>
+    body,html{
+        background:rgb(240,240,240);
+        padding:0px;
+        margin:0px;
+      }
+      header{
+        background:white;
+        padding: 20px;
+      }
+      h1{
+        padding:0px;
+        margin:0px;
+        display:inline-block;        
+      } 
+      nav{
+        display:inline-block;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      nav ul{
+        list-style-type:none;
+        padding:0px;
+        margin:0px;
+      }
+      nav ul li{
+        display:inline-block;
+        padding: 20px;
+      }
+      header input,header button{
+        float:right;
+      }
+      header button{
+        padding: 10px;
+        background:#03c39a;
+        color:white;
+        border:none;
+        border-radius: 40px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-left: 20px;
+      }
+      header input{
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 40px;
+        border:none;
+        margin-left: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding-left: 20px;
+        background-image: url('lupa.png');
+        background-repeat: no-repeat;
+        background-position: 10px center;
+      }
+  </style>
+</head>
+  <body>
+    <header>
+        <h1>Proyecto Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Entradas</a></li>
+                <li><a href="entradas.html">productos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>            
+        <button type="submit">Buscar</button>            
+        <input type="search" name="busqueda" id="busqueda" placeholder="Buscar">
+
+
+    </header>
+    <main>
+    </main>
+  </body>
+</html>
