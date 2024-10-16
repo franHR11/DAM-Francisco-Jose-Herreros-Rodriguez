@@ -2,3 +2,4 @@ asi se escribe un texto en un archivoasi se escribe un texto en un archivoasi se
 asi se escribe un texto en un archivo
 asi se escribe un texto en un archivo
 asi se escribe en distintas lineas
+asi se escribe en distintas lineas

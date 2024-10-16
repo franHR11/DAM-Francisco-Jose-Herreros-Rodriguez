@@ -1,7 +1,9 @@
 dia = 1
 
-do
-    print("hoy es el día",dia,"del mes")
-while dia < 31
+while True:
+    print("hoy es el día", dia, "del mes")
+    dia += 1
+    if dia > 31:
+        break
     
     

@@ -29,7 +29,7 @@ elif operador == "-":
 elif operador == "*":
     resultado = operando1 * operando2
 elif operador == "/":
-    resultado = operando1 / operando2
+    resultado = operando1 / operando2       
 
 # Ofrecer resultados
 

@@ -1,4 +1,4 @@
-edad = 46
+edad = 29
 if edad < 30:
     print("Eres muy joven")
 else:

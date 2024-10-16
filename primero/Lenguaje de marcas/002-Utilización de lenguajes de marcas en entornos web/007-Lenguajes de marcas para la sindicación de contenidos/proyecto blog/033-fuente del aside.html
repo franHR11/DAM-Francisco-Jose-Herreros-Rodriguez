@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Proyecto Blog</title>
+    <meta charset="utf-8">
+    <style>
+      body, html {
+        background: rgb(240, 240, 240);
+        padding: 0px;
+        margin: 0px;
+      }
+      header {
+        background: white;
+        padding: 20px;
+      }
+      h1 {
+        padding: 0px;
+        margin: 0px;
+        display: inline-block;
+      }
+      nav {
+        display: inline-block;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      nav ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+      }
+      nav ul li {
+        display: inline-block;
+        padding: 20px;
+      }
+      header input, header button {
+        float: right;
+      }
+      header button {
+        padding: 10px;
+        background: #03c39a;
+        color: white;
+        border: none;
+        border-radius: 40px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-left: 20px;
+      }
+      header input {
+        background:url(lupa.png);
+        background-repeat:no-repeat;
+        background-position:left center;
+        background-size: 20px;
+        padding:15px;
+        border:none;
+        text-transform:uppercase;
+        font-weight:bold;
+        padding-left:40px;
+      }
+      main {
+        width: 1000px;
+        margin: auto;
+        margin-top: 50px;
+      }
+      main #destacado {
+        width: 100%;
+      }
+      main #destacado #principal {
+        width: 70%;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+        overflow:hidden;
+        font-family:sans-serif;
+        display:inline-block;
+      }
+      main #destacado #principal img {
+        width: 100%;
+      }
+      main #destacado #principal h4, main #destacado #principal h3 {
+        padding: 20px;
+        margin: 0px;
+      }
+      main #destacado aside {
+        width: 29%;
+        display: inline-block;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ProyectoBlog</h1>
+      <nav>
+        <ul>
+          <li>Entradas</li>
+          <li>Productos</li>
+          <li>Contacto</li>
+        </ul>
+      </nav>
+      <button type="submit">Buscar</button>
+      <input type="search" name="busqueda" id="busqueda" placeholder="Buscar">
+    </header>
+    <main>
+        <section id="destacado">
+            <div id="principal">
+                <img src="principal.jpg" alt="Imagen principal">
+                <h4>Titulin</h4>
+                <h3>Subtitulin</h3>
+            </div>
+            <aside>
+                <h3>Staff Picks</h3>
+                <article>
+                    <h5>How to</h5>
+                    <p>este es el texto que hay en cada uno de los articulos</p>
+                </article>
+                <article>
+                    <h5>How to</h5>
+                    <p>este es el texto que hay en cada uno de los articulos</p>
+                </article>
+                <article>
+                    <h5>How to</h5>
+                    <p>este es el texto que hay en cada uno de los articulos</p>
+                </article>
+                <article>
+                    <h5>How to</h5>
+                    <p>este es el texto que hay en cada uno de los articulos</p>
+                </article>
+
+            </aside>
+
+
+            
+        </section>
+        <section id="articulos">
+        </section>  
+    </main>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-dia = "g"
+dia = "marzo"
 
 if dia == "Lunes":
    print("Hoy es el peor dia de la semana") 
