@@ -1,0 +1,9 @@
+Resumen de la prueba:
+
+Python 3.12.3 = 43.74s multiprocessing
+Javascript Chrome = 8.73s workers
+C gcc 13.2 = 2.45s cortar las venas
+C++ g++ = 2.42s cortar las venas
+Nodejs = 1.06s multiprocesing
+PHP = 4.50s cortar las vena
+
