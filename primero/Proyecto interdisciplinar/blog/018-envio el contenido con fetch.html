@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Blog</title>
+    <meta charset="utf-8">
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    
+    <main>
+      <h1>Panel de control Blog</h1>
+      <p>Introduce un nuevo título para una entrada</p>
+      <input type="text" id="titulo">
+      <p>Introduce una nueva fecha para una entrada</p>
+      <input type="date" id="fecha">
+      <p>Introduce un nuevo contenido para una entrada</p>
+      <textarea id="contenido"></textarea>
+      <button id="enviar">Añadir entrada</button>
+    </main>
+    <script>
+    var boton = document.querySelector("button"); 
+    boton.onclick = function() {
+        var titulo = document.querySelector("#titulo").value
+        var fecha = document.querySelector("#fecha").value
+        var contenido = document.querySelector("#contenido").value
+
+        titulo = encodeURI(titulo)
+        fecha = encodeURI(fecha)
+        contenido = encodeURI(contenido)
+        fetch("http://127.0.0.1:5000/toma?titulo="+titulo+"&fecha="+fecha+"&contenido="+contenido)
+        
+    }   
+
+    </script>
+    
+  </body>
+</html>

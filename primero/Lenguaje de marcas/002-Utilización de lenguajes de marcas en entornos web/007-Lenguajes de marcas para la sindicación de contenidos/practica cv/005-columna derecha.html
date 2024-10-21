@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>CV Francisco Jose Herreros Rodriguez</title>
+    <meta charset="utf-8">
+    <style>
+        .imagentelefono {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .imagentelefono img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+        .imagenemail {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .imagenemail img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+        .imagenweb {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid white;/* Linea de separacion entre los datos */;
+            padding-bottom: 30px; /* Espacio entre el contenido y el borde */        
+            margin-right: 20px;
+        }
+        .imagenweb img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+        #columnaizquierda {
+            background-color: #386dad; /* Color de fondo */
+            width: 20%; /* Ancho de la columna */
+            height: auto; /* Altura completa de la ventana */
+            display: flex; /* Para que los elementos se coloquen en columna */
+            flex-direction: column; /* Para que los elementos se coloquen en columna */
+        }
+        #columnaderecha {
+            background-color: #f0f0f0; /* Color de fondo */
+            width: 80%; /* Ancho de la columna derecha */
+            height: auto; /* Altura automática basada en el contenido */
+            display: flex;
+            flex-direction: column; /* Elementos en columna */
+        }
+
+        .fran {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%; /* Para que sea un circulo */
+            margin: 0px;
+            padding: 0px;
+            border-color: white;
+            border: 5px solid white;
+            margin-top: 40px;
+            margin-left: 45px;
+        }
+        h3 {
+            color: white;
+            margin: 0px;
+            padding: 0px;
+            margin-top: 20px;
+            text-align: left;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        ul li {
+            color: white; /* Color blanco para el texto */
+            margin-left: -20px;
+            
+        }
+
+        ul li::marker {
+            color: white; /* Color blanco para los puntos de la lista */
+        }
+        ul {
+            border-bottom: 3px solid white;/* Linea de separacion entre los datos */;
+            padding-bottom: 30px; /* Espacio entre el contenido y el borde */        
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        body {
+            display: flex; /* Define el contenedor como flexbox */
+            justify-content: space-between; /* Distribuye las columnas y coloca la derecha en su lugar */
+            height: 100vh; /* Altura completa de la ventana */
+        }
+        #cabecera {
+            background-color: #143f72; /* Color de fondo */
+            color: white; /* Color del texto */
+            text-align: left; /* Alineación del texto */
+            padding: 20px; /* Espacio interior */
+            margin: 0px; /* Margen exterior */
+        }
+        
+    </style>
+  </head>
+  <body>
+
+    
+    <div id="columnaizquierda">
+        <img class="fran" src="imagenes/fran.png" alt="fran">
+        <h3>CONTACTO</h3>
+        <div class="imagentelefono">
+            <img src="imagenes/imagentelefono.png" alt="Icono">
+            <span>628639355</span>
+        </div>
+        <div class="imagenemail">
+            <img src="imagenes/email.png" alt="Icono">
+            <span>fran1113@gmail.com</span>
+        </div>
+        <div class="imagenweb">
+            <img src="imagenes/web.png" alt="Icono">
+            <span>www.pcprogramacion.es</span>
+        </div>
+        <h3>HABILIDADES</h3>
+        <ul>
+            <li>Aplicaciones multiplataforma</li>
+            <li>Montaje y mantenimiento de equipos</li> 
+            <li>Programación nivel medio</li>
+            <li>Seguridad informática</li>
+            <li>OS windows y linux nivel avanzado</li> 
+            <li>Programación nivel medio</li>
+            <li>Maquetador web</li>
+            <li>Front end y Back end</li>
+        </ul>
+        <h3>FORMACION</h3>
+        <ul>
+         <li>
+        C.F. Grado superior en desarrollo de aplicaciones multiplataforma
+        Centro de Formación Tame (2024 - en curso)</li>
+         </li><br>
+        <li>
+        C.F. Grado medio en sistemas microinformáticos y redes
+        Centro de Formación Tame (2022 - 2024)</li>
+        </li><br>
+        <li>
+        Graduado escolar E.S.O
+        I.E.S. Juán de Valdés (2003 - 2007)
+        </li>
+        </ul>
+        
+    </div>
+
+    <div id="columnaderecha">
+
+        <div id="cabecera">
+            <h1>Francisco José <span class="apellido">Herreros</span></h1>
+            <h2>Programador y diseñador web</h2>
+        </div>
+
+    </div>
+  </body>
+</html>
