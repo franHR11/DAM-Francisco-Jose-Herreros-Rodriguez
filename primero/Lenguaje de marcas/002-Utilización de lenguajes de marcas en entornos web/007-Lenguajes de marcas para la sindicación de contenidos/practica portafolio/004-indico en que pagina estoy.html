@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Portafolio</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <nav>
+        <button id="anterior"><</button>
+        <button id="posterior">></button>
+    </nav>
+    <main>         
+    </main>
+    <script>
+        var pagina = 1;                                                       //variable que indica en que pagina estoy
+        console.log("ahora estoy en la pagina ",pagina)                      //muestro en consola en que pagina estoy
+        document.querySelector("#anterior").onclick = function(){            //evento que disminuye la variable pagina en 1
+            pagina--;                                                        //disminuyo la variable pagina en 1
+            console.log("ahora estoy en la pagina ",pagina)                  //muestro en consola en que pagina estoy
+            }                                                                //cierro la funcion
+        document.querySelector("#posterior").onclick = function(){            //evento que aumenta la variable pagina en 1
+            pagina++;                                                        //aumento la variable pagina en 1
+            console.log("ahora estoy en la pagina ",pagina)                   //muestro en consola en que pagina estoy
+                                                                            //cierro la funcion
+        }
+        
+
+
+    </script>
+  </body>
+</html>
+  

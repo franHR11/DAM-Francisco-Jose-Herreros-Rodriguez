@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>El título de mi página</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
+      rel="stylesheet"
+      type="text/css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+          }
+          
+          html {
+            font-size: 10px;
+            background-color: #a9a9a9;
+          }
+          
+          body {
+            width: 70%;
+            margin: 0 auto;
+          }
+          
+          /* || typography */
+          
+          h1, h2, h3 {
+            font-family: 'Sonsie One', cursive;
+            color: #2a2a2a;
+          }
+          
+          p, input, li {
+            font-family: 'Open Sans Condensed', sans-serif;
+            color: #2a2a2a;
+          }
+          
+          h1 {
+            font-size: 4rem;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 10px black;
+          }
+          
+          h2 {
+            font-size: 3rem;
+            text-align: center;
+          }
+          
+          h3 {
+            font-size: 2.2rem;
+          }
+          
+          p, li {
+            font-size: 1.6rem;
+            line-height: 1.5;
+          }
+          
+          /* || header layout */
+          
+          nav, article, aside, footer {
+            background-color: white;
+            padding: 1%;
+          }
+          
+          nav {
+            height: 50px;
+            background-color: #ff80ff;
+            display: flex;
+            margin-bottom: 10px;
+          }
+          
+          nav ul {
+            padding: 0;
+            list-style-type: none;
+            flex: 2;
+            display: flex;
+          }
+          
+          nav li {
+            display: inline;
+            text-align: center;
+            flex: 1;
+          }
+          
+          nav a {
+            display: inline-block;
+            font-size: 2rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: black;
+          }
+          
+          nav form {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 2em;
+          }
+          
+          input {
+            font-size: 1.6rem;
+            height: 32px;
+          }
+          
+          input[type="search"] {
+            flex: 3;
+          }
+          
+          input[type="submit"] {
+            flex: 1;
+            margin-left: 1rem;
+            background: #333;
+            border: 0;
+            color: white;
+          }
+          
+          /* || main layout */
+          
+          main {
+            display: flex;
+          }
+          
+          article {
+            flex: 4;
+          }
+          
+          aside {
+            flex: 1;
+            margin-left: 10px;
+            background-color: #ff80ff;
+          }
+          
+          aside li {
+            padding-bottom: 10px;
+          }
+          
+          footer {
+            margin-top: 10px;
+          }
+          </style>
+    <!-- las tres siguientes líneas son un truco para obtener elementos semánticos de HTML5 que funcionan en versiones de Internet Explorer antiguas -->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- Aquí empieza el encabezado principal que se mantendrá en todas las páginas del sitio web -->
+
+    <header>
+      <h1>Encabezado</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Nuestro equipo</a></li>
+        <li><a href="#">Proyectos</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+
+      <!-- Un formulario de búsqueda es una forma no-lineal de hacer búsquedas en un sitio web. -->
+
+      <form>
+        <input type="search" name="q" placeholder="Buscar" />
+        <input type="submit" value="¡Vamos!" />
+      </form>
+    </nav>
+
+    <!-- Aquí está el contenido principal de nuestra página -->
+    <main>
+      <!-- Contiene un artículo -->
+      <article>
+        <h2>Título del artículo</h2>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Donec a diam
+          lectus. Set sit amet ipsum mauris. Maecenas congue ligula as quam
+          viverra nec consectetur ant hendrerit. Donec et mollis dolor. Praesent
+          et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt
+          congue enim, ut porta lorem lacinia consectetur.
+        </p>
+
+        <h3>Subsección</h3>
+
+        <p>
+          Donec ut librero sed accu vehicula ultricies a non tortor. Lorem ipsum
+          dolor sit amet, consectetur adipisicing elit. Aenean ut gravida lorem.
+          Ut turpis felis, pulvinar a semper sed, adipiscing id dolor.
+        </p>
+
+        <p>
+          Pelientesque auctor nisi id magna consequat sagittis. Curabitur
+          dapibus, enim sit amet elit pharetra tincidunt feugiat nist imperdiet.
+          Ut convallis libero in urna ultrices accumsan. Donec sed odio eros.
+        </p>
+
+        <h3>Otra subsección</h3>
+
+        <p>
+          Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum
+          soclis natoque penatibus et manis dis parturient montes, nascetur
+          ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem
+          facilisis semper ac in est.
+        </p>
+
+        <p>
+          Vivamus fermentum semper porta. Nunc diam velit, adipscing ut
+          tristique vitae sagittis vel odio. Maecenas convallis ullamcorper
+          ultricied. Curabitur ornare, ligula semper consectetur sagittis, nisi
+          diam iaculis velit, is fringille sem nunc vet mi.
+        </p>
+      </article>
+
+      <!-- el contenido aparte también se puede anidar dentro del contenido principal -->
+      <aside>
+        <h2>Relacionado</h2>
+
+        <ul>
+          <li><a href="#">Oh, me gusta estar junto al mar</a></li>
+          <li><a href="#">Oh, me gusta estar junto al mar</a></li>
+          <li><a href="#">Aunque en el norte de Inglaterra</a></li>
+          <li><a href="#">Nunca deja de llover</a></li>
+          <li><a href="#">Oh, bueno...</a></li>
+        </ul>
+      </aside>
+    </main>
+
+    <!-- Y aquí está nuestro pie de página principal que se utiliza en todas las páginas de nuestro sitio web -->
+
+    <footer>
+      <p>©Copyright 2050 de nadie. Todos los derechos revertidos.</p>
+    </footer>
+  </body>
+</html>

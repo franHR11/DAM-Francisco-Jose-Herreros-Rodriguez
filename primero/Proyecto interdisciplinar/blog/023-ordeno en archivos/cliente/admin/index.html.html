@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Blog</title>
+    <meta charset="utf-8">
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    
+    <main>
+      <h1>Panel de control</h1>
+      <p>Introduce un nuevo título para una entrada</p>
+      <input type="text" id="titulo">
+      <p>Introduce una nueva fecha para una entrada</p>
+      <input type="date" id="fecha">
+      <p>Introduce un nuevo contenido para una entrada</p>
+      <textarea id="contenido"></textarea>
+      <button id="enviar">Enviar</button>
+    </main>
+    <script>
+      var boton = document.querySelector("button");                         // Selecciono el boton
+      boton.onclick = function(){                                           // Cuando haga click sobre el boton
+        var titulo = document.querySelector("#titulo").value                // Atrapo el value del campo con el id titulo
+        var fecha = document.querySelector("#fecha").value                  // Atrapo el value del campo con el id fecha
+        var contenido = document.querySelector("#contenido").value          // Atrapo el value del campo con el id contenido
+        
+        titulo = encodeURI(titulo)                                          // Los preparo para que pasen por una URL
+        fecha = encodeURI(fecha)                                            // Los preparo para que pasen por una URL
+        contenido = encodeURI(contenido)                                    // Los preparo para que pasen por una URL
+        
+        fetch("http://127.0.0.1:5000/toma?titulo="+titulo+"&fecha="+fecha+"&contenido="+contenido) // Con fetch los envio a Python
+      }
+    </script>
+  </body>
+</html>

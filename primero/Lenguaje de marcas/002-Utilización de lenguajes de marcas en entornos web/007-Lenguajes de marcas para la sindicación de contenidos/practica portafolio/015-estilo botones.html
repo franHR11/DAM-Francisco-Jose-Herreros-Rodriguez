@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <title>Portafolio</title>
+    <meta charset="utf-8">
+    <style>
+        body,html {                                   /* Estilos generales de la página */
+            margin: 0;                                /* Elimino los márgenes por defecto */
+            padding: 0;                               /* Elimino los rellenos por defecto */
+            background:moccasin;                    /* Pongo un color de fondo */ 
+            color: peru;                            /* Pongo un color de letra */
+            width: 100%;                              /* Pongo el ancho al 100% */
+            height: 100%;                             /* Pongo el alto al 100% */
+        }
+        article {                                     /* Estilos de los artículos */
+            position:absolute;                        /* Los posiciono de forma absoluta */
+            top: 0px;                                 /* Los pongo en la parte superior */
+            left: 0px;                                /* Los pongo en la parte izquierda */
+            width: 100%;                              /* Los pongo al 100% de ancho */
+            height: 100%;                             /* Los pongo al 100% de alto */
+            border: 0px solid black;                /* Les pongo un bor*/
+            display: none;                            /* Oculto todos los artículos */
+            font-size:64px;                           /* Pongo un tamaño de letra grande */
+            box-sizing: border-box;                   /* Hago que el borde no afecte al tamaño del artículo */
+            padding: 40px;                            /* Pongo un relleno de 40px */
+        }                                             /* Fin de los estilos de los artículos */
+
+        button {                                      /* Estilos de los botones */
+            position: absolute;                            /* Los posiciono de forma absoluta */
+            z-index: 1000;                                 /* Los pongo por encima de todo */
+            transform: translateY(-50%);                  /* Los muevo hacia arriba un 50% de su tamaño */
+            width: 50px;                                   /* Les pongo un ancho de 50px */
+            height: 50px;                                 /* Les pongo un alto de 50px */
+            background: peru;                           /* Les pongo un color de fondo */
+            color: moccasin;                           /* Les pongo un color de letra */
+            border: none;                                 /* Les quito el borde */
+            font-size: 24px;                                  /* Les pongo un tamaño de letra de 24px */
+            font-weight: bold;                                /* Les pongo un peso de letra negrita */
+            cursor: pointer;                                  /* Les pongo un cursor de puntero */
+            border-radius: 50px;                           /* Les pongo un radio de borde de 50px */
+            line-height: 50px;                             /* Les pongo una altura de línea de 50px */
+            text-align: center;                           /* Les pongo un alineamiento de texto al centro */
+        }                                               /* Fin de los estilos de los botones */
+
+        #anterior {                                            /* Estilos del botón anterior */
+            left: 10px;                                    /* Lo pongo a 10px de la izquierda */
+            top: 50%;                                     /* Lo pongo a la mitad de la página */
+            margin-top: -25px;                        /* Lo muevo hacia arriba 25px */
+        }
+        #posterior {                                   /* Estilos del botón posterior */
+            right: 10px;                          /* Lo pongo a 10px de la derecha */
+            top: 50%;                            /* Lo pongo a la mitad de la página */
+            margin-top: -25px;                  /* Lo muevo hacia arriba 25px */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="anterior"><</button>
+        <button id="posterior">></button>
+    </nav>
+    <main>
+        <article id="pagina1">Esta es la página 1</article>
+        <article id="pagina2">Esta es la página 2</article>
+        <article id="pagina3">Esta es la página 3</article>
+        <article id="pagina4">Esta es la página 4</article>
+        <article id="pagina5">Esta es la página 5</article>
+        <article id="pagina6">Esta es la página 6</article>
+    </main>
+    <script>
+      var numeropaginas = document.querySelectorAll("article").length;  // Cuento el numero de paginas que tengo
+      var pagina = 1;                                                   // Cuando el programa inicia, estoy en la pagina 1
+muestraPagina()
+      document.querySelector("#anterior").onclick = function(){         // Cuando pulso el boton con el id anterior
+        borraPaginas()
+        if(pagina > 1){                                                 // Si el numero de pagina es mayor que cero
+          pagina--;                                                       // Le quito una unidad a la pagina
+        }
+        muestraPagina()
+}
+      document.querySelector("#posterior").onclick = function(){        // Cuando pulso el boton con el id posterior
+        borraPaginas()
+        if(pagina < numeropaginas){                                     // Si la pagina actual es menor que el numero de paginas
+          pagina++;                                                       // Le suma una unidad a la pagina
+        }
+        muestraPagina()
+}
+
+function borraPaginas(){
+        let paginas = document.querySelectorAll("article")              // En primer lugar selecciono todas las paginas
+        paginas.forEach(function(pagina){                               // Ahora recorro las paginas una a una
+          pagina.style.display = "none"                                 // Y oculto cada una de las paginas
+        })
+}
+function muestraPagina(){
+        document.querySelector("#pagina"+pagina).style.display = "block"  // Y muestro la página correspondiente a esa unidad
+        console.log("ahora estoy en la pagina",pagina)                  // Y saco de nuevo por consola la pagina en la que estoy
+}
+    </script>
+</body>
+</html> 

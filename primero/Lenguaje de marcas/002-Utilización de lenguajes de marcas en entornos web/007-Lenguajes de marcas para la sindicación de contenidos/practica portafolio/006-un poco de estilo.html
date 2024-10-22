@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <title>Portafolio</title>
+    <meta charset="utf-8">
+    <style>
+        article{
+            width: 400px;
+            height: 300px;
+            border:1px solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="anterior"><</button>
+        <button id="posterior">></button>
+    </nav>
+    <main> 
+                
+        <article id="pagina1">Esta es la página 1</article>
+        <article id="pagina2">Esta es la página 2</article>
+        <article id="pagina3">Esta es la página 3</article>
+        <article id="pagina4">Esta es la página 4</article>
+        <article id="pagina5">Esta es la página 5</article>
+        <article id="pagina6">Esta es la página 6</article>
+        <article id="pagina7">Esta es la página 7</article>                
+
+    </main>
+    <script>
+        var pagina = 1;                                                       //variable que indica en que pagina estoy
+        console.log("ahora estoy en la pagina ",pagina)                      //muestro en consola en que pagina estoy
+        document.querySelector("#anterior").onclick = function(){            //evento que disminuye la variable pagina en 1
+            pagina--;                                                        //disminuyo la variable pagina en 1
+            console.log("ahora estoy en la pagina ",pagina)                  //muestro en consola en que pagina estoy
+            }                                                                //cierro la funcion
+        document.querySelector("#posterior").onclick = function(){            //evento que aumenta la variable pagina en 1
+            pagina++;                                                        //aumento la variable pagina en 1
+            console.log("ahora estoy en la pagina ",pagina)                   //muestro en consola en que pagina estoy
+                                                                            //cierro la funcion
+        }
+        
+
+
+    </script>
+</body>
+</html>
+  

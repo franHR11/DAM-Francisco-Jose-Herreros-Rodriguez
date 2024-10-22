@@ -1,0 +1,18 @@
+body{ /* Estilos generales de toda la web */
+    background:rgb(123, 111, 231); /* El fondo es azul oscuro */
+    font-family:sans-serif; /* La letra es de palo */
+  }
+  header,main,footer{ /* Selecciono tres elementos a la vez */
+    padding:20px; /* Margen interior de 20 pixeles */
+    margin:auto; /* Lo centro en la pantalla */
+    background:white; /* El fondo es blanco */
+    width:800px; /* La anchura es de 800 px */
+    text-align:center; /* Alinea el texto al centro del renglón */
+  }
+  article{ /* Estilizo cada uno de los artículos */
+    background:rgb(142, 210, 241); /* El fondo es cyan clarito */
+    text-align:justify; /* Justifica el texto */
+    box-sizing:border-box; /* Crece el margen hacia dentro y no hacia fuera */
+    padding:20px; /* El margen es de 20 pixeles */
+    margin:10px 0px; /* margen vertical para separar un articulo de otro */
+    }

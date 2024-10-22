@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <title>Portafolio</title>
+    <meta charset="utf-8">
+    <style>
+        article{
+            width: 400px;
+            height: 300px;
+            border:1px solid black;
+            display: none;                                      /*oculto todos los articulos*/
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="anterior"><</button>
+        <button id="posterior">></button>
+    </nav>
+    <main> 
+                
+        <article id="pagina1">Esta es la página 1</article>
+        <article id="pagina2">Esta es la página 2</article>
+        <article id="pagina3">Esta es la página 3</article>
+        <article id="pagina4">Esta es la página 4</article>
+        <article id="pagina5">Esta es la página 5</article>
+        <article id="pagina6">Esta es la página 6</article>
+        <article id="pagina7">Esta es la página 7</article>                
+
+    </main>
+    <script>
+      var pagina = 1;                                                   // Cuando el programa inicia, estoy en la pagina 1
+      console.log("ahora estoy en la pagina",pagina)                    // Saco por consola la pagina en la que estoy
+      document.querySelector("#pagina"+pagina).style.display = "block"  // Como la variable vale 1, muestro solo la pagina 1
+      document.querySelector("#anterior").onclick = function(){         // Cuando pulso el boton con el id anterior
+        pagina--;                                                       // Le quito una unidad a la pagina
+        console.log("ahora estoy en la pagina",pagina)                  // Y saco de nuevo por consola la pagina en la que estoy
+}
+      document.querySelector("#posterior").onclick = function(){        // Cuando pulso el boton con el id posterior
+        
+        let paginas = document.querySelectorAll("article")              // En primer lugar selecciono todas las paginas
+        paginas.forEach(function(pagina){                               // Ahora recorro las paginas una a una
+          pagina.style.display = "none"                                 // Y oculto cada una de las paginas
+        })
+        pagina++;                                                       // Le suma una unidad a la pagina
+        document.querySelector("#pagina"+pagina).style.display = "block"  // Y muestro la página correspondiente a esa unidad
+        console.log("ahora estoy en la pagina",pagina)                  // Y saco de nuevo por consola la pagina en la que estoy
+}
+    </script>
+</body>
+</html>
