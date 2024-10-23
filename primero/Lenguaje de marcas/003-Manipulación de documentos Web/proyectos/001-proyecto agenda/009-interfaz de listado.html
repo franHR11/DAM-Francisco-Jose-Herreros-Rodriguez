@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head lang="es"> 
+    <title>CRUD AGENDA</title>
+    <meta charset="utf-8">
+<body>
+    <h3>insertar un nuevo contacto</h3>
+    <input id="nombre" placeholder="nombre">
+    <input id="apellidos" placeholder="apellidos">
+    <input id="email" placeholder="email">
+    <button id="guardar">Guardar</button>
+    <h3>listado de contactos</h3>
+    <button id="leer">listado de clientes</button>
+    <div id="listado"></div>
+    <script>
+        ////////////////////////////  DECLARACION DE VARIABLES  ///////////////////////////
+   
+        var coleccion = [];                                      //crea una coleccion vacia    
+    
+        ////////////////////////////  ACCION DEL BOTON GUARDAR  ///////////////////////////
+
+    
+    let boton = document.querySelector("#guardar");           //selecciona el boton
+    boton.onclick = function() {                              //cuando se haga click en el boton
+        console.log("click");                                 //muestra en consola el mensaje (DEBUG)
+        let nombre = document.querySelector("#nombre").value;  //selecciona el campo nombre y guarda su valor
+        let apellidos = document.querySelector("#apellidos").value;  //selecciona el campo apellidos y guarda su valor
+        let email = document.querySelector("#email").value;    //selecciona el campo email y guarda su valor
+        console.log(nombre, apellidos, email);                //muestra en consola los valores de los campos
+    let objeto = {nombre: nombre, apellidos: apellidos, email: email};  //crea un objeto con los valores de los campos   
+    console.log(objeto);                                     //muestra en consola el objeto
+    coleccion.push(objeto);                                  //añade el objeto a la coleccion
+    console.log(coleccion);                                  //muestra en consola la coleccion
+}
+    </script>
+</body>
+</html>

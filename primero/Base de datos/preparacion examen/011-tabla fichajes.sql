@@ -1,0 +1,1 @@
+CREATE TABLE `futbol`.`fichajes` (`Identificador` INT NOT NULL AUTO_INCREMENT , `valor` DECIMAL(15,2) NOT NULL , `jugador_nombre` INT NOT NULL , `equipo_nombre` INT NOT NULL , `fechainicio` DATE NOT NULL , `fechafinal` DATE NOT NULL , PRIMARY KEY (`Identificador`)) ENGINE = InnoDB;

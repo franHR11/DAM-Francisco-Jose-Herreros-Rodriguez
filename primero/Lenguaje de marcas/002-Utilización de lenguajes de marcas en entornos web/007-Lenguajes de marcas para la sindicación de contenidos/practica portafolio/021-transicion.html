@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <title>Portafolio</title>
+    <meta charset="utf-8">
+    <style>
+      body,html{                                /* Selecciono el body y el html */
+        padding:0px;                            /* Le quito el margen interior */
+        margin:0px;                             /* Le quito el margen exterior */
+        background:moccasin;                    /* Su fondo es de color mocasin */
+        color:peru;                             /* Su frente es de color peru */
+        width:100%;                             /* Ocupa todo el ancho del navegador */
+        height:100%;                            /* Ocupa todo el alto del navegador */
+      }
+      article{                                  /* Estilizo cada una de las paginas */
+        position:absolute;                      /* Se posiciona absolutamente en el navegador web */
+        top:0px;                                /* Esta a cero pixeles del tope superior */
+        left:0px;                               /* Esta a cero pixeles del tope izquierdo */
+        width:100%;                             /* Tiene una anchura del 100% */
+        height:100%;                            /* Tiene una altura del 100% */
+        border:0px solid grey;                  /* Le quito el borde */
+        display:none;                           /* Escondo todas las paginas */
+        font-size:64px;                         /* Le subo el tamaño de la fuente */
+        box-sizing:border-box;                  /* Crece hacia dentro y no hacia fuera */
+        padding:40px;                           /* Le pongo un margen interior */
+      }
+      button{                                   /* Estilos comunes a los dos botones */
+        position:absolute;                      /* Su posicion es absoluta para moverlos con libertad por la pantalla */
+        z-index:1000;                           /* Por si se quedan detras, los muevo delante */
+        background:peru;                        /* Su fondo es de color peru */
+        color:moccasin;                         /* Su color de frente es mocasin */
+        width:50px;                             /* Tienen una anchura de 50 pixeles */
+        height:50px;                            /* Tienen una altura de 50 pixeles */
+        border-radius:50px;                     /* Estan redondeados */
+        line-height:50px;                       /* Su altura de linea es de 50px */
+        text-align:center;                      /* El texto esta alineado al centro */
+        border:none;                            /* Les quito el borde */
+        font-size:40px;                         /* El tamaño de fuente es de 40 pixeles */
+        font-weight:bold;                       /* La fuente es negrita */
+        top:50%;                                /* Esta al 50% en vertical */
+        margin-top:-25px;                       /* Lo centro en vertical */
+      }
+      #anterior{                                /* Solo para el boton anterior */
+        left:10px;                              /* Esta a 10 pixeles de la izquierda */
+      }
+      #posterior{                               /* Solo para el boton posterior */
+        right:10px;                             /* Esta a 10 pixeles de la derecha */
+      }
+      
+      article{
+        font-family:sans-serif;
+        
+      }
+      
+      article h1{
+        font-size:48px;
+      }
+      article p{
+        font-size:18px;
+        text-align:justify;
+      }
+      article .texto{
+        width:30%;
+        backdrop-filter: blur(10px); 
+        box-sizing: border-box;
+        padding: 30px;
+        border: 2px solid rgba(255,255,255,0.5);
+        height: 100%;
+      }
+      .aparece{
+        animation: animaparece 1s;
+        animation-fill-mode: forwards;
+      }
+      .desaparece{
+        animation: animdesaparece 1s;
+        animation-fill-mode: forwards;
+      }
+      @keyframes animaparece {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+}
+
+      @keyframes animdesaparece {
+         0% { opacity: 1; }
+         100% { opacity: 0; }
+}   
+        
+      
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="anterior"><</button>
+        <button id="posterior">></button>
+    </nav>
+    <main>
+        <article id="pagina1" style="background:url(imagenes/1.jpg);background-size:cover;">
+            <div class="texto">
+                <h1>titulo de la pieza 1</h1>
+                <p>descipcion de la pieza</p>
+            </div>
+        </article>
+        <article id="pagina2" style="background:url(imagenes/2.jpg);background-size: cover;">
+            <div class="texto">
+                <h1>titulo de la pieza 2</h1>
+                <p>descipcion de la pieza</p>
+            </div>
+        </article>
+        <article id="pagina3" style="background:url(imagenes/3.jpg);background-size:cover;">
+            <div class="texto">
+                <h1>titulo de la pieza 3</h1>
+                <p>descipcion de la pieza</p>
+            </div>
+        </article>
+        <article id="pagina4" style="background:url(imagenes/4.jpg);background-size: cover;">
+            <div class="texto">
+                <h1>titulo de la pieza 4</h1>
+                <p>descipcion de la pieza</p>
+            </div>
+        </article>
+        <article id="pagina5" style="background:url(imagenes/5.jpg);background-size: cover;">
+            <div class="texto">
+                <h1>titulo de la pieza 5</h1>
+                <p>descipcion de la pieza</p>
+            </div>
+        </article>
+
+    </main>
+    <script>
+      var numeropaginas = document.querySelectorAll("article").length;  // Cuento el numero de paginas que tengo
+      var pagina = 1;                                                   // Cuando el programa inicia, estoy en la pagina 1
+muestraPagina()
+      document.querySelector("#anterior").onclick = function(){         // Cuando pulso el boton con el id anterior
+        borraPaginas()
+        if(pagina > 1){                                                 // Si el numero de pagina es mayor que cero
+          pagina--;                                                       // Le quito una unidad a la pagina
+        }
+        muestraPagina()
+}
+      document.querySelector("#posterior").onclick = function(){        // Cuando pulso el boton con el id posterior
+        borraPaginas()
+        if(pagina < numeropaginas){                                     // Si la pagina actual es menor que el numero de paginas
+          pagina++;                                                       // Le suma una unidad a la pagina
+        }
+        muestraPagina()
+}
+
+function borraPaginas(){
+        let paginas = document.querySelectorAll("article")              // En primer lugar selecciono todas las paginas
+        paginas.forEach(function(pagina){                               // Ahora recorro las paginas una a una
+          pagina.style.display = "none"                                 // Y oculto cada una de las paginas
+        })
+}
+function muestraPagina(){
+        document.querySelector("#pagina"+pagina).style.display = "block"  // Y muestro la página correspondiente a esa unidad
+        console.log("ahora estoy en la pagina",pagina)                  // Y saco de nuevo por consola la pagina en la que estoy
+}
+    </script>
+</body>
+</html> 

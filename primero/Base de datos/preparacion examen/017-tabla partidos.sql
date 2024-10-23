@@ -1,0 +1,1 @@
+CREATE TABLE `futbol`.`partidos` (`Identificador` INT NOT NULL AUTO_INCREMENT , `visitante` INT NOT NULL , `local` INT NOT NULL , `jornada` INT NOT NULL , `horadeinicio` TIME NOT NULL , `golesvisitante` INT NOT NULL , `goleslocal` INT NOT NULL , PRIMARY KEY (`Identificador`)) ENGINE = InnoDB;

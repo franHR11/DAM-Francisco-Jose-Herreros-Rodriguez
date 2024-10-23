@@ -1,0 +1,1 @@
+ALTER TABLE `jugadores` ADD CONSTRAINT `paisesajugadores` FOREIGN KEY (`paises_nombre`) REFERENCES `paises`(`identificador`) ON DELETE RESTRICT ON UPDATE RESTRICT;
