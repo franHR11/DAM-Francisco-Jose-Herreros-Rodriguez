@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head lang="es">
+    <title>Landing Page</title>
+    <meta charset="utf-8">
+    <style>
+        @font-face {
+        font-family: 'header';
+        src: url('imagenes/header.otf') format('opentype');
+      }
+      @font-face {
+        font-family: 'header2';
+        src: url('imagenes/header2.otf') format('opentype');
+        }
+      body{
+        background:black;
+        padding:0px;
+        margin:0px;
+      }
+      body>*{
+        width:1150px;
+        margin:auto;
+        background:white;
+
+
+      }
+      header {
+        background-image: url('imagenes/header.svg'); /* Ruta de la imagen */
+         background-size: 1150px; /* Tamaño específico en píxeles (ancho x alto) */
+         background-repeat: no-repeat; /* Evita que la imagen se repita */
+         height: 650px; /* Altura de la imagen */        
+}
+        header img{
+            width: 590px;
+            height: 530px;                          /* Ancho de la imagen */
+            float: right;
+            margin-top: 45px;
+            padding: 0%;
+        }
+        header .texto{
+            color: white;
+
+            padding-top: 20px;
+            padding-left: 130px;
+
+        }
+        header .texto h1{
+            font-family: 'header', sans-serif; /* Aplica la fuente personalizada */
+
+        }
+        header .texto h2{
+            font-family: 'header2', sans-serif; /* Aplica la fuente personalizada */
+            font-size: 35px;
+            width: 360px;                       /* Ancho del contenedor */
+            height: 160px;                     /* Altura del contenedor */
+            
+        }
+        header .texto p{
+            font-family: 'header2', sans-serif; /* Aplica la fuente personalizada */
+            font-size: 22px;
+            width: 360px;                       /* Ancho del contenedor */
+            height: auto;                     /* Altura del contenedor */
+            
+        }
+
+      section:nth-child(2),section:nth-child(3){
+        background:#f0f1ff;
+        height:590px;
+      }
+      section:nth-child(4){
+        background:white;
+        height:590px;
+      }
+      footer{
+        background:#717171;
+        height:283px;
+      }
+
+      button{
+        background: white;
+        color: black;
+        border-radius: 50px;
+        padding: 20px 40px;
+        font-size: 17px;
+        font-weight: bold;
+        
+
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+        <img src="imagenes/headermobil.png" alt="logo">
+        <div class="texto">
+            <h1>Calm</h1>
+            <h2>Meet Calm, the #1 app for sleep and meditation</h2>
+            <p>join millions around the globe who are experiencing better sleep, lower stress and less anxiety </p>
+            <button>GET STARTED</button>
+          </div>
+    </header>
+    <section>2
+    </section>
+    <section>3
+    </section>
+    <section>4
+    </section>
+    <footer>5
+    </footer>
+  </body>
+</html>
