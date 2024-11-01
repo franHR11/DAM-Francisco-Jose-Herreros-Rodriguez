@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+        @font-face {
+          font-family: 'letra';
+          src: url('imagenes/letra.ttf') format('truetype');
+        }
+    body{
+      background:black;
+      font-family:'letra',sans-serif;
+      padding:0px;
+      margin:0px;
+    }
+      header,section{
+        width:1000px;
+        margin:auto;
+        background:white;
+      }
+      header{
+        height:60px;
+        display: flex;
+	      flex-direction: row;
+	      flex-wrap: nowrap;
+	      justify-content: space-between;
+	      align-items: center;
+	      align-content: stretch;
+	      text-transform:uppercase;
+          font-size: 14px;
+          
+      }
+      header p{
+        color:#767472;
+        font-size: 12px;
+        font-weight: bold;
+        margin-left: 850px;
+      }
+      header h1{
+        margin-top: 20px;
+        text-align: left;
+        margin-left: -350px;
+      }
+
+      header button{
+        background: #01b4c0;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 40px;
+        border: none;
+        text-transform:uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 50px;       
+      }
+      #heroe{
+        background: #c3d7e5;
+        height: 410px;
+        background-size:cover;
+        position: relative;    /*para que el div hijo se posicione con respecto a este div*/
+      }
+      #pagina{
+        width:250px;
+        height:350px;
+        background:white;
+        position:absolute;     /*para que se posicione con respecto al div padre*/
+        right:40px;
+        top:0px;
+        box-shadow:0px 5px 10px rgba(0,0,0,0.3);
+        transform:translate(-250px,30px) rotate(05deg) scale(1.1,1.1);
+        box-sizing:border-box;
+        padding:30px;
+        font-size:5px;
+      }
+      #pagina img{
+
+margin-top:-25px ;
+margin-left:-30px ;
+transform: rotate(-3deg);
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      
+        <img src="imagenes/logo.png">
+        <h1>Zola
+      </h1>
+      <p>Log in</p>
+      <button>Start your website</button>
+    </header>
+    <section id="heroe">a
+        <img src="imagenes/flor.png">
+        <div id="pagina">
+            <img src="imagenes/personas.png">
+
+        </div>
+    </section>
+    <section id="">a
+    </section>
+    <section id="">a
+    </section>
+    <section id="">a
+    </section>
+    <section id="">a
+    </section>
+    <footer>a
+    </footer>
+  </body>
+</html>

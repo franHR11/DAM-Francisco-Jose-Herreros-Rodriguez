@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <nav></nav>
+    <main></main>
+    <script>
+      fetch("http://localhost:5000/dameTablas")
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(datos){
+      let navegacion = document.querySelector("nav")
+        datos.forEach(function(dato){
+          let elementomenu = document.createElement("p")
+          elementomenu.textContent = dato['Tables_in_programacion']
+          navegacion.appendChild(elementomenu)
+        })
+        
+      })
+    </script>
+  </body>
+</html>

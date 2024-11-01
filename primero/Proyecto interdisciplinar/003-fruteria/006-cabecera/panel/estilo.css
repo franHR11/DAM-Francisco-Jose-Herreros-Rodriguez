@@ -1,0 +1,67 @@
+body,html{
+  width:100%;
+   height:100%;
+   font-family:Sen,sans-serif;
+   padding:0px;
+   margin:0px;
+ }
+ header{
+   background:MediumSlateBlue;
+   color:white;
+   box-sizing:border-box;
+   padding:20px;
+ }
+ #contenedor{
+  height:100%;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   align-items: stretch;
+   align-content: stretch;
+   gap:20px;
+ }
+ nav{
+   width:20%;
+   background:MediumSlateBlue;
+   height:100%;
+   box-sizing:border-box;
+   padding:20px;
+ }
+ main{
+   width:80%;
+   box-sizing:border-box;
+   padding:20px;
+ }
+ nav button{
+   font-family:Sen,sans-serif;
+   display:block;
+   background:Lavender;
+   color:MediumSlateBlue;
+   border:none;
+   width:100%;
+   margin:10px 0px;
+   padding:20px;
+   box-sizing:border-box;
+ }
+ table{
+  border-collapse: collapse; /* Combina los bordes de las celdas */
+   border-spacing: 0;         /* Elimina el espacio entre las celdas */
+   width:100%;
+ }
+ 
+ table tr td{
+   padding:5px;
+ }
+ table tr:nth-child(odd){
+   background:Lavender;
+ }
+ table tr:first-child{
+   background:MediumSlateBlue;
+   color:white;
+ }
+ header h1{
+   padding:0px;
+   margin:0px;
+   text-align: center;
+ }

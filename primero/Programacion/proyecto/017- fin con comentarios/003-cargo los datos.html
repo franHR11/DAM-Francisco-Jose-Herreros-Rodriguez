@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <nav></nav>
+    <main></main>
+    <script>
+      fetch("http://localhost:5000/dameTablas")                       // Pido las tablas al servidor
+      .then(function(response){ 
+        return response.json();                                       // Formateo la respuesta en json
+      })
+      .then(function(datos){                                          
+      let navegacion = document.querySelector("nav")                  // Selecciono la navegacion
+        datos.forEach(function(dato){                                 // Para cada uno de los datos
+          let elementomenu = document.createElement("button")              // Creo un elemento p
+          elementomenu.textContent = dato['Tables_in_programacion']         // Le pongo texto al boton
+          elementomenu.onclick = function(){                                // Cuando haga click en el boton
+            fetch("http://localhost:5000/leerTabla/"+this.textContent)      // Cargo la tabla dinamica
+            .then(function(response){
+                return response.json();                                     // formateo como json
+              })
+              .then(function(datos2){                                       // Cuando recibo los datos
+                let main = document.querySelector("main");                  // Selecciono main
+                //////////////////////////////// FORMATEAR LOS DATOS EN PLAN BONITO ////////////////////////////////////
+                main.innerHTML = ""; // Limpiar el contenido anterior
+                if (Array.isArray(datos2)) {
+                  let table = document.createElement("table");
+                  let headerRow = document.createElement("tr");
+
+                  // Crear encabezados de tabla
+                  Object.keys(datos2[0]).forEach(function(key) {
+                    let header = document.createElement("th");
+                    header.textContent = key;
+                    headerRow.appendChild(header);
+                  });
+                  table.appendChild(headerRow);
+
+                  // Crear filas de la tabla
+                  datos2.forEach(function(fila){
+                    let row = document.createElement("tr");
+                    Object.values(fila).forEach(function(valor){
+                      let cell = document.createElement("td");
+                      cell.textContent = valor;
+                      row.appendChild(cell);
+                    });
+                    table.appendChild(row);
+                  });
+                //////////////////////////////// FORMATEAR LOS DATOS EN PLAN BONITO ////////////////////////////////////
+                  main.appendChild(table);                                        // En el main pongo la tabla
+                } else {
+                  main.textContent = "No se encontraron datos en la tabla.";
+                }
+              })
+          }
+          navegacion.appendChild(elementomenu)                                    // En la navegacion pongo los elementos del menu
+        })
+        
+      })
+    </script>
+  </body>
+</html>
