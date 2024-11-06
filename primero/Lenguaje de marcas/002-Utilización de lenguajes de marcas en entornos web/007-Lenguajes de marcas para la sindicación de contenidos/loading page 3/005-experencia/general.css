@@ -1,0 +1,97 @@
+/*/////////////////// FUENTES ///////////////////*/
+@font-face {
+	font-family: miserif;
+	src: url(imagenes/serif.ttf);
+  }
+
+
+/*/////////////////// PROPIEDADES GENERALES ///////////////////*/
+
+body,html{
+	background:black;
+	font-family:sans-serif;
+	margin:0px;
+	padding:0px;
+}
+
+/*/////////////////// TEXTO ///////////////////*/
+
+h1,h2,h3,h4,h5,h6{
+	font-family:miserif,serif;
+	padding:0px;
+	margin:0px;
+}
+p{
+	font-size:12px;
+}
+
+a{
+	color:#f95353;
+	text-decoration:none;
+	font-size:12px;
+}
+h4{
+	font-style:italic;
+}
+h3{
+	font-size:48px;
+}
+
+/*/////////////////// BLOQUES CONSTRUCTIVOS ///////////////////*/
+
+header,main,footer{
+	width:1200px;
+	background:white;
+	margin:auto;
+}
+section{
+	width:100%;
+	text-align:center;
+	box-sizing:border-box;
+	padding:50px 150px;
+	box-sizing:border-box;
+}
+header{
+	height:60px;
+	background:#f5f5f5;
+}
+#heroe{
+	height:690px;
+	background:#f5f5f5;
+}
+#sombremi{
+	height:680px;
+}
+#calificaciones{
+	height:950px;
+	background:url(imagenes/puntos.svg) #f5f5f5 ;
+	background-repeat:no-repeat;
+	background-position:right bottom;
+	background-size:300px 300px;
+}
+#servicios{
+	height:920px;
+}
+#portafolio{
+	height:1230px;
+}
+#testimonios{
+	height:610px;
+}
+#blog{
+	height:730px;
+	background:#1d1730;
+}
+#contacto{
+	height:700px;
+}
+footer{
+	height:390px;
+	background:#2b2344;
+}
+#contenedor{
+	display:grid;
+	grid-template-columns: auto auto auto;
+	gap:25px;
+	margin-top:100px;
+}
