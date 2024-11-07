@@ -1,0 +1,37 @@
+#calificaciones .columna article{
+	background:white;
+	padding:20px;
+	margin-bottom:10px;
+	border-radius:5px;
+	box-shadow:0px 4px 6px rgba(0,0,0,0.1);
+}
+#calificaciones article{
+	text-align:left;
+}
+#calificaciones #col3 article ul li::marker{
+	color:#f95353;
+}
+#calificaciones #col2 article img{
+	width:60px;
+    margin-right: 30px;
+}
+#calificaciones #col2 article .texto{
+	width:80%;
+    margin-top: 20px;
+}
+#calificaciones #col2 article{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-content: stretch;
+}
+#calificaciones .columna>h6{
+	font-size:24px;
+	margin-bottom:20px;
+}
+.puntosnaranja::after {
+    content: ".....";
+    color: #f95353; /* Cambia el color de los puntos aquí */
+  }

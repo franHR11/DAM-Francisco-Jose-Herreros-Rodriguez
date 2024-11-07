@@ -1,0 +1,25 @@
+#heroe{
+	text-align:left;
+	padding-top:130px;
+	box-sizing:border-box;
+	background:url(imagenes/12.png) #f5f5f5;
+	background-repeat:no-repeat;
+	background-position:bottom right;
+	background-size:600px;
+}
+#heroe h3{
+	font-size:96px;
+}
+#heroe h4{
+	font-size:48px;
+}
+#redes{
+    
+    padding:90px 0px;
+}
+#redes img{
+    width:32px;
+    height: 32px;
+    margin:0px 5px;
+    red
+}
