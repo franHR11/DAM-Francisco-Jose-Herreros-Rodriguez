@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<input>
+		<script>
+			function foco(){
+				console.log("Has entrado en el campo")
+			}
+			
+			var entrada;															// Creo una variable vacía
+			entrada = document.querySelector("input")					// Selecciono el boton de HTML
+			entrada.onfocus = function(){foco();}						// Cuando pulso el boton llamo a la funcion click
+			
+		</script>
+		
+	</body>
+</html>

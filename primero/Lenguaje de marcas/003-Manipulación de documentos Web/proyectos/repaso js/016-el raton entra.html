@@ -1,0 +1,36 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+	<head>
+	</head>
+	<body>
+		<button>¡Soy un botón!</button>
+		<script>
+			function click(){
+				console.log("Has hecho click")
+			}
+			function dobleclick(){
+				console.log("Has hecho doble click")
+			}
+            function botonderecho(e){
+				e.preventDefault()     // Evita que se abra el menu contextual
+				console.log("Has hecho click con el boton derecho")
+			}
+            function ratonentra(){
+                console.log("El ratón ha entrado en el boton")
+            }
+
+
+
+
+
+			var boton;												// Creo una variable vacía
+			boton = document.querySelector("button")		// Selecciono el boton de HTML
+			boton.onclick = function(){click();}			// Cuando pulso el boton llamo a la funcion click
+			boton.ondblclick = function(){dobleclick();}
+            boton.oncontextmenu = function(e){botonderecho(e);}
+            boton.onmouseenter = function(){ratonentra();}
+        </script>
+		
+	</body>
+</html>

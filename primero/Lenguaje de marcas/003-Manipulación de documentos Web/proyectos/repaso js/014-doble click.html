@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+	<head>
+	</head>
+	<body>
+		<button>¡Soy un botón!</button>
+		<script>
+			function click(){
+				console.log("Has hecho click")
+			}
+			function dobleclick(){
+				console.log("Has hecho doble click")
+			}
+
+
+			var boton;												// Creo una variable vacía
+			boton = document.querySelector("button")		// Selecciono el boton de HTML
+			boton.onclick = function(){click();}			// Cuando pulso el boton llamo a la funcion click
+			boton.ondblclick = function(){dobleclick();}
+		</script>
+		
+	</body>
+</html>
