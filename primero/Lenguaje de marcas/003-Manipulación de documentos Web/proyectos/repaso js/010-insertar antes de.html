@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>Esto es HTML puro desde HTML</h1>
+		<script>
+
+            var apellidos = document.createElement("h2");    // Crear un elemento h2 en la memoria
+            apellidos.textContent = "Esto es un h2 creado desde JS";    // Añadir texto al h2
+            var nombre = document.querySelector("h1");    // Seleccionar el h1
+            var cuerpo = document.querySelector("body");    // Seleccionar el body
+            cuerpo.insertBefore(apellidos, nombre);    // Insertar el h2 antes del h1
+
+
+        </script>
+    </body>
+</html> 
