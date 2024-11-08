@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>Esto es HTML puro desde HTML</h1>
+		<script>
+			// Esto es JS puro
+			console.log("Esto es JS puro")				// Esto es un mensaje en consola
+			var titulo;											// Creo una variable
+			titulo = document.querySelector("h1")		// Selecciono el elemento que tiene el tag h1
+            var contenido = titulo.textContent;			// Guardo el contenido del elemento en una variable
+            contenido= contenido + " modificado desde JS";	// Modifico el contenido
+            titulo.textContent = contenido;				// Cambio el contenido del elemento
+
+</script>
+            </body>
+</html>
