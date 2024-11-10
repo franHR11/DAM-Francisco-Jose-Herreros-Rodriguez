@@ -1,0 +1,31 @@
+#testimonios{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+	gap:50px;
+}
+#testimonios .imagen{
+	width:50%;
+}
+
+#testimonios .imagen img{
+	width:100%;
+}
+#testimonios .texto{
+	width:50%;
+	text-align:left;
+}
+#testi{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+	gap:50px;
+    background: #f9f9f9;
+    
+}

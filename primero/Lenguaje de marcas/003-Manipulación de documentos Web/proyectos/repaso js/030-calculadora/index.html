@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<input id="op1">
+		<input id="op2">
+		<button>Calcula!</button>
+		<p></p>
+		<script src="funciones.js"></script>
+		<script>
+			// Cuando pulse el boton
+			var boton;
+			boton = document.querySelector("button")
+			boton.onclick = function(){calcula()}
+
+			// Eventos de estilo
+			document.querySelector("#op1").onfocus = function(){amarillo1()}
+			document.querySelector("#op1").onblur = function(){blanco1()}
+			document.querySelector("#op2").onfocus = function(){amarillo2()}
+			document.querySelector("#op2").onblur = function(){blanco2()}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+#sobremi{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+	gap:50px;
+}
+#sobremi .imagen{
+	width:50%;
+}
+
+#sobremi .imagen img{
+	width:100%;
+}
+#sobremi .texto{
+	width:50%;
+	text-align:left;
+}

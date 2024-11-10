@@ -1,0 +1,28 @@
+{
+	"cabecera":{
+		"titulo":"Francisco Jose",
+		"subtitulo":"Programador",
+		"menu":[
+			"Inicio",
+			"Sobre mi",
+			"Servicios",
+			"Proyectos",
+			"Páginas",
+			"Contacto"
+		],
+		"boton":"Contáctame"
+	},
+	
+	"heroe":{
+		"titulo":"Hola mundo",
+		"subtitulo":"front end",
+		"texto":"Este es un texto que viene de JSON",
+		"boton1":"Mira mi CV",
+		"boton2":"Contáctame",
+		"p":"sigueme en"
+	}
+	
+}
+
+
+

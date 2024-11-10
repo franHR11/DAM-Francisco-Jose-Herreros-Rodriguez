@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<input id="op1">
+		<input id="op2">
+		<button>Calcula!</button>
+		<p></p>
+		<script>
+			// Cuando pulse el boton
+			var boton;
+			boton = document.querySelector("button")
+			boton.onclick = function(){calcula()}
+			
+			function calcula(){
+				// Quiero que se coja el contenido del input 1
+				var valor1 = document.querySelector("#op1").value
+				// Quiero que se coja el contenido del input 2
+				var valor2 = document.querySelector("#op2").value
+				// Quiero que se sumen los dos valores
+				var suma = valor1 + valor2
+				// Y por ultimo quiero que el resultado se ponga en la etiqueta p
+				document.querySelector("p").textContent = suma
+			}
+			
+		</script>
+	</body>
+</html>

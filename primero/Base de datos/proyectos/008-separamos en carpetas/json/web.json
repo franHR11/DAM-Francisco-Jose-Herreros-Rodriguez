@@ -1,0 +1,245 @@
+{
+	"cabecera": {
+	  "titulo": "Francisco Jose",
+	  "subtitulo": "Programador",
+	  "menu": [
+		"Inicio",
+		"Sobre mi",
+		"Servicios",
+		"Proyectos",
+		"Páginas",
+		"Contacto"
+	  ],
+	  "boton": "Contáctame"
+	},
+  
+	"heroe": {
+	  "titulo": "Hola mundo",
+	  "subtitulo": "front end",
+	  "texto": "Este es un texto que viene de JSON",
+	  "boton1": "Mira mi CV",
+	  "boton2": "Contáctame",
+	  "p": "sigueme en"
+	},
+  
+	"sobremi": {
+	  "h4": "Sobre mi...",
+	  "h3": "Desarrollador y diseñador",
+	  "p": "Estudiante de desarrollo de aplicaciones multiplataforma",
+	  "firma": "Francisco Jose Herreros",
+	  "boton": "Saber más"
+	},
+  
+	"calificaciones": {
+	  "h4": "Experiencia...",
+	  "h3": "Educación y Experiencia",
+	  "col1": {
+		"titulo": "Experience",
+		"articulos": [
+		  {
+			"h5": "Bachelor's Degree",
+			"link": "Vinculo externo",
+			"fecha": "Enero 2020 - Actualmente"
+		  },
+		  {
+			"h5": "Bachelor's Degree",
+			"link": "Vinculo externo",
+			"fecha": "Enero 2020 - Actualmente"
+		  },
+		  {
+			"h5": "Bachelor's Degree",
+			"link": "Vinculo externo",
+			"fecha": "Enero 2020 - Actualmente"
+		  }
+		]
+	  },
+	  "col2": {
+		"titulo": "Educacion",
+		"articulos": [
+		  {
+			"icono": "manzana.png",
+			"h5": "Bachelor's Degree",
+			"link": "Vinculo externo",
+			"fecha": "Enero 2020 - Actualmente"
+		  },
+		  {
+			"icono": "g.png",
+			"h5": "Bachelor's Degree",
+			"link": "Vinculo externo",
+			"fecha": "Enero 2020 - Actualmente"
+		  },
+		  {
+			"icono": "pluma.png",
+			"h5": "Bachelor's Degree",
+			"link": "Vinculo externo",
+			"fecha": "Enero 2020 - Actualmente"
+		  },
+		  {
+			"icono": "pluma.png",
+			"h5": "Bachelor's Degree",
+			"link": "Vinculo externo",
+			"fecha": "Enero 2020 - Actualmente"
+		  }
+		]
+	  },
+	  "col3": {
+		"titulo": "Skills",
+		"habilidades": [
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML",
+		  "HTML"
+		]
+	  }
+	},
+  
+	"servicios": {
+	  "h4": "Servicios...",
+	  "h3": "Qué ofrezco",
+	  "articulos": [
+		{
+		  "icono": "1.png",
+		  "h5": "Wordpress Developing",
+		  "p": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+		  "link": "Leer más"
+		},
+		{
+		  "icono": "2.png",
+		  "h5": "Wordpress Developing",
+		  "p": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+		  "link": "Leer más"
+		},
+		{
+		  "icono": "3.png",
+		  "h5": "Wordpress Developing",
+		  "p": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+		  "link": "Leer más"
+		},
+		{
+		  "icono": "4.png",
+		  "h5": "Wordpress Developing",
+		  "p": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+		  "link": "Leer más"
+		},
+		{
+		  "icono": "5.png",
+		  "h5": "Wordpress Developing",
+		  "p": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+		  "link": "Leer más"
+		},
+		{
+		  "icono": "6.png",
+		  "h5": "Wordpress Developing",
+		  "p": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+		  "link": "Leer más"
+		}
+	  ]
+	},
+  
+	"proyectos": {
+	  "h4": "Projects...",
+	  "h3": "Portfolio",
+	  "p": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+	  "botones": [
+		"All works",
+		"All works",
+		"All works",
+		"All works",
+		"All works"
+	  ],
+	  "articulos": [
+		{
+		  "imagen": "folio1.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		},
+		{
+		  "imagen": "folio2.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		},
+		{
+		  "imagen": "folio3.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		},
+		{
+		  "imagen": "folio4.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		},
+		{
+		  "imagen": "folio5.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		},
+		{
+		  "imagen": "folio6.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		}
+	  ],
+	  "boton": "Ver más..."
+	},
+  
+	"testimonios": {
+	  "h4": "Sobre mi...",
+	  "h3": "Desarrollador y diseñador",
+	  "p": "Soy un desarrollador y diseñador apasionado por crear soluciones digitales atractivas, funcionales y eficientes. Con experiencia en el desarrollo de aplicaciones multiplataforma y un sólido entendimiento en diseño de interfaces, combino habilidades técnicas y creativas para aportar un enfoque integral a cada proyecto. Me especializo en la creación de experiencias de usuario intuitivas, optimización de rendimiento y soluciones personalizadas que cumplen con las necesidades específicas de cada cliente.",
+	  "firma": "Francisco Jose Herreros"
+	},
+  
+	"blog": {
+	  "h4": "Blog...",
+	  "h3": "Latest news",
+	  "articulos": [
+		{
+		  "imagen": "blog1.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		},
+		{
+		  "imagen": "blog2.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		},
+		{
+		  "imagen": "blog3.png",
+		  "h5": "Título",
+		  "p": "Algo de texto"
+		}
+	  ],
+	  "boton": "Ver más..."
+	},
+  
+	"contacto": {
+	  "h4": "Contact...",
+	  "h3": "Request for quote",
+	  "form": {
+		"nombre": "Tu nombre",
+		"email": "Tu email",
+		"asunto": "Asunto",
+		"boton": "Enviar"
+	  }
+	},
+  
+	"footer": {
+	  "h3": "Let's say Hi",
+	  "email": "info@pcprogramacion.es",
+	  "telefono": "+34 620 89 17 18",
+	  "copyright": "(c) 2024 - Francisco Jose Herreros"
+	}
+  }
