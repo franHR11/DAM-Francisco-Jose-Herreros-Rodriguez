@@ -1,0 +1,38 @@
+#contacto .contenido{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+	gap:50px;
+}
+#contacto form{
+	text-align:left;
+    margin-top: 80px;
+}
+#contacto input,#contacto textarea{
+box-sizing:border-box;
+	width:100%;
+	border:none;
+	background:rgb(240,240,240);
+	padding:10px;
+	margin-bottom:5px;
+}
+#contacto .a50{
+	width:48%;
+}
+#contacto .a50:first-child{
+	margin-right:15px;
+}
+#contacto .contenido iframe{
+	width: 250px;
+    height: 230px;
+}
+#contacto textarea{
+    height:150px;
+}
+#contacto .contenido button{
+	margin-top: 30px;
+    padding: 10px 30px;
+}

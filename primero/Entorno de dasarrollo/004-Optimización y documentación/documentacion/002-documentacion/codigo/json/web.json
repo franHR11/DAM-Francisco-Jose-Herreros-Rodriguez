@@ -1,0 +1,122 @@
+{
+	"cabecera": {
+	  "titulo": "Francisco Jose",
+	  "subtitulo": "Programador",
+	  "menu": [
+		"Inicio",
+		"Sobre mí",
+		"Servicios",
+		"Proyectos",
+		"Páginas",
+		"Contacto"
+	  ],
+	  "boton": "Contáctame"
+	},
+	
+	"heroe": {
+	  "titulo": "Hola mundo",
+	  "subtitulo": "Front End",
+	  "texto": "Este es un texto que viene de JSON",
+	  "boton1": "Mira mi CV",
+	  "boton2": "Contáctame",
+	  "redes": "Sígueme en",
+	  "icons": [
+		"imagenes/f.png",
+		"imagenes/in.png",
+		"imagenes/be.png",
+		"imagenes/pelota.png"
+	  ]
+	},
+  
+	"sobremi": {
+	  "h4": "Sobre mí...",
+	  "h3": "Desarrollador y diseñador",
+	  "p": "Estudiante de desarrollo de aplicaciones multiplataforma",
+	  "firma": "Francisco Jose Herreros",
+	  "boton": "Saber más",
+	  "imagen": "imagenes/fran.png"
+	},
+  
+	"calificaciones": {
+	  "h4": "Calificaciones...",
+	  "h3": "Habilidades y experiencia",
+	  "education": [
+		{
+		  "title": "Bachelor's Degree",
+		  "link": "Vínculo externo",
+		  "fecha": "Enero 2020 - Actualmente",
+		  "icono": "imagenes/manzana.png"
+		}
+	  ],
+	  "skills": [
+		"HTML", "CSS", "JavaScript", "React", "Node.js"
+	  ]
+	},
+  
+	"servicios": {
+	  "h4": "Servicios...",
+	  "h3": "Qué ofrezco",
+	  "items": [
+		{
+		  "icon": "imagenes/1.png",
+		  "title": "WordPress Developing",
+		  "text": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+		  "link": "Leer más"
+		}
+	  ]
+	},
+  
+	"proyectos": {
+	  "h4": "Projects...",
+	  "h3": "Portfolio",
+	  "descripcion": "Este es un texto de prueba que pongo para rellenar algo de contenido",
+	  "buttons": ["All works", "Desarrollo", "Diseño"],
+	  "items": [
+		{
+		  "image": "imagenes/folio1.png",
+		  "title": "Título",
+		  "text": "Algo de texto"
+		}
+	  ]
+	},
+  
+	"testimonios": {
+	  "h4": "Sobre mí...",
+	  "h3": "Desarrollador y diseñador",
+	  "text": "Soy un desarrollador y diseñador apasionado...",
+	  "firma": "Francisco Jose Herreros"
+	},
+  
+	"blog": {
+	  "h4": "Blog...",
+	  "h3": "Latest news",
+	  "items": [
+		{
+		  "image": "imagenes/blog1.png",
+		  "title": "Título",
+		  "text": "Algo de texto"
+		}
+	  ]
+	},
+  
+	"contacto": {
+	  "h4": "Contact...",
+	  "h3": "Request for quote",
+	  "fields": {
+		"nombre": "Tu nombre",
+		"email": "Tu email",
+		"asunto": "Asunto",
+		"mensaje": "Mensaje"
+	  },
+	  "button": "Enviar"
+	},
+  
+	"footer": {
+	  "h3": "Let's say Hi",
+	  "email": "info@pcprogramacion.es",
+	  "phone": "+34 620 89 17 18",
+	  "social": ["imagenes/face.png", "imagenes/inn.png", "imagenes/bee.png"],
+	  "copyright": "(c) 2024 - Francisco Jose Herreros"
+	}
+  }
+  

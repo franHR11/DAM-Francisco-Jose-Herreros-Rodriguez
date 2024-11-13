@@ -1,0 +1,157 @@
+/*/////////////////// FUENTES ///////////////////*/
+@font-face {
+	font-family: miserif;
+	src: url(../imagenes/serif.ttf);
+  }
+
+
+/*/////////////////// PROPIEDADES GENERALES ///////////////////*/
+
+body,html{
+	background:black;
+	font-family:sans-serif;
+	margin:0px;
+	padding:0px;
+}
+
+/*/////////////////// TEXTO ///////////////////*/
+
+h1,h2,h3,h4,h5,h6{
+	font-family:miserif,serif;
+	padding:0px;
+	margin:0px;
+}
+p{
+	font-size:12px;
+}
+
+a{
+	color:#f95353;
+	text-decoration:none;
+	font-size:12px;
+}
+h4{
+	font-style:italic;
+}
+h3{
+	font-size:48px;
+}
+
+/*/////////////////// BLOQUES CONSTRUCTIVOS ///////////////////*/
+
+header,main,footer{
+	width:1200px;
+	background:white;
+	margin:auto;
+}
+section{
+	width:100%;
+	text-align:center;
+	box-sizing:border-box;
+	padding:50px 150px;
+	box-sizing:border-box;
+}
+header{
+	height:60px;
+	background:#f5f5f5;
+}
+#heroe{
+	height:600px;
+	background:#f5f5f5;
+}
+#sombremi{
+	height:880px;
+}
+#calificaciones{
+	height:950px;
+	background:url(../imagenes/puntos.svg) #f5f5f5 ;
+	background-repeat:no-repeat;
+	background-position:right bottom;
+	background-size:300px 300px;
+}
+#servicios{
+	height:780px;
+}
+#portafolio{
+	height:1230px;
+}
+#testimonios{
+	height:430px;
+}
+#blog{
+	height:730px;
+	background:#1d1730;
+}
+#contacto{
+	height:700px;
+}
+footer{
+	height:390px;
+	background:#2b2344;
+}
+#contenedor{
+	display:grid;
+	grid-template-columns: auto auto auto;
+	gap:25px;
+	margin-top:100px;
+}
+/*/////////////////// BOTONES ///////////////////*/
+
+button{
+	background:#f95353;
+	color:white;
+	border:none;
+	padding:20px;
+	border-radius:5px;
+	
+}
+.secundario{
+	background:#2b2344;
+}
+.inactivo{
+	color:black;
+	background:white;
+	border: 2px solid red;
+	padding: 10px 20px;
+}
+.activo{
+	background:#f95353;
+	color:white;
+	padding: 12px 20px;
+}
+.pequeño{
+	background:#f95353;
+	color:white;
+	padding: 12px 20px;
+	margin-top: 70px;
+}
+/*/////////////////// BOTONES ///////////////////*/
+
+#feedback{
+	background:green;
+	color:white;
+	width:300px;
+	height:20px;
+	position:fixed;
+	top:0px;
+	left:50%;
+	margin-left:-150px;
+	border-radius:0px 0px 20px 20px;
+	display:none;
+}
+#feedback p{
+	text-align:center;
+	margin:0px;
+	padding:0px;
+	font-weight:bold;
+}
+.animado{
+	animation:aparece 5s;
+	animation-fill-mode:forwards;
+}
+@keyframes aparece{
+	0%{top:-30px;}
+	10%{top:0px;}
+	90%{top:0px;}
+	100%{top:-30px;}
+}
