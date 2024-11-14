@@ -1,0 +1,70 @@
+header{
+    width:100%;
+    
+}
+header .universidad{
+    box-sizing:border-box;
+    padding:7.2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    background:#efefef;
+}
+header .universidad img{
+    width:250px;
+}
+header .universidad{
+    box-sizing:border-box;
+    padding:7.2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    background:#efefef;
+}
+header .universidad nav ul{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+header .universidad nav ul li{
+    display:inline-block;
+}
+header .proyecto{
+    background:#2f2e3e;
+    padding:0px 30px;
+    box-sizing:border-box;
+    padding:7.2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+
+}
+header .proyecto img{
+    width:158px;
+    }
+header .proyecto ul{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+header .proyecto ul li{
+    display:inline-block;
+    color:#d6cab4;
+    font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+    padding-right:22px;
+}
+
+header .submenu{
+    min-height:3px;
+    width:100%;
+    background:#c2a464;
+}
