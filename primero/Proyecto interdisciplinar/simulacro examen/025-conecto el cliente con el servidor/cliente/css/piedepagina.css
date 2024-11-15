@@ -1,0 +1,41 @@
+footer{
+	width:100%;
+	color:#d6cab4;
+	background:url(../img/fondoheroe.webp);
+	background-size:cover;
+}
+footer .creditos{
+	min-height:215px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+
+}
+footer .creditos .columna img{
+	width:280px;
+}
+footer .secciones{
+	background:white;
+	min-height:37px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+}
+footer .contenedor{
+	width:1280px;
+	margin:auto;
+}
+footer a{
+	color:black;
+	text-decoration:none;
+}
+
+.redes img{
+	width:30px;
+}

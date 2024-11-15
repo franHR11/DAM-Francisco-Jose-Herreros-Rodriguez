@@ -98,10 +98,10 @@ while True:  # Bucle infinito
 
     elif entidad == "2":  # Si elegimos "Gestion de Productos"
         print("Selecciona una opción")
-        print("1.-Insertar un nuevo registro")
-        print("2.-Listar registros")
-        print("3.-Actualizar registro")
-        print("4.-Eliminar registro")
+        print("1.-Insertar un nuevo producto")
+        print("2.-Listar productos")
+        print("3.-Actualizar productos")
+        print("4.-Eliminar productos")
         print("5.-Guardar Productos")
         print("6.-Cargar Productos")
 

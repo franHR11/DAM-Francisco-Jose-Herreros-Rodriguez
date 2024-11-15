@@ -1,0 +1,15 @@
+
+#capitulos{
+	display: grid;
+  grid-template-columns: auto auto auto auto;
+  
+  gap: 10px;
+}
+
+#capitulos article{
+	border:2px solid black;
+}
+
+#capitulos article img{
+	width:100%;
+}

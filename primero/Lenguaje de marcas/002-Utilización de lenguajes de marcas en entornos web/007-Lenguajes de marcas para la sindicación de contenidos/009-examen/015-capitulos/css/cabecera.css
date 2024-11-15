@@ -1,0 +1,107 @@
+header{
+    width:100%;
+    position:fixed;
+}
+header .universidad{
+    box-sizing:border-box;
+    padding:7.2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    background:#efefef;
+}
+header .universidad img{
+    width:250px;
+}
+header .universidad nav img{
+    width:30px;
+}
+header .universidad{
+    box-sizing:border-box;
+    padding:7.2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    background:#efefef;
+}
+header .universidad nav ul{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+header .universidad nav ul li{
+    display:inline-block;
+    vertical-align:middle;
+}
+header .proyecto{
+    background:#2f2e3e;
+    padding:0px 30px;
+    box-sizing:border-box;
+    padding:7.2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+
+}
+header .proyecto img{
+    width:158px;
+    }
+header .proyecto ul{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+header .proyecto ul li{
+    display:inline-block;
+    color:#d6cab4;
+    font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+    padding-right:22px;
+}
+header a{
+    color:inherit;
+    text-decoration:none;
+    opacity:1;
+    transition:0.5s;
+}
+header a:hover{
+    color:#d6cab4;
+    opacity:0.8;
+    color:inherit;
+    text-decoration:none;
+}
+.activo{
+    color:#c2a464 !important;
+    color:inherit;
+    text-decoration:none;
+}
+
+/* Submenu */
+
+header .submenu{
+    min-height:3px;
+    width:100%;
+    background:#c2a464;
+    margin: 0 auto; /* Centrará horizontalmente */
+    text-align: center; /* Opcional para centrar contenido interno */
+}
+header .submenu ul{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+header .submenu ul li{
+    display:inline-block;
+    color:white;
+    font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+    padding: 8px;
+    
+}

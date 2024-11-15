@@ -75,4 +75,17 @@ header .submenu{
 header a{
     color:inherit;
     text-decoration:none;
+    opacity:1;
+    transition:0.5s;
+}
+header a:hover{
+    color:#d6cab4;
+    opacity:0.8;
+    color:inherit;
+    text-decoration:none;
+}
+.activo{
+    color:#c2a464 !important;
+    color:inherit;
+    text-decoration:none;
 }

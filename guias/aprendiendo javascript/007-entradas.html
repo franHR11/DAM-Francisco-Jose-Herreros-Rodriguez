@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>javascript en html</title>
+    </head>
+
+    <body>
+        <input type="text" id="entrada">
+     <script>
+        // document = en el documento
+        // getElementById("micampo") = voy a coger el elemento que tiene el id entrada
+        // onchange = cuando ese elemento cambie
+         // function(){} = voy a ejecutar un bloque de codigo
+        document.getElementById("entrada").onchange = function(){
+            console.log(this.value);
+        }
+     </script>   
+     
+    </body>
+</html>
