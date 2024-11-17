@@ -1,0 +1,115 @@
+main .heroe .expertos{
+    padding-top: 40px;
+    
+    }
+    main .heroe .expertos {  
+    text-align: center;
+    }
+    main .heroe .expertos h3 {  
+        font-size: 90px;
+        color: #c2a464;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+    }
+    main .heroe .expertos h4 {  
+        font-size: 40px;
+        color: white;
+        text-align: center;
+        margin-top: -20px;
+        font-family:"mono","Open Sans",sans-serif;
+        font-weight: 500;
+        
+    }
+    main .heroe .expertos p {  
+        font-size: 20px;
+        color: white;
+        margin-top: -20px;
+        font-family:"Open Sans",sans-serif;
+        text-align:center;
+        box-sizing: border-box;
+        padding-left: 150px;
+        padding-right: 130px;
+        line-height: 2.0; /* Buena práctica para texto legible */
+        font-style: normal;
+        font-weight: 500;
+    }
+
+
+/* #######################  SECCION 1  ################################### */
+
+
+
+    main .contenedor {
+       margin: auto;
+    }
+       
+
+    main .contenedor .columnas2{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+        margin: auto;
+    }
+        
+    
+    main .contenedor .columnas2 .columnauna{
+        width: 30%;
+        font-size: 50px;
+        color: #c2a464;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+        line-height: 1.0;
+        padding-top: 40px;
+    }
+    main .contenedor .columnas2 .columnados{
+        width: 85%;
+        font-size: 20px;
+        color: black;
+        font-family:"Open Sans",sans-serif;
+        padding-top: 80px;
+        box-sizing: border-box;
+        
+        padding-right: 0px;
+        line-height: 2.0; /* Buena práctica para texto legible */
+        font-weight: 500;
+        text-align: left;
+    }
+
+
+
+/* #######################  GRID  ################################### */
+
+
+
+    main .grid  {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        /*grid-template-columns: repeat(4, 291px);  4 columnas de 200px de ancho */
+        gap: 30px 40px;
+        margin-left: 110px;
+        margin-right: 130px;
+        margin-top: 30px;
+    }
+    main .grid article {
+        padding: 10px;
+        border: 5px solid black;
+        
+        
+    }
+    main .grid article h6 {
+        font-size: 18px;
+        font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+        margin-top: 15px;
+        padding-bottom: -50px;
+        text-align: left;
+    }
+    main .grid article img {
+        width: 301px;
+        height: 149px;
+    }
