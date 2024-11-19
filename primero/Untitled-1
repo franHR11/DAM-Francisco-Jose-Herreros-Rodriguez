@@ -1,0 +1,64 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import json
+
+class AxieMarketBot:
+    def __init__(self):
+        self.driver = webdriver.Chrome()
+        self.url = "https://app.axieinfinity.com/marketplace/axies/?auctionTypes=Sale"
+        
+    def iniciar_navegador(self):
+        self.driver.get(self.url)
+        # Esperar a que la página cargue completamente
+        time.sleep(5)
+        
+    def obtener_axies(self):
+        try:
+            # Esperar a que los elementos de Axie aparezcan
+            axies = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_all_elements_located((By.CLASS_NAME, "axie-card"))
+            )
+            
+            resultados = []
+            for axie in axies:
+                try:
+                    precio = axie.find_element(By.CLASS_NAME, "price").text
+                    id = axie.get_attribute("data-axie-id")
+                    
+                    info_axie = {
+                        "id": id,
+                        "precio": precio
+                    }
+                    resultados.append(info_axie)
+                    
+                except Exception as e:
+                    print(f"Error al procesar Axie: {e}")
+                    
+            return resultados
+            
+        except Exception as e:
+            print(f"Error general: {e}")
+            return []
+            
+    def cerrar(self):
+        self.driver.quit()
+
+# Uso del bot
+def main():
+    bot = AxieMarketBot()
+    bot.iniciar_navegador()
+    
+    while True:
+        axies = bot.obtener_axies()
+        print("\nAxies encontrados:")
+        for axie in axies:
+            print(f"ID: {axie['id']} - Precio: {axie['precio']}")
+        
+        # Esperar 5 minutos antes de la siguiente actualización
+        time.sleep(300)
+
+if __name__ == "__main__":
+    main()
