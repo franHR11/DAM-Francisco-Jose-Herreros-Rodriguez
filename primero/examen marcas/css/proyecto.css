@@ -1,0 +1,92 @@
+/*############## HEROE ##############*/
+
+main .heroe .texto {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    
+}
+main .heroe .texto h2 {
+    font-size: 90px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #c2a464;
+    font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+    padding-top: 110px;
+}
+main .heroe .texto h3 {
+    font-size: 40px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-family:"monoti","Open Sans",sans-serif;
+   font-weight: 100;
+}
+main .heroe .texto p {
+    font-size: 20px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-family:"Open Sans", Helvetica, Arial, Lucida, sans-serif;
+   font-weight: 500;
+   line-height: 40px;
+   padding-top: 30px;
+}
+
+
+
+/*############## SPAN PARA LETRAS COLOR DORADO ##############*/
+span.dorado{
+    color: #c2a457; /* Color dorado */
+    font-weight:normal;
+    font-weight: 600;
+}
+
+
+
+/*############## CONTENEDOR GRID ##############*/
+
+
+main .contenedor .flexbox {
+    
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+}
+/*############## COLUMNA IZQUIERDA DEL GRID ##############*/
+main .contenedor .flexbox .columnatitulo {
+    width: 40%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #c2a464;
+    text-align: center;
+    font-size: 40px;
+    font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+    margin-left: -100px;
+}
+/*############## COLUMNA DERECHA DEL GRID ##############*/
+main .contenedor .flexbox .columnaimagen {
+    width: 140%;
+    padding-top: 90px;
+    padding-bottom: 50px;
+    margin-left: -200px;
+    
+}
+main .contenedor .flexbox .columnaimagen h3 {
+    line-height: 45px;
+    font-weight: 450;
+    font-size: 21px;
+    text-align: center;
+    font-family:"Open Sans", Helvetica, Arial, Lucida, sans-serif;
+    text-align: left;
+}
+main .contenedor .flexbox .columnaimagen img {
+    width: 830px;
+    height: 500px;
+    margin-left: 10px;
+}
