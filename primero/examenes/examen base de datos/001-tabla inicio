@@ -1,0 +1,15 @@
+CREATE TABLE
+ `examenbasededatos`.`inicio` 
+ (
+    `identificador` INT(255) NOT NULL AUTO_INCREMENT ,
+    `titulo_header` VARCHAR(255) NOT NULL ,
+    `titulo_contenido` VARCHAR(255) NOT NULL ,
+    `texto_contenido` TEXT NOT NULL ,
+    `imagen` VARCHAR(500) NOT NULL ,
+    `video` VARCHAR(500) NOT NULL ,
+    `titulo_contenidosecundario` VARCHAR(255) NOT NULL ,
+    `texto_contenidosecundario` TEXT NOT NULL ,
+    PRIMARY KEY
+    (`identificador`)
+) 
+            ENGINE = InnoDB;

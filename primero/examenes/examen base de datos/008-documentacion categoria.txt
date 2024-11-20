@@ -1,0 +1,1 @@
+CREATE TABLE `examenbasededatos`.`documentaciongrafica_categorias` (`identificador` INT(255) NOT NULL AUTO_INCREMENT , `nombre_categoria` VARCHAR NOT NULL , PRIMARY KEY (`identificador`)) ENGINE = InnoDB;

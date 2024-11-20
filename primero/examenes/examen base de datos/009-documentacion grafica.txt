@@ -1,0 +1,1 @@
+CREATE TABLE `examenbasededatos`.`documentaciongrafica` (`identificador` INT(255) NOT NULL , `imagen` VARCHAR(255) NOT NULL , `texto` TEXT NOT NULL , `documentaciongraficacategoria_nombrecategoria` INT(255) NOT NULL ) ENGINE = InnoDB;

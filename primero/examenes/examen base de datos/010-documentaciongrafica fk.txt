@@ -1,0 +1,1 @@
+ALTER TABLE `examenbasededatos`.`documentaciongrafica` DROP INDEX `documentaciongraficaacategoria`, ADD INDEX `documentaciongraficaacategoria` (`documentaciongraficacategoria_nombrecategoria`) USING BTREE;

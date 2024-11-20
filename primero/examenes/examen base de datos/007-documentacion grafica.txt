@@ -1,0 +1,1 @@
+CREATE TABLE `examenbasededatos`.`documentaciongrafica_header` (`identificador` INT NOT NULL AUTO_INCREMENT , `titulo` VARCHAR(255) NOT NULL , `subtitulo` VARCHAR(255) NOT NULL , `texto` TEXT NOT NULL , PRIMARY KEY (`identificador`)) ENGINE = InnoDB;

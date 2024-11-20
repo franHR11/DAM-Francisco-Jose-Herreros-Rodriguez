@@ -1,0 +1,1 @@
+CREATE TABLE `examenbasededatos`.`expertos` (`identificador` INT(255) NOT NULL AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `resumen` VARCHAR(255) NOT NULL , `imagen` VARCHAR(255) NOT NULL , `video` VARCHAR(255) NOT NULL , `texto` TEXT NOT NULL , PRIMARY KEY (`identificador`)) ENGINE = InnoDB;

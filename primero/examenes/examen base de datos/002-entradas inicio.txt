@@ -1,0 +1,22 @@
+INSERT INTO 
+`inicio` 
+(
+    `identificador`,
+     `titulo_header`,
+      `titulo_contenido`,
+       `texto_contenido`,
+        `imagen`,
+         `video`,
+          `titulo_contenidosecundario`,
+           `texto_contenidosecundario`
+           ) 
+           VALUES 
+           (
+            NULL,
+             'La ciencia\r\nque esconde la\r\nCatedral de Burgos', 
+             'La unión del arte y la ciencia', 
+             'Durante 800 años, la Catedral de Burgos ha acumulado misterios, saberes y artes en su interior que son muestra de algunos de los avances científicos, técnicos y tecnológicos de diferentes épocas, desde la revolución del gótico hasta las más modernas tecnologías aplicadas a la seguridad y la restauración para mantener el edificio en la mejor de las condiciones.\r\n\r\nEn La Ciencia que esconde la Catedral de Burgos nos adentramos en los secretos de la construcción, decoración, mantenimiento y restauración de uno de los templos más bellos y reconocibles del mundo de la mano de quince especialistas que nos mostrarán cómo las diferentes ciencias y artes se han dado cita en el interior y exterior de la seo burgalesa, quince expertos que nos guiarán en este viaje gracias a sus conocimientos en matemáticas, física, química, historia del arte y los procesos de restauración aplicados en el exterior y el interior del templo.\r\n\r\nEste documental, producido por la Unidad de Cultura Científica e Innovación de la Universidad de Burgos (UCC+i) con la colaboración de la Fundación Española para la Ciencia y la Tecnología (FECYT) y el apoyo del Cabildo de Burgos quiere, además de celebrar el 800 cumpleaños del templo, mostrar la complejidad técnica de la construcción de la Catedral y la precisión en su construcción y desarrollo.', 'https://cienciaycatedral.ubuinvestiga.es/wp-content/uploads/sites/14/2022/06/La-ciencia-que-esconde-la-catedral-de-Burgos-La-arquitectura-min.jpg',
+              'https://youtu.be/nZKNranpFGw?si=biSYW8akglDLc1E5',
+               'La serie\r\nLa serie completa,\r\ndisponible aquí',
+                'A lo largo de los ocho capítulos conoceremos una de las partes que conforman el templo gótico, desde sus paredes hasta sus obras de arte, sus vidrieras, la música que llena la seo, las proporciones ocultas en su construcción y decoración o El Papamoscas, el autómata que abre la boca con las horas.\r\n\r\nToda la serie está disponible al completo y, además, en este sitio web podremos encontrar buena parte de la documentación gráfica, bibliografía, referencias y entrevistas utilizadas en su grabación, todas las entidades y colaboradores que han hecho posible su realización.'
+);
