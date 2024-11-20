@@ -1,0 +1,6 @@
+Estoy utilizando el entorno de desarrollo de Visual studio code
+Me gusta mucho poder probar extensiones que te ayuden a programar mejor y mas rapido.
+al ser nuevo en la programacion muchas etiquetas no las recuerdo o no las se escribir bien
+visual studio me ayuda a recordarlas.
+
+lo utilizo para todos los lenguajes
