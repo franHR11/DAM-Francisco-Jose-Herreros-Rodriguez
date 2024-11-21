@@ -1,0 +1,97 @@
+footer{
+	width:100%;
+	color:#d6cab4;
+	background:url(../img/fondoheroe.webp);
+	background-size:cover;
+}
+footer .creditos{
+	min-height:215px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+	
+
+}
+footer .creditos .columna img{
+	width:260px;
+	height: 70px;
+}
+footer .creditos .columna h6{
+	font-size: 16px;
+	color: #c2a464;
+	margin: 0%;
+	padding: 0%;
+	font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+}
+footer .creditos .columna p{
+	font-size: 12px;
+	color: #d6cab4;
+	margin: 0%;
+	padding: 0%;
+}
+
+
+footer .secciones{
+	background:white;
+	min-height:37px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+	font-size: 12px;
+	padding-left: 100px;
+}
+footer .contenedor{
+	width:1169px;
+	margin:auto;
+}
+footer a{
+	color:black;
+	text-decoration:none;
+}
+
+.redes img{
+	width:30px;
+}
+footer .cabildo{
+	width: 45px;
+	height: 68px;
+	margin-left: 0px;
+	margin-top: 30px;
+}
+footer .creditos .columna {
+	width:450px;
+	
+}
+footer .columnacabildo p{
+	font-size: 12px;
+	color: #d6cab4;
+	margin: 0%;
+	padding: 0%;
+	margin-left: 0px;
+}
+footer .columnaespaña img{
+	width:350px;
+	height: 70px;
+	margin: 0%;
+	padding: 0%;
+	
+}
+footer .columnaespaña h6{
+	font-size: 16px;
+	color: #c2a464;
+	margin: 0%;
+	padding: 0%;
+	font-family:"TrajanPro3Bold","Open Sans",sans-serif;
+}
+footer .columnaespaña p{
+	font-size: 12px;
+	color: #d6cab4;
+	margin: 0%;
+	padding: 0%;
+}

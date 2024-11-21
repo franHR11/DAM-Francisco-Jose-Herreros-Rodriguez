@@ -1,5 +1,14 @@
-import mysql.connector                                  # Importo el conector de MySQL
+import mysql.connector  
+from flask import Flask, request
+from flask_cors import CORS# Importo el conector de MySQL
 
+aplicacion = Flask(__name__)
+CORS(aplicacion)
+@aplicacion.route('/damearticulos')                                                      # Defino la ruta en la que el servidor va a escuchar
+def inicio():                                                               # Defino lo que se ejecuta en esa ruta
+                                                        # Devuelvo la lista de entradas, ahora con las entradas correctas
+
+    aplicacion.run() 
 conexion = mysql.connector.connect(
     host="localhost",           
     user="exprogramacion",        
@@ -11,8 +20,8 @@ while True:
     print("Escoge una opcion")
     print("1.-Listar los Proyectos")
     print("2.-Insertar un Proyectos")
-    print("3.-Actualizar un registro")
-    print("4.-Eliminar un registro")
+    print("3.-Actualizar un Proyectos")
+    print("4.-Eliminar un Proyectos")
     print("5.-Cerrar el programa")
     opcion = input("Escoge una opcion:")
 
