@@ -2,22 +2,22 @@ import tkinter as tk
 
 def iva():
         numero = float(entry.get())  # Obtenemos el número ingresado
-        resultadoiva = numero + (numero * 0.21)  # Sumamos el 21% al número
+        resultadoiva = numero = (numero * 21 / 100)  # Sumamos el 21% al número
         label_resultado.config(text=f"Resultado IVA: {resultadoiva:.2f}")  # Mostramos el resultado
         return resultadoiva
         
 def irpf():
         numero = float(entry.get())  # Obtenemos el número ingresado
-        resultadoirpf = numero + (numero * 0.15)  # Sumamos el 15% al número
+        resultadoirpf = numero = (numero * 15 / 100)  # Sumamos el 15% al número
         label_resultadoirpf.config(text=f"Resultado IRPF: {resultadoirpf:.2f}")  # Mostramos el resultado
         return resultadoirpf
-        
+ 
 def total():
         numero = float(entry.get())  # Obtenemos el número ingresado
-        resultadototal = numero + (numero - label_resultadoirpf + label_resultado)  # Sumamos el total al número
+        resultadototal = numero + (0 / 100)  # Sumamos el total al número
         label_resultadototal.config(text=f"Resultado Total: {resultadototal:.2f}")  # Mostramos el resultado 
         return resultadototal          
-      
+   
 
 # Crear la ventana principal
 ventana = tk.Tk()
