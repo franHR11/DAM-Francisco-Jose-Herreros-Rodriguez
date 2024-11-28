@@ -1,0 +1,26 @@
+<!docytpe html>
+<html>
+	<head>
+		<style>
+			div{
+				width:200px;
+				height:200px;
+				background:red;
+				animation:muevemueve 10s;
+				animation-iteration-count:2;
+				position:relative;
+				animation-delay:4s;
+			}
+			@keyframes muevemueve{
+				0%{background:red;top:0px;left:0px;transform:rotate(0deg);}
+				25%{background:blue;top:0px;left:100px;transform:rotate(360deg);}
+				50%{background:green;top:100px;left:100px;transform:rotate(90deg);}
+				75%{background:orange;top:100px;left:0px;transform:rotate(180deg);}
+				100%{background:red;top:0px;left:0px;transform:rotate(0deg);}
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
