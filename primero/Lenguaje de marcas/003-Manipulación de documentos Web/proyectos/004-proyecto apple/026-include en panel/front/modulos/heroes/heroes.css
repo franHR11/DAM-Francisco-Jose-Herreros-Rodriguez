@@ -1,0 +1,23 @@
+.heroe{
+	text-align:center;
+	min-height:400px;
+	background:blue;
+	color:white;
+	box-sizing:border-box;
+	padding:40px;
+}
+.heroe h3,.heroe h4{
+	font-size:3em;
+	padding:0px;
+	margin:0px;
+	margin-bottom:10px;
+	font-weight:normal;
+}
+.heroe button{
+	padding:20px;
+	border:2px solid white; 
+	border-radius:40px;
+	width:200px;
+	background:none;
+	color:white;
+}

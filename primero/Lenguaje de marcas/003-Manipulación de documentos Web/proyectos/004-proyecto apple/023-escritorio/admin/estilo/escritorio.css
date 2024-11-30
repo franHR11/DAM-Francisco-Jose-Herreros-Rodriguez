@@ -1,0 +1,30 @@
+body,html{
+	background:DarkSlateBlue;
+	height:100%;
+	padding:0px;
+	margin:0px;
+}
+header{
+	min-height:40px;
+}
+header,nav{
+	background:DarkSlateBlue;
+}
+nav{
+	width:20%;
+	height:100%;
+}
+section{
+	width:80%;
+	background:azure;
+	height:100%;
+}
+main{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+	height:100%;
+}

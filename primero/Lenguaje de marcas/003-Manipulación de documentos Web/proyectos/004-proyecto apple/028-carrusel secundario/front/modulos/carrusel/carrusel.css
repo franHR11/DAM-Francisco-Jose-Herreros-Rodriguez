@@ -1,0 +1,57 @@
+/*#############   carrusel 1   #############*/
+
+#carrusel{
+    overflow-x: hidden;
+    position: relative;
+}
+
+#carrusel1 {
+    width: 1000%;
+    animation: muevecadapoco 30s;
+    position: relative;
+}    
+
+#carrusel1 article {
+width: 1024px;
+min-height: 300px;
+background: blue;
+color: white;
+display: inline-block;
+box-sizing: border-box;
+padding: 40px;
+}
+@keyframes muevecadapoco {
+    0% {margin-left: 0;}
+    5% {margin-left: 0;}
+    10% {margin-left: -1024px;}
+    15% {margin-left: -1024px;}
+    20% {margin-left: -2048px;}
+    25% {margin-left: -2048px;}
+    30% {margin-left: -3072px;}
+    35% {margin-left: -3072px;}
+    40% {margin-left: -4096px;}
+    45% {margin-left: -4096px;}
+    50% {margin-left: 0;}
+}
+
+/*#############   carrusel 2   #############*/
+
+#carrusel2 {
+    width: 1000%;
+    animation: muevecontinuo 90s;
+    position: relative;
+    animation-timing-function:linear ;
+}
+#carrusel2 article {
+    width: 340px;
+    min-height: 300px;
+    background: blue;
+    color: white;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 40px;
+    }
+@keyframes muevecontinuo {
+    0% {left: 0px;}
+    100% {left: -10240px;}
+}
