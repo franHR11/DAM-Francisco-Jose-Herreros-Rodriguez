@@ -55,3 +55,17 @@ padding: 40px;
     0% {left: 0px;}
     100% {left: -10240px;}
 }
+
+/*#############   PUNTOS BOTONERA   #############*/
+#botonera{
+    text-align: center;
+}
+.punto{
+    width: 10px;
+    height: 10px;
+    background: grey;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}

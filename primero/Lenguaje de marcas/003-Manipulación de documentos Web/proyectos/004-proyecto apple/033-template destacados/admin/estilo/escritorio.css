@@ -1,0 +1,69 @@
+body,html{
+	background:DarkSlateBlue;
+	height:100%;
+	padding:0px;
+	margin:0px;
+	font-family: sans-serif,monospace;
+}
+header{
+	min-height:40px;
+}
+header,nav{
+	background:DarkSlateBlue;
+}
+nav{
+	width:20%;
+	height:100%;
+}
+section{
+	width:80%;
+	background:azure;
+	height:100%;
+	overflow-y: scroll;
+}
+main{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+	height:100%;
+}
+nav ul{
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+nav ul li{
+	padding:10px;
+	margin:0px;
+	color: white;
+	box-sizing: border-box;
+	border-bottom: 1px solid white;
+}
+section {
+box-sizing: border-box;
+padding: 20px;
+}
+table {
+width: 100%;
+}
+table thead tr{
+background: darkslateblue;
+color: white;
+text-align: center;
+padding: 10px;
+}
+table thead tr td{
+color: white;
+padding: 10px;
+}
+table tbody tr td{
+	padding: 10px;
+	
+	}
+table tbody tr:nth-child(odd){
+background: white;
+
+}
