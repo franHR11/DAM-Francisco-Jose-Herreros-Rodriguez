@@ -1,0 +1,25 @@
+/* Estilo para el elemento con id 'oferta' */
+#oferta {
+    width: 100%; /* Ancho completo */
+    height: 52px; /* Altura de 52px */
+    background: red; /* Fondo rojo */
+    color: white; /* Texto blanco */
+    margin-top: 44px; /* Margen superior de 44px */
+    text-align: center; /* Texto centrado */
+    animation: aparece 2s; /* Animación 'aparece' de 2 segundos */
+    opacity: 0; /* Opacidad inicial de 0 */
+    animation-fill-mode: forwards; /* Mantener el último estado de la animación */
+    animation-delay: 5s; /* Retraso de 5 segundos */
+}
+
+/* Definición de la animación 'aparece' */
+@keyframes aparece {
+    0% { opacity: 0; background: white; } /* Inicio: opacidad 0, fondo blanco */
+    10% { opacity: 1; background: white; } /* 10%: opacidad 1, fondo blanco */
+    20% { background: white;opacity: 1 } /* 20%: fondo blanco */
+    30% { background: red;opacity: 1 } /* 30%: fondo rojo */
+    40% { background: white;opacity: 1 } /* 40%: fondo blanco */
+    50% { background: red;opacity: 1 } /* 50%: fondo rojo */
+    75% { background: red;opacity: 1 } /* 75%: fondo rojo */
+    100% { background: white; color: grey;opacity: 1 } /* 90%: fondo blanco, texto gris */
+}

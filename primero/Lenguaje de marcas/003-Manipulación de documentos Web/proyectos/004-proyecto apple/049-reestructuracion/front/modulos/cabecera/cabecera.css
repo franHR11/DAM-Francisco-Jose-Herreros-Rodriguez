@@ -1,0 +1,55 @@
+html,body{
+	padding:0px;
+	margin:0px;
+}
+header{
+	height:44px;				/* Altura de la barra */
+	position:fixed;
+	top:0px;
+	width:100%;
+	background:white;
+	box-shadow:0px 2px 4px rgba(0,0,0,0.3);
+	transition:all 1s;
+	z-index:100000;
+	overflow:hidden;
+}
+
+header:hover{
+	height:440px;
+}
+
+header .contenedor img{
+	width:30px;
+	display:inline-block;
+	margin-top:6px;
+}
+header .contenedor nav{
+	display:inline-block;
+	vertical-align:top;
+}
+header .contenedor nav ul{
+	list-style-type:none;
+	padding:0px;
+	margin:0px;
+}
+header .contenedor nav ul li{
+	display:inline-block;
+	margin:0px 12px;
+	line-height:44px;
+	font-size:12px;
+}
+header .contenedor ul li a{
+	text-decoration:none;
+	color:inherit;
+}
+#supermenu{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+#supermenu .columna{
+	width:25%;
+}
