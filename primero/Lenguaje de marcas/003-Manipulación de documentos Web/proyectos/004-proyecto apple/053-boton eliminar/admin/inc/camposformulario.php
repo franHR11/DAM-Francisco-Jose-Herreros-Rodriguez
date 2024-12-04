@@ -13,6 +13,8 @@
 	  echo "<input ";
 	  if($fila['Field'] == "Identificador"){
 	  	echo " type='hidden' ";
+	  }else if(str_contains($fila['Field'],"imagen")){
+	  	echo " type='file' ";
 	  }else{
 	  	echo " type='text' ";
 	  }
