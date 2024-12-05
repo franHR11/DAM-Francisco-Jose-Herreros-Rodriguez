@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			video{
+				position:fixed;
+				width:100%;
+			}
+			body p{
+				margin-top:2000px;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				const video = document.querySelector("video");
+				window.onscroll = function(){
+					const scrollTop = document.documentElement.scrollTop || 				document.body.scrollTop;
+        console.log("ScrollTop:", scrollTop);
+        video.currentTime = scrollTop/300;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<video src="portatiles.mp4"></video>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		
+</html>

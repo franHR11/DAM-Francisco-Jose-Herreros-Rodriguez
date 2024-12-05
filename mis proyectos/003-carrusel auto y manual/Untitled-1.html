@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flechas de Navegación</title>
+    <style>
+        /* Estilos del cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Contenedor de los botones de flecha */
+        .btn-left,
+        .btn-right {
+            display: flex;
+            position: absolute;
+            top: 50%;
+            font-size: 2rem; /* Tamaño de la flecha */
+            background-color: transparent;
+            border-radius: 50%;
+            padding: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #ffffff81;
+            transform: translate(0, -50%);
+            transition: 0.5s ease;
+            user-select: none;
+        }
+
+        .btn-left:hover,
+        .btn-right:hover {
+            background-color: #333333d4;
+            color: #fff;
+        }
+
+        .btn-left {
+            left: 10px;
+        }
+
+        .btn-right {
+            right: 10px;
+        }
+
+        /* Contenido principal con un título de prueba */
+        .content {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Contenido central -->
+    <div class="content">
+        <h1>Prueba de Navegación</h1>
+        <p>Haz clic en las flechas para navegar hacia la izquierda o derecha.</p>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="btn-left">&#8592;</div> <!-- Flecha izquierda -->
+    <div class="btn-right">&#8594;</div> <!-- Flecha derecha -->
+
+</body>
+</html>
