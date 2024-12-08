@@ -1,0 +1,95 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0%;
+    margin: 0%;
+}
+.contenedor_modal{
+    background-color: aliceblue;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenedor_modal .modal{
+    background-color: white;
+    width: 600px;
+    max-width: 600px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}  
+.contenedor_modal .modal .contenido{
+    display: flex;
+    gap: 10px;
+    flex:1;
+    align-items: center;
+    margin-bottom: 20px;
+} 
+.contenedor_modal .modal .contenido .icono{
+    margin-right: 10px;  
+}
+.contenedor_modal .modal .contenido .mensaje .texto{
+    color: #222;
+    font-size: 14px;
+}
+.contenedor_modal .modal .contenido .mensaje .titulo{
+    color: #222;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.contenedor_modal .modal .contenido .mensaje .titulo h3{
+    margin: 0;
+}
+.contenedor_modal .modal .accion{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    padding: 10px 0;
+
+}
+.contenedor_modal .modal .accion button[class*="btn"]{
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    
+    color: white;
+    cursor: pointer;
+    min-width: 120px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+.contenedor_modal .modal .accion .btn-confirmar{
+    background-color: rgb(170, 226, 170);
+    text-shadow: #222 1px 1px 2px;
+}
+.contenedor_modal .modal .accion .btn-confirmar:hover{
+    background-color: rgb(159, 248, 26);
+}
+.contenedor_modal .modal .accion .btn-cancelar{
+    background-color: rgb(226, 170, 170);
+    text-shadow: #222 1px 1px 2px;
+}
+.contenedor_modal .modal .accion .btn-cancelar:hover{
+    background-color: red;
+}
+@media screen and (max-width: 400px){
+    .contenedor_modal .modal{
+        width: 100%;
+        max-width: 100%;
+    }
+    .contenedor_modal .modal .contenido{
+        flex-direction: column;
+    }
+    .contenedor_modal .modal .accion{
+        flex-direction: column;
+    }
+    .contenedor_modal .modal .accion button{
+        width: 100%;
+    }
+    
+}
