@@ -1,0 +1,66 @@
+html,body{
+        padding:0px;margin:0px;                       /* Quito los margenes por defecto de la página */
+        background:url(../img/fondo.jpg);                    /* Le pongo una imagen de fondo */
+        background-size:cover;                        /* El tamaño de la imagen cubre al contenedor */
+        background-position:middle middle;            /* La imagen de fondo debe estar centrada en la pantalla */
+        height:100%;                                  /* La altura del contenedor cubre todo el navegador web */
+      }
+      main{
+        width:500px;                                  /* Anchura de 500px */
+        height:600px;                                 /* Altura de 600px */
+        background:rgba(255,255,255,0.2);             /* Fondo blanco semitransparente */
+        box-sizing:border-box;                        /* El margen crece hacia dentro y no hacia fuera */
+        padding:40px;                                 /* Tiene un margen interior de 40 pixeles */
+        position:absolute;                            /* Esta posicionado de forma absoluta */
+        top:50%;                                      /* Su centro (la esquina) esta al 50% en horizontal */
+        left:50%;                                     /* Su centro esta al 50% en vertical */
+        margin-left:-250px;                           /* Compenso con margen negativo en x para centrar efecti */
+        margin-top:-300px;                            /* Compenso con margen negativo en y para centrar */
+        backdrop-filter:blur(15px);                   /* Lo que se vea por detras del contenedor esta desenfocado */
+        text-align:center;                            /* El contenido de texto estará alineado al centro */
+        color:white;                                  /* El color del texto es blanco */
+        font-family:sans-serif;                       /* La familia de fuentes es letra de palo */
+        border:1px solid white;                       /* El borde es de 1px solid de color blanco */
+        border-radius:20px;                           /* Le pongo un radio de 20 pixeles a la caja */
+      }
+      input[type=email],input[type=password],input[type=submit]{
+        width:100%;                                   /* Tienen una anchura del 100% */
+        margin:20px 0px;                              /* Margen vertical pero no horizontal */
+        padding:20px 0px;                             /* Margen interior vertical pero no horizontal */
+        border:none;                                  /* No tienen borde */
+        background:rgba(0,0,0,0);                     /* No tienen fondo */
+        border-bottom:1px solid white;                /* Solo le pongo borde en la parte de bajo una linea blanca */
+        outline:none;                                 /* No quiero que aparezca el contorno al entrar */
+        color:white;                                  /* El color del texto es blanco */
+        font-weight:bold;                             /* La fuente será negrita */
+        font-size:20px;                               /* El tamaño de la letra será de 20 pixeles */
+      }
+      input::placeholder {
+          color: white;                               /* El placehoder el input tambien lo quiero blanco */
+      }
+      h1{
+        font-size:60px;                               /* Aumento el tamaño del titulo de nivel 1 */
+      }
+      input[type=submit]{
+        background:white;                             /* Fondo blanco para el boton */
+        border:none;                                  /*  No quiero borde */
+        color:black;                                  /* Color de la letra es negro */
+        border-radius:50px;                           /* Le pongo un borde muy grande redondeado al boton */
+      }
+      input[type=email]{
+        background:url(../img/email.png);                    /* Le pongo la imagen de fondo del sobre */
+        background-repeat:no-repeat;                  /* No quiero que la imagen se repita */
+        background-position:right center;             /* La imagen estará a la derecha y en el centro */
+        background-size:48px;                         /* El tamaño de la imagen es de 48 pixeles */
+      }
+      input[type=password]{
+        background:url(../img/password.png);                 /*  */
+        background-repeat:no-repeat;                  /*  */
+        background-position:right center;             /*  */
+        background-size:48px;                         /*  */
+      }
+      a{
+        text-decoration:none;                         /* Le quito el subrayado al enlace */
+        color:inherit;                                /* Le quito el color azul por defecto */
+        font-weight:bold;                             /* La letra es negrita */
+      }

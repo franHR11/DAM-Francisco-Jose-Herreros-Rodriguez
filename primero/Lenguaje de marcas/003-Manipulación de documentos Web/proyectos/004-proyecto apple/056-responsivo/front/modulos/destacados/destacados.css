@@ -1,0 +1,15 @@
+#destacados{
+	display: grid;
+  	grid-template-columns: auto auto;
+}
+#destacados article{
+	min-height:300px;
+	text-align:center;
+	box-sizing:border-box;
+	padding:40px;
+}
+@media screen and (max-width: 800px) {
+	#destacados{
+		display: block;
+	}
+}
