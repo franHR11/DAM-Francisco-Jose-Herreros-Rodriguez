@@ -1,0 +1,112 @@
+body,html{
+	background:DarkSlateBlue;
+	height:100%;
+	padding:0px;
+	margin:0px;
+	font-family:sans-serif,monospace;
+}
+header{
+	min-height:40px;
+}
+header,nav{
+	background:DarkSlateBlue;
+}
+nav{
+	width:20%;
+	height:100%;
+}
+section{
+	width:80%;
+	background:azure;
+	height:100%;
+}
+main{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+	height:100%;
+}
+nav ul{
+	list-style-type:none;
+	padding:0px;
+	margin:0px;
+}
+nav ul li{
+	color:white;
+	box-sizing:border-box;
+	padding:20px;
+	border-bottom:1px solid white;
+}
+section{
+	box-sizing:border-box;
+	padding:20px;
+	overflow-y:scroll;
+}
+table{
+	width:100%;
+}
+table thead tr{
+	background:DarkSlateBlue;
+	color:white;
+}
+table thead tr td{
+	color:white;
+	padding:10px;
+}
+table tbody tr:nth-child(odd){
+	background:white;
+}
+table tbody tr td{
+	padding:10px;
+}
+
+table img{
+	width:50px;
+}
+
+nav a{
+	color:inherit;
+	text-decoration:none;
+}
+section #nuevo{
+	background:DarkSlateBlue;
+	color:white;
+	border:none;
+	width:50px;
+	height:50px;
+	text-align:center;
+	font-size:50px;
+	line-height:50px;
+	position:absolute;
+	bottom:50px;
+	right:50px;
+}
+
+section .eliminar{
+	background:red;
+	color:white;
+	border:none;
+	width:20px;
+	height:20px;
+	text-align:center;
+	font-size:15px;
+	line-height:20px;
+	
+}
+
+form input{
+	width:100%;
+	box-sizing:border-box;
+	padding:20px;
+	margin-bottom:10px;
+}
+form input[type=submit]{
+	background:DarkSlateBlue;
+	color:white;
+	border:none;
+	padding:20px;
+}
+

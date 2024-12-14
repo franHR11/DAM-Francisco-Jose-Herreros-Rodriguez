@@ -1,0 +1,36 @@
+.completo{
+	width:100%;
+	text-align:center;
+	box-sizing:border-box;
+	padding:20px;
+	height:200px;
+	background:rgb(240,240,240);
+	margin-bottom:20px;
+}
+.caja{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	height:200px;
+	background:rgb(240,240,240);
+	margin:auto;
+	margin-bottom:20px;
+}
+.doscolumnas{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	height:200px;
+	background:rgb(240,240,240);
+	margin:auto;
+	margin-bottom:20px;
+	display:flex;
+	justify-content: space-between;
+}
+.doscolumnas div{
+	width:48%;
+	background:white;
+	gap:20px;
+}
