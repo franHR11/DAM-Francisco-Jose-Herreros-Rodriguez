@@ -1,0 +1,223 @@
+body,html{
+	background:DarkSlateBlue;
+	height:100%;
+	padding:0px;
+	margin:0px;
+	font-family:sans-serif,monospace;
+}
+header{
+	min-height:40px;
+	box-sizing:border-box;
+	padding:10px;
+}
+header h1{
+	padding:0px;
+	margin:0px;
+	color:white;
+	font-size:20px;
+}
+header,nav{
+	background:DarkSlateBlue;
+}
+nav{
+	width:20%;
+	height:100%;
+}
+section{
+	width:80%;
+	background:azure;
+	height:100%;
+}
+main{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+	height:100%;
+}
+nav ul{
+	list-style-type:none;
+	padding:0px;
+	margin:0px;
+}
+nav ul li{
+	color:white;
+	box-sizing:border-box;
+	padding:8px 12px; /* Reducido de 20px */
+	border-bottom:1px solid white;
+}
+section{
+	box-sizing:border-box;
+	padding:20px;
+	overflow-y:scroll;
+}
+table{
+	width:100%;
+}
+table thead tr{
+	background:DarkSlateBlue;
+	color:white;
+}
+table thead tr td{
+	color:white;
+	padding:10px;
+}
+table tbody tr:nth-child(odd){
+	background:white;
+}
+table tbody tr td{
+	padding:10px;
+}
+
+table img{
+	width:50px;
+}
+
+nav a{
+	color:inherit;
+	text-decoration:none;
+}
+section #nuevo{
+	background:DarkSlateBlue;
+	color:white;
+	border:none;
+	width:50px;
+	height:50px;
+	text-align:center;
+	font-size:50px;
+	line-height:50px;
+	position:absolute;
+	bottom:50px;
+	right:50px;
+}
+
+section .eliminar{
+	background:red;
+	color:white;
+	border:none;
+	width:20px;
+	height:20px;
+	text-align:center;
+	font-size:15px;
+	line-height:20px;
+	
+}
+
+form input{
+	width:100%;
+	box-sizing:border-box;
+	padding:20px;
+	margin-bottom:10px;
+}
+form input[type=submit]{
+	background:DarkSlateBlue;
+	color:white;
+	border:none;
+	padding:20px;
+}
+td{
+	transition:all 1s;
+}
+.celdaactiva{
+	background:yellow;
+	transform:scale(1.1,1.1);
+}
+
+
+
+ /* MY CSSS */
+
+form select, form input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px; /* Añadido para separar el texto del icono */
+}
+
+.toggle-visibility {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 2px; /* Reducido de 5px */
+    font-size: 0.9em; /* Reducido de 1.2em */
+}
+
+.menu-control {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.show-all-button {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 90%;
+}
+
+.oculto {
+    opacity: 0.5;
+}
+
+.menu-section-title {
+    background: rgba(255,255,255,0.1);
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu-add-link form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-add-link input {
+    padding: 5px;
+    margin: 2px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-add-link button {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.custom-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-link {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8em;
+    padding: 0 5px;
+}
+
+section iframe {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
