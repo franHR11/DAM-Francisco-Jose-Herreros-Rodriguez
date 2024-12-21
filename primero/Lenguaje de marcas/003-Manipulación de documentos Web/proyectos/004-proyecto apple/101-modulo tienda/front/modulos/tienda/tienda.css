@@ -1,0 +1,23 @@
+.icono_boton {
+    background-color: darkslateblue;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 30px;
+    margin-top: 7px;
+}
+
+.icono_boton:hover {
+    background-color: #4B0082;
+    transition: background-color 0.3s ease;
+}
+
+.icono_boton .iconify {
+    width: 20px;
+    height: 20px;
+}

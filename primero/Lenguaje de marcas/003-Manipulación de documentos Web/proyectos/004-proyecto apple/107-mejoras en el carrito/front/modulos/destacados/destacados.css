@@ -1,0 +1,22 @@
+#destacados{
+	display: grid;
+  	grid-template-columns: 1fr 1fr;
+}
+#destacados article{
+	min-height:500px;
+	
+	text-align:center;
+	box-sizing:border-box;
+	padding:40px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+@media screen and (max-width: 800px) {
+	#destacados{
+		display: block;
+	}
+}

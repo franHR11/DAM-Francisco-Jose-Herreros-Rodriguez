@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8"> <!-- Codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuración responsive -->
+    <title>Moto Scroll</title>
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="css/stylo.css">
+
+    <script type="module">
+        // SISTEMA DE ANIMACIÓN POR SCROLL
+        // Importamos el array de imágenes que conformarán la animación
+        import { images } from './js/images.js'
+    
+        // Variables principales
+        const main = document.querySelector('main') // Contenedor principal
+        const MAX_FRAMES = 151 // Total de frames en la secuencia de imágenes
+        let currentFrame = 0 // Control del frame actual
+    
+        // Función que actualiza la imagen mostrada según el frame
+        function updateImage(frame = 0) {
+          const src = images[frame].p // Obtiene la ruta de la imagen
+          img.src = src // Actualiza la fuente de la imagen
+        }
+    
+        // Inicialización de la imagen
+        const img = document.createElement('img') // Crea elemento imagen
+        main.appendChild(img) // Añade la imagen al contenedor
+        updateImage(currentFrame) // Muestra el primer frame
+    
+        // SISTEMA DE SCROLL
+        // Calcula el espacio total disponible para hacer scroll
+        let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    
+        // Actualiza el scroll máximo si cambia el tamaño de la ventana
+        window.addEventListener('resize', () => {
+          maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        });
+    
+        // Control de rendimiento
+        let lastFrameUpdate = 0 // Timestamp de la última actualización
+    
+        // DETECTOR DE SCROLL
+        window.addEventListener('scroll', () => {
+          // Limita la frecuencia de actualización (optimización)
+          if (Date.now() - lastFrameUpdate < 1) return true
+          lastFrameUpdate = Date.now()
+          
+          // Cálculos para determinar qué frame mostrar
+          const scrollPosition = window.scrollY // Posición actual del scroll
+          const scrollFraction = scrollPosition / maxScroll; // Porcentaje de scroll
+          const frame = Math.floor(scrollFraction * MAX_FRAMES) // Frame correspondiente
+          
+          // Actualiza la imagen solo si es necesario
+          if (currentFrame !== frame) {
+            updateImage(frame)
+            currentFrame = frame
+          }
+        });
+      </script>
+
+</head>
+<body>
+    <main>
+        <!-- Cabecera con logo circular y animación -->
+        <header>
+            <img src="imagenes/logo.png" alt="logo">
+        </header>
+
+        <!-- Panel de especificaciones técnicas -->
+        <div class="specs-container">
+            <div class="spec">
+                <span class="value">300</span>
+                <span class="label">km/h</span>
+            </div>
+            <div class="spec">
+                <span class="value">2.9</span>
+                <span class="label">0-100 km/h</span>
+            </div>
+            <div class="spec">
+                <span class="value">210</span>
+                <span class="label">CV</span>
+            </div>
+        </div>
+    </main>
+    <!-- Pie de página con animación de corazón -->
+    <footer class="footer">
+        <p>Creado con <span class="heart">❤</span> por franHR</p>
+    </footer>
+</body>
+</html>

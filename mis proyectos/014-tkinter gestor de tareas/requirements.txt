@@ -1,2 +1,4 @@
 tkinter
 sqlite3
+ttkbootstrap>=1.0.0
+tkcalendar>=1.6.1

@@ -1,21 +1,26 @@
 # Gestor de Tareas
 
-Una aplicación de escritorio simple para gestionar tareas diarias, desarrollada con Python y Tkinter.
+Una aplicación de escritorio moderna para gestionar tareas diarias, desarrollada con Python y ttkbootstrap.
 
 ## Características
 
-- Añadir nuevas tareas
+- Interfaz moderna con tema Bootstrap
+- Calendario para selección de fechas
+- Selección de hora para las tareas
+- Filtrado de tareas por fecha
+- Paginación de tareas (10 por página)
+- Añadir nuevas tareas con fecha y hora
 - Marcar tareas como completadas
 - Eliminar tareas individuales
 - Eliminar todas las tareas completadas
 - Seleccionar/deseleccionar todas las tareas
-- Interfaz gráfica moderna y fácil de usar
 - Almacenamiento persistente con SQLite
 
 ## Requisitos Previos
 
 - Python 3.x instalado
-- Tkinter (viene incluido con la mayoría de las instalaciones de Python)
+- ttkbootstrap (para la interfaz moderna)
+- tkcalendar (para el selector de fechas)
 - SQLite3 (viene incluido con Python)
 
 ## Instalación
@@ -39,14 +44,15 @@ Una aplicación de escritorio simple para gestionar tareas diarias, desarrollada
    python db.py
    ```
 
-2. La aplicación se abrirá mostrando la interfaz del gestor de tareas
-
-3. Para usar la aplicación:
-   - Escribe una tarea en el campo de texto y presiona "Agregar" o Enter
+2. Para usar la aplicación:
+   - Selecciona una fecha en el calendario
+   - Establece la hora para la tarea
+   - Escribe una descripción y presiona "Agregar" o Enter
+   - Usa el botón "Filtrar" para ver tareas de una fecha específica
+   - Navega entre páginas con los botones "Anterior" y "Siguiente"
+   - Usa "Mostrar Todo" para ver todas las tareas
    - Marca las tareas como completadas usando los checkboxes
    - Elimina tareas individuales con el botón "Eliminar"
-   - Usa "Seleccionar Todas" para marcar/desmarcar todas las tareas
-   - Usa "Eliminar Completadas" para eliminar todas las tareas marcadas
 
 ## Estructura de Archivos
 

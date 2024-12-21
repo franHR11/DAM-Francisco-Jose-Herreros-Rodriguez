@@ -1,0 +1,194 @@
+/* Variables CSS para colores principales */
+:root {
+    --primary-color: #00b0ff;    /* Color principal (azul claro) */
+    --secondary-color: #3b82f6;  /* Color secundario (azul medio) */
+    --dark: #1a1a1a;            /* Color oscuro para fondos */
+    --light: #ffffff;           /* Color claro para textos */
+}
+
+/* Reset CSS - Normalización de estilos base */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+
+/* Configuración general del body */
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* ESTILOS DEL HEADER CIRCULAR */
+header {
+    /* Gradiente de fondo */
+    background: linear-gradient(60deg, #00b0ff, #3b82f6 40%);
+    width: 400px;
+    height: 400px;
+    border-radius: 1000px; /* Forma circular */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontal */
+    z-index: 1; /* Control de capas */
+    margin-top: -230px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: slideInDown 1500ms ease-out;
+}
+
+/* Logo dentro del header */
+header img {
+    width: 140px;
+    margin: 0 auto;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+main {
+    height: 300vh; /* Alto para permitir scroll */
+    position: relative;
+}
+
+/* Imagen de fondo animada */
+main > img {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ajuste de imagen */
+    top: 0;
+    left: 0;
+}
+
+/* Estilos del contenido nuevo */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.hero-content {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    animation: fadeIn 1s ease-out;
+    margin-top: 100px;
+}
+
+/* PANEL DE ESPECIFICACIONES */
+.specs-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3rem;
+    z-index: 2;
+}
+
+/* Tarjetas de especificaciones */
+.spec {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Efecto cristal */
+}
+
+.spec .value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.spec .label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ANIMACIONES */
+/* Entrada deslizante del header */
+@keyframes slideInDown {
+    from {
+        transform: translate3d(-50%, -100%, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate3d(-50%, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FOOTER */
+.footer {
+    position: fixed;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    font-size: 0.9rem;
+    z-index: 1000;
+}
+
+/* Corazón animado */
+.heart {
+    color: #ff0000;
+    display: inline-block;
+    animation: heartBeat 1.2s ease infinite;
+    font-size: 1.2rem;
+}
+
+/* Animación del latido del corazón */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.3); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.3); }
+    70% { transform: scale(1); }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    /* Ajustes para pantallas móviles */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .specs-container {
+        flex-direction: column;
+        gap: 1rem;
+        right: 1rem;
+        left: auto;
+        transform: none;
+    }
+    
+    .main-nav {
+        padding: 1rem;
+    }
+    
+    .main-nav ul {
+        gap: 1rem;
+    }
+}
