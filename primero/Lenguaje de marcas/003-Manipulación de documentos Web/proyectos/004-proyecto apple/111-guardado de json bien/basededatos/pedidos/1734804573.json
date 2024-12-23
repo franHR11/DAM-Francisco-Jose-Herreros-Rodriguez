@@ -1,0 +1,28 @@
+{
+    "cliente": {
+        "nombre": "FRANCISCO JOSE",
+        "apellidos": "HERREROS RODRIGUEZ",
+        "email": "ibericawarez2@gmail.com"
+    },
+    "pedido": {
+        "fecha": "2024-12-21",
+        "numerodepedido": "2024122119933"
+    },
+    "productos": [
+        {
+            "nombre": "Desarrollo de aplicaciones\r\nmultiplataforma",
+            "descripcion": "RGVzYXJyb2xsbyBkZSBhcGxpY2FjaW9uZXMgbXVsdGlwbGF0YWZvcm1hDQpMb3Mgc2VyZXMgaHVtYW5vcyB0ZW5lbW9zIHVuYSBleHRyYW9yZGluYXJpYSBjYXBhY2lkYWQgcGFyYSBhY29zdHVtYnJhcm5vcyBhIGxvIGFzb21icm9zbyB5IHBlcmRlciBkZSB2aXN0YSBzdSBlbm9ybWUgY29tcGxlamlkYWQuIEFzw60sIGRpYXJpYW1lbnRlIGRlZGljYW1vcyBob3JhcyB5IGhvcmFzLCB0YW50byBlbiBlbCBlbnRvcm5vIHBlcnNvbmFsIGNvbW8gZW4gZWwgZW50b3JubyBwcm9mZXNpb25hbCwgYSBsYSBleHBsb3RhY2nDs24gZGUgaW5maW5pZGFkIGRlIGFwbGljYWNpb25lcyBpbmZvcm3DoXRpY2FzLiBZLCBzaW4gZW1iYXJnbywgbXVjaGFzIHBlcnNvbmFzIGlnbm9yYW4gbGEgZGlmaWN1bHRhZCBxdWUgcGxhbnRlYSBlbCBkZXNhcnJvbGxvIGRlIGVzdGFzIGFwbGljYWNpb25lcy4gRGVzZGUgbcO6bHRpcGxlcyBwZXJzcGVjdGl2YXMuIFBvciBzdWVydGUsIGV4aXN0ZW4gZW1wcmVzYXMgY29tbyBQQ3BybyBjYXBhY2VzIGRlIGRlc2Fycm9sbGFyIGFwbGljYWNpb25lcyBtdXkgdmFyaWFkYXMgeSBlZmljaWVudGVzLiBVbmEgZW1wcmVzYSBleHBlcnRhIGVuIGVsIGRlc2Fycm9sbG8gZGUgYXBsaWNhY2lvbmVzIG11bHRpcGxhdGFmb3JtYS4=",
+            "precio": "0.00"
+        },
+        {
+            "nombre": "placa base",
+            "descripcion": "placa base",
+            "precio": "100.30"
+        },
+        {
+            "nombre": "Ordenadores",
+            "descripcion": "Venta de ordenadores completos, listos para funcionar",
+            "precio": "0.00"
+        }
+    ]
+}

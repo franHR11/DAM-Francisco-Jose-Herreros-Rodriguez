@@ -1,0 +1,23 @@
+{
+    "cliente": {
+        "nombre": "FRANCISCO JOSE",
+        "apellidos": "HERREROS RODRIGUEZ",
+        "email": "ibericawarez2@gmail.com"
+    },
+    "pedido": {
+        "fecha": "2024-12-21",
+        "numerodepedido": "202412211931"
+    },
+    "productos": [
+        {
+            "nombre": "procesadores",
+            "descripcion": "procesadores",
+            "precio": "234.00"
+        },
+        {
+            "nombre": "Ordenadores",
+            "descripcion": "Venta de ordenadores completos, listos para funcionar",
+            "precio": "0.00"
+        }
+    ]
+}

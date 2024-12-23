@@ -1,0 +1,60 @@
+.completo{
+	width:100%;
+	text-align:center;
+	box-sizing:border-box;
+	padding:20px;
+	height:200px;
+	background:rgb(240,240,240);
+	margin-bottom:20px;
+}
+.caja{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	height:200px;
+	background:rgb(240,240,240);
+	margin:auto;
+	margin-bottom:20px;
+}
+.doscolumnas{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	height:200px;
+	background:rgb(240,240,240);
+	margin:auto;
+	margin-bottom:20px;
+	display:flex;
+	justify-content: space-between;
+}
+.doscolumnas div{
+	width:48%;
+	background:white;
+	gap:20px;
+}
+.celda{
+	width:49%;
+	background:rgb(250,250,250);
+	min-height:300px;
+	box-sizing:border-box;
+	padding:20px;
+	margin-bottom:10px;
+	width:100%;
+}
+.mosaico{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	min-height:200px;
+	background:rgb(240,240,240);
+	margin:auto;
+	
+}
+.rejilla{
+	display:grid;
+	grid-template-columns: auto auto;
+	gap:20px;
+}

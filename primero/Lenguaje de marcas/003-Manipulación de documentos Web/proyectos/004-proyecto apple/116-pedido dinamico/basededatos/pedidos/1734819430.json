@@ -1,0 +1,23 @@
+{
+    "cliente": {
+        "nombre": "juan",
+        "apellidos": "RODRIGUEZ",
+        "email": "ibericawarez2@gmail.com"
+    },
+    "pedido": {
+        "fecha": "2024-12-21",
+        "numerodepedido": "20241221231710"
+    },
+    "productos": [
+        {
+            "nombre": "Ordenadores",
+            "descripcion": "Venta de ordenadores completos, listos para funcionar",
+            "precio": "0.00"
+        },
+        {
+            "nombre": "placa base",
+            "descripcion": "placa base",
+            "precio": "100.30"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "cliente": {
+        "nombre": "FRANCISCO",
+        "apellidos": "RODRIGUEZ",
+        "email": "ibericawarez2@gmail.com"
+    },
+    "pedido": {
+        "fecha": "2024-12-22",
+        "numerodepedido": "20241222007"
+    },
+    "productos": [
+        {
+            "nombre": "procesadores",
+            "descripcion": "procesadores",
+            "precio": "234.00"
+        }
+    ]
+}
