@@ -1,0 +1,191 @@
+.completo{
+	width:100%;
+	text-align:center;
+	box-sizing:border-box;
+	padding:20px;
+	height:600px;
+	background:rgb(240,240,240);
+	margin-bottom:20px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+	position: relative;
+	background-position: center !important;
+	background-size: cover !important;
+}
+.completo h3, 
+.completo h4, 
+.completo p {
+	position: relative;
+	z-index: 2;
+	color: #fff;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.caja{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	height:600px;
+	background:rgb(240,240,240);
+	margin:auto;
+	margin-bottom:20px;
+	position: relative;
+	background-position: center !important;
+	background-size: cover !important;
+}
+.caja h3, 
+.caja h4, 
+.caja p {
+	position: relative;
+	z-index: 2;
+	color: #fff;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.doscolumnas{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	height:200px;
+	background:rgb(240,240,240);
+	margin:auto;
+	margin-bottom:20px;
+	display:flex;
+	justify-content: space-between;
+}
+.doscolumnas div{
+	width:48%;
+	background:white;
+	gap:20px;
+}
+.celda{
+	width:49%;
+	background:rgb(250,250,250);
+	min-height:300px;
+	box-sizing:border-box;
+	padding:20px;
+	margin-bottom:10px;
+	width:100%;
+}
+.mosaico{
+	width:800px;
+	text-align:justify;
+	box-sizing:border-box;
+	padding:20px;
+	min-height:200px;
+	background:rgb(240,240,240);
+	margin:auto;
+	
+}
+.rejilla{
+	display:grid;
+	grid-template-columns: auto auto;
+	gap:20px;
+}
+.bloque h3{
+	font-size:48px;
+}
+iframe{
+	width:100%;
+	height:100%;
+}
+.doscolumnastexto{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+	gap:20px;
+	height:100%;
+}
+.doscolumnastexto p{
+	background:white;
+	padding:20px;
+	height:40%;
+	width:50%;
+}
+.contenedorpasafotos{
+	width:3300px;
+	height:100%;
+	position:relative;
+	left:0px;
+	transition:all 1s;
+	margin-top: 0; /* Quitamos el margen superior */
+}
+.contenedorpasafotos article{
+	width:800px;
+	display:inline-block;
+	height:100%;
+	border:1px solid grey;
+}
+
+.controlador{
+	width: auto;
+	min-width: 200px;
+	height: 40px;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 30px;
+	margin: 10px auto; /* Centramos horizontalmente */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 0 20px;
+	position: relative; /* Cambiamos de absolute a relative */
+	top: auto; /* Eliminamos el posicionamiento top */
+	left: auto; /* Eliminamos el posicionamiento left */
+	transform: none; /* Eliminamos la transformación */
+}
+
+.controlador button{
+	font-size:1px;
+	background:white;
+	border:none;
+	width:5px;
+	height:12px;
+	display:block;
+	border-radius:10px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: 2px solid white;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	padding: 0;
+	margin: 0 5px;
+}
+
+.controlador button:hover {
+	background: white;
+	transform: scale(1.2);
+}
+
+.controlador button.active {
+	background: white;
+}
+
+.bloque {
+	position: relative;
+	margin-bottom: 50px; /* Aumentamos el espacio entre bloques */
+}
+
+.bloque img {
+	max-width: 100%;
+	height: auto;
+	margin-top: 20px;
+}
+
+.pasafotos-container {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding-bottom: 20px;
+}

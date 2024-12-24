@@ -1,0 +1,137 @@
+{
+    "stats": {
+        "general": {
+            "total_visits": 48,
+            "unique_visitors": 2,
+            "unique_pages": 11,
+            "countries_count": 1,
+            "last_updated": "2024-12-20 13:52:29"
+        }
+    },
+    "temporal": {
+        "hourly": {
+            "labels": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23"
+            ],
+            "values": [
+                41,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                4,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "weekday": {
+            "labels": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "values": [
+                0,
+                1,
+                0,
+                0,
+                1,
+                0,
+                46
+            ]
+        }
+    },
+    "technical": {
+        "browsers": {
+            "labels": [
+                "Chrome",
+                "Edge"
+            ],
+            "values": [
+                40,
+                8
+            ]
+        }
+    },
+    "content": {
+        "top_pages": {
+            "labels": [
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/index.php",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/blog.php",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/contacto.php",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/categoria.php?cat=23",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/categoria.php?cat=22",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/categoria.php?cat=17",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/categoria.php?cat=18",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/categoria.php?cat=21",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/categoria.php?cat=19",
+                "/DAM-Francisco-Jose-Herreros-Rodriguez/primero/Lenguaje%20de%20marcas/003-Manipulaci%C3%B3n%20de%20documentos%20Web/proyectos/004-proyecto%20apple/098-panel%20de%20visitas/front/categoria.php?cat=20"
+            ],
+            "values": [
+                15,
+                9,
+                5,
+                4,
+                4,
+                4,
+                2,
+                2,
+                1,
+                1
+            ]
+        }
+    },
+    "geographic": {
+        "countries": {
+            "labels": [
+                "Local"
+            ],
+            "values": [
+                48
+            ]
+        }
+    }
+}
