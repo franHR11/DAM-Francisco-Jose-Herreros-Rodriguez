@@ -1,0 +1,35 @@
+{
+    "cliente": {
+        "nombre": "FRANCISCO JOSE",
+        "apellidos": "HERREROS RODRIGUEZ",
+        "email": "ibericawarez2@gmail.com"
+    },
+    "pedido": {
+        "fecha": "2024-12-25",
+        "numerodepedido": "20241225233720"
+    },
+    "productos": [
+        {
+            "nombre": "Ordenadores",
+            "descripcion": "Venta de ordenadores completos, listos para funcionar",
+            "precio": "0.00"
+        },
+        {
+            "nombre": "Ordenadores",
+            "descripcion": "Venta de ordenadores completos, listos para funcionar",
+            "precio": "0.00"
+        },
+        {
+            "nombre": "rtr",
+            "descripcion": "",
+            "precio": "11",
+            "imagen": "..\/static\/1735165111_fhrdibujo.jpg"
+        },
+        {
+            "nombre": "prueba",
+            "descripcion": "",
+            "precio": "10",
+            "imagen": "..\/static\/1735165154_fran.png"
+        }
+    ]
+}
