@@ -23,45 +23,59 @@ if($_GET['tabla'] == 'bloquesproductos') {
         move_uploaded_file($_FILES['fondo']['tmp_name'], '../../static/' . $fondo);
     }
 
-    // Si es tipo tienda (7), manejar como producto
-    if ($_POST['tipobloque_tipo'] == '7') {
-        // Crear el objeto JSON con los datos del producto
-        $nuevoProducto = [
-            'titulo' => $_POST['titulo'],
-            'subtitulo' => $_POST['subtitulo'],
-            'precio' => $_POST['precio'],
-            'imagen' => $imagen
-        ];
+    // Si es tipo tienda (7), manejar productos seleccionados
+    if ($_POST['tipobloque_tipo'] == '7' && isset($_POST['productos'])) {
+        $productos = [];
+        
+        // Obtener información de cada producto seleccionado
+        foreach ($_POST['productos'] as $productoId) {
+            $query = "SELECT * FROM productos WHERE Identificador = '".mysqli_real_escape_string($conexion, $productoId)."'";
+            $result = $conexion->query($query);
+            
+            if($producto = $result->fetch_assoc()) {
+                $productos[] = [
+                    'id' => $producto['Identificador'],
+                    'titulo' => $producto['titulo'],
+                    'subtitulo' => $producto['subtitulo'],
+                    'precio' => $producto['precio'],
+                    'imagen' => $producto['imagen']
+                ];
+            }
+        }
 
-        // Verificar si ya existe un bloque de tipo tienda
-        $query = "SELECT * FROM bloquesproductos WHERE tipobloque_tipo = '7' AND productos_titulo = '".mysqli_real_escape_string($conexion, $_POST['productos_titulo'])."'";
-        $result = $conexion->query($query);
+        // Convertir los productos a JSON
+        $productosJson = json_encode($productos);
 
-        if($result->num_rows > 0) {
-            // Si existe, añadir el nuevo producto al bloque existente
-            $fila = $result->fetch_assoc();
-            $productos = json_decode($fila['texto'], true) ?: [];
-            $productos[] = $nuevoProducto;
-            $productosJson = json_encode($productos);
+        // Verificar si se seleccionó un bloque tienda existente
+        if (!empty($_POST['bloque_tienda_existente'])) {
+            // Obtener los productos actuales del bloque
+            $queryBloque = "SELECT texto FROM bloquesproductos WHERE Identificador = '".mysqli_real_escape_string($conexion, $_POST['bloque_tienda_existente'])."'";
+            $resultBloque = $conexion->query($queryBloque);
+            $bloqueExistente = $resultBloque->fetch_assoc();
+            
+            // Combinar productos existentes con nuevos
+            $productosExistentes = json_decode($bloqueExistente['texto'], true) ?: [];
+            $todosProductos = array_merge($productosExistentes, $productos);
+            $productosJsonActualizado = json_encode($todosProductos);
 
-            $updateQuery = "UPDATE bloquesproductos SET texto = '".mysqli_real_escape_string($conexion, $productosJson)."' WHERE Identificador = ".$fila['Identificador'];
+            // Actualizar el bloque existente
+            $updateQuery = "UPDATE bloquesproductos SET texto = '".mysqli_real_escape_string($conexion, $productosJsonActualizado)."' WHERE Identificador = '".mysqli_real_escape_string($conexion, $_POST['bloque_tienda_existente'])."'";
+            
             if($conexion->query($updateQuery)) {
-                echo "<div style='color: green;'>Producto añadido al bloque tienda existente.</div>";
-                header("refresh:2;url=../escritorio.php?tabla=bloquesproductos");
+                header("Location: ../escritorio.php?tabla=bloquesproductos");
             } else {
                 echo "Error: " . $conexion->error;
             }
         } else {
-            // Si no existe, crear un nuevo bloque de tipo tienda
-            $productosJson = json_encode([$nuevoProducto]);
-            // Continuar con la inserción normal
+            // Crear nuevo bloque tienda
+            $primer_producto_id = $_POST['productos'][0];
             $insertQuery = "INSERT INTO bloquesproductos (titulo, subtitulo, texto, imagen, tipobloque_tipo, productos_titulo) 
                           VALUES ('".mysqli_real_escape_string($conexion, $_POST['titulo'])."',
                                  '".mysqli_real_escape_string($conexion, $_POST['subtitulo'])."',
                                  '".mysqli_real_escape_string($conexion, $productosJson)."',
                                  '".mysqli_real_escape_string($conexion, $imagen)."',
                                  '".mysqli_real_escape_string($conexion, $_POST['tipobloque_tipo'])."',
-                                 '".mysqli_real_escape_string($conexion, $_POST['productos_titulo'])."')";
+                                 '".mysqli_real_escape_string($conexion, $primer_producto_id)."')";
             
             if($conexion->query($insertQuery)) {
                 header("Location: ../escritorio.php?tabla=bloquesproductos");
@@ -101,6 +115,105 @@ if (isset($_POST['categoriasblog_categorias'])) {
         die("Error: La categoría seleccionada (ID: $categoria_id) no existe en la base de datos.");
     }
     $stmt->close();
+}
+
+// Añadir esta sección para productos después de la validación de categorías
+if($_GET['tabla'] == 'productos') {
+    // Validar precio
+    if(isset($_POST['precio'])) {
+        $precio = filter_var($_POST['precio'], FILTER_VALIDATE_FLOAT);
+        if($precio === false || $precio < 0) {
+            die("Error: El precio debe ser un número válido y positivo.");
+        }
+    }
+
+    // Procesar la imagen
+    $imagen = '';
+    if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+        $imagen = time() . '_' . $_FILES['imagen']['name'];
+        $uploadDir = "../../static/";
+        if(!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $uploadDir . $imagen);
+    }
+
+    // Sanitizar campos de texto
+    $titulo = $conexion->real_escape_string($_POST['titulo']);
+    $subtitulo = $conexion->real_escape_string($_POST['subtitulo']);
+    $descripcion = $conexion->real_escape_string($_POST['descripcion']); // Cambiado de texto a descripcion
+    $categorias_nombre = intval($_POST['categorias_nombre']);
+
+    // Construir la consulta específica para productos
+    $insertQuery = "INSERT INTO productos (titulo, subtitulo, descripcion, precio, categorias_nombre, imagen) 
+                   VALUES (?, ?, ?, ?, ?, ?)";
+    
+    $stmt = $conexion->prepare($insertQuery);
+    $stmt->bind_param("sssdis", $titulo, $subtitulo, $descripcion, $precio, $categorias_nombre, $imagen);
+    
+    if($stmt->execute()) {
+        echo "<div style='color: green;'>Producto insertado correctamente.</div>";
+        header("refresh:2;url=../escritorio.php?tabla=productos");
+    } else {
+        echo "<div style='color: red;'>Error al insertar el producto: " . $stmt->error . "</div>";
+    }
+    
+    $stmt->close();
+    exit;
+}
+
+// Añadir manejo específico para tiendas
+if($_GET['tabla'] == 'tiendas') {
+    // Procesar imágenes si existen
+    $imagen = '';
+    $fondo = '';
+
+    if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+        $imagen = time() . '_' . $_FILES['imagen']['name'];
+        move_uploaded_file($_FILES['imagen']['tmp_name'], '../../static/' . $imagen);
+    }
+
+    if(isset($_FILES['fondo']) && $_FILES['fondo']['error'] == 0) {
+        $fondo = time() . '_' . $_FILES['fondo']['name'];
+        move_uploaded_file($_FILES['fondo']['tmp_name'], '../../static/' . $fondo);
+    }
+
+    // Preparar la consulta para insertar en la tabla tiendas
+    $insertTiendaQuery = "INSERT INTO tiendas (titulo, subtitulo, descripcion, imagen, fondo, estilo) 
+                         VALUES (?, ?, ?, ?, ?, ?)";
+    
+    $stmt = $conexion->prepare($insertTiendaQuery);
+    $stmt->bind_param("ssssss", 
+        $_POST['titulo'],
+        $_POST['subtitulo'],
+        $_POST['descripcion'],
+        $imagen,
+        $fondo,
+        $_POST['estilo']
+    );
+
+    if($stmt->execute()) {
+        $tienda_id = $stmt->insert_id;
+        
+        // Si hay productos seleccionados, insertarlos en la tabla intermedia
+        if(isset($_POST['productos']) && is_array($_POST['productos'])) {
+            $orden = 0;
+            foreach($_POST['productos'] as $producto_id) {
+                $insertRelacionQuery = "INSERT INTO tiendas_productos (tienda_id, producto_id, orden) VALUES (?, ?, ?)";
+                $stmtRel = $conexion->prepare($insertRelacionQuery);
+                $stmtRel->bind_param("iii", $tienda_id, $producto_id, $orden);
+                $stmtRel->execute();
+                $orden++;
+            }
+        }
+        
+        echo "<div style='color: green;'>Tienda creada correctamente.</div>";
+        header("refresh:2;url=../escritorio.php?tabla=tiendas");
+    } else {
+        echo "<div style='color: red;'>Error al crear la tienda: " . $stmt->error . "</div>";
+    }
+    
+    exit;
 }
 
 // Construir la consulta de manera más segura

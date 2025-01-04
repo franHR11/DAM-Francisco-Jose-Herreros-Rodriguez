@@ -1,0 +1,52 @@
+/**
+ * @webblock Heroes
+ * @author FranHR
+ * @description Estilos para el módulo de héroes/productos destacados
+ */
+
+.heroe {
+    text-align: center;
+    min-height: 750px;
+    color: white;
+    box-sizing: border-box;
+    padding: 80px 40px 40px;
+    background-position: center !important;
+    background-size: cover;
+}
+
+.heroe h3,
+.heroe h4 {
+    margin: 0 0 10px;
+    padding: 0;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+}
+
+.heroe h3 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.heroe h4 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.heroe button {
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 40px;
+    width: 200px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.heroe button:first-child {
+    background: white;
+    color: black;
+}
+
+.heroe button:last-child {
+    background: transparent;
+    color: white;
+}

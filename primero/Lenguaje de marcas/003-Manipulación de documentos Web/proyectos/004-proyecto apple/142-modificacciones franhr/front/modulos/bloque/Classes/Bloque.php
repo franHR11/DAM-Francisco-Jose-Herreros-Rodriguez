@@ -474,19 +474,31 @@ class BloqueMosaico extends Bloque {
 
 class BloqueTienda extends Bloque {
     private $uniqueId;
+    private $tiendaId;
     
-    public function __construct($nuevotitulo, $nuevosubtitulo = "", $nuevotexto = "", $nuevaimagen = "", $nuevaimagenfondo = "", $nuevoestilo = []) {
+    public function __construct($nuevotitulo, $nuevosubtitulo = "", $nuevotexto = "", $nuevaimagen = "", $nuevaimagenfondo = "", $nuevoestilo = [], $tiendaId = null) {
         parent::__construct($nuevotitulo, $nuevosubtitulo, $nuevotexto, $nuevaimagen, $nuevaimagenfondo, $nuevoestilo);
         $this->uniqueId = 'bloque_' . uniqid();
+        $this->tiendaId = $tiendaId;
     }
 
     public function getBloque() {
+        global $conexion;
         $estilosInline = $this->procesarEstilos($this->estilo);
-        $productos = json_decode($this->texto);
         
-        if (!is_array($productos)) {
-            error_log('Error al decodificar JSON: ' . json_last_error_msg());
-            return '<div>Error al cargar los productos.</div>';
+        // Obtener productos de la tienda
+        $query = "SELECT p.* FROM productos p 
+                 INNER JOIN tiendas_productos tp ON p.Identificador = tp.producto_id 
+                 WHERE tp.tienda_id = ? 
+                 ORDER BY tp.orden";
+        $stmt = $conexion->prepare($query);
+        $stmt->bind_param('i', $this->tiendaId);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        
+        $productos = [];
+        while($producto = $resultado->fetch_assoc()) {
+            $productos[] = $producto;
         }
 
         $rutaImagenes = $this->getRutaImagenes();
@@ -586,17 +598,40 @@ class BloqueTienda extends Bloque {
 
             $html .= "
                 <div class='producto'>
-                    <div class='producto-imagen'>
-                        <img src='".$rutaImagenes.$producto->imagen."' alt='".$producto->titulo."'>
-                    </div>
-                    <h4 class='producto-titulo'>".$producto->titulo."</h4>
-                    ".$subtitulo."
-                    <div class='producto-precio'>".$producto->precio."€</div>
+                    <a href='producto.php?prod={$productoId}' class='producto-link'>
+                        <div class='producto-imagen'>
+                            <img src='".$rutaImagenes.$producto->imagen."' alt='".$producto->titulo."'>
+                        </div>
+                        <h4 class='producto-titulo'>".$producto->titulo."</h4>
+                        ".$subtitulo."
+                        <div class='producto-precio'>".$producto->precio."€</div>
+                    </a>
                     <button class='boton-comprar'>Añadir al carrito</button>
                 </div>";
         }
         
         $html .= "</div></div>";
+
+        // Añadir estilos adicionales para los enlaces
+        $html .= "
+        <style>
+            #".$this->uniqueId." .producto-link {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                transition: transform 0.2s;
+            }
+            #".$this->uniqueId." .producto-link:hover {
+                transform: scale(1.02);
+            }
+            #".$this->uniqueId." .producto {
+                display: flex;
+                flex-direction: column;
+            }
+            #".$this->uniqueId." .boton-comprar {
+                margin-top: auto;
+            }
+        </style>";
 
         return $html;
     }

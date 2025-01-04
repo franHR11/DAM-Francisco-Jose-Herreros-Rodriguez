@@ -3,68 +3,150 @@
 */
 
 function procesaCabecera(){
-	// Cargo los menús de la cabecera ///////////////////////////////////
+    // Primero cargar los bloques tienda
+    fetch("../back/?tabla=bloquesproductos&tipobloque=7")
+    .then(function(response) {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // Verificar si hay contenido en la respuesta
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            throw new TypeError("Oops, no tenemos JSON!");
+        }
+        return response.json();
+    })
+    .then(function(bloquesTienda) {
+        console.log("Respuesta bloques tienda:", bloquesTienda); // Debug
+        if (!Array.isArray(bloquesTienda)) {
+            throw new Error('La respuesta no es un array');
+        }
+        let cabecera = document.querySelector("header nav ul");
+        let plantilla = document.querySelector("#elementomenu");
 
-	fetch("../back/?tabla=categorias") 											// Cargo un endpoint en el back
-	.then(function(response) { 													// Cuando obtenga respuesta
-		 return response.json(); 													// La convierto en json
-	})
-	.then(function(datos) { 														// Y cuando reciba datos
-		 console.log(datos);
-		 let cabecera = document.querySelector("header nav ul");			// Selecciono la cabecera
-		 let plantilla = document.querySelector("#elementomenu");		// Tomo una plantilla template
-		 
-		 datos.forEach(function(dato) {											// Para cada dato recibido
-		     let instancia = plantilla.content.cloneNode(true);			// Creo una instancia
-		     let enlace = instancia.querySelector("a");						// Selecciono el enlace interior
-		     
-		     enlace.textContent = dato.nombre;									// Le pongo el atributo de texto
-		     enlace.setAttribute("href", "categoria.php?cat=" + dato.Identificador);	// Y le digo a qué página debe ir
-		     enlace.setAttribute("cat", dato.Identificador);				// Le pongo un atributo categoría
-		     instancia.querySelector("li").classList.add("categoria")
-		     
-		     enlace.addEventListener("mouseover", function() {			// Cuando pase por encima de esa categoria
-		         console.log("Vamos a ver que hay en esta categoria");
-		         console.log(this.textContent)
-		         let tituloseccion = this.textContent						// Cargo el titulo de la categoria
-		         fetch("../back/?busca=productos&campo=categorias_nombre&dato="+this.getAttribute("cat"))	// Fetch para obtener productos por cateogrias
-		         .then(function(response) { 									// Cuando obtenga respuesta
-						 return response.json(); 									// La convierto en json
-					})
-					.then(function(datos) { 										// Y cuando reciba datos
-						 console.log(datos);
-						 document.querySelector("#categoria").textContent = tituloseccion	// Pongo el titulo de la categoria
-						 document.querySelector("#productos").innerHTML = ""	// Vacio los productos
-						 datos.forEach(function(dato){								// Para cada uno de los productos
-						 document.querySelector("#productos").innerHTML += "<li><a href='producto.php?prod="+dato.Identificador+"'>"+dato.titulo+"</a></li>"	// Los pongo en el listado
-						 })
-						let cabecera = document.querySelector("header")
-						difumina(cabecera)
-					})
-		     });
-		     cabecera.prepend(instancia);
-		 });
-	})
-	.catch(function(error) {
-		 console.warn("Error al cargar las categorías:", error);
-		 document.querySelector("#contienemodal").style.display = "block"
-	});
+        if (Array.isArray(bloquesTienda)) {
+            bloquesTienda.forEach(function(bloque) {
+                let instancia = plantilla.content.cloneNode(true);
+                let enlace = instancia.querySelector("a");
+                enlace.textContent = bloque.titulo;
+                enlace.setAttribute("href", "tienda-bloque.php?id=" + bloque.Identificador);
+                enlace.setAttribute("tienda", "true"); // Añadimos este atributo para identificar links de tienda
+                instancia.querySelector("li").classList.add("tienda-menu");
 
-	// Aplico difuminado en el fondo al entrar y salir de la cabecera /////////////////////
+                // Añadir evento mouseover específico para enlaces de tienda
+                enlace.addEventListener("mouseover", function() {
+                    console.log("Mostrando bloques tienda");
+                    document.querySelector("#categoria").textContent = "Tienda";
+                    document.querySelector("#productos").innerHTML = "";
+                    
+                    // Primero cargar las categorías de productos
+                    fetch("../back/?tabla=categorias_productos")
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(categorias) {
+                        let productosHTML = '';
+                        
+                        // Procesar cada categoría
+                        const promesas = categorias.map(categoria => {
+                            // Para cada categoría, cargar sus productos
+                            return fetch(`../back/?tabla=productos&categoria=${categoria.Identificador}`)
+                                .then(resp => resp.json())
+                                .then(productos => {
+                                    productosHTML += `
+                                        <ul class="categoria-productos">
+                                            <li class="categoria-titulo">${categoria.nombre}</li>
+                                            ${productos.map(producto => 
+                                                `<li><a href="producto.php?prod=${producto.Identificador}">${producto.titulo}</a></li>`
+                                            ).join('')}
+                                        </ul>
+                                    `;
+                                });
+                        });
 
-	let cabecera = document.querySelector("header")							// Selecciono la cabecera
-	let categorias = document.querySelectorAll(".categoria")
-	
-	/*cabecera.addEventListener("mouseenter",function(){
-			difumina(cabecera)
-		})*/
+                        // Cuando todas las categorías y productos estén cargados
+                        Promise.all(promesas).then(() => {
+                            document.querySelector("#productos").innerHTML = productosHTML;
+                            let cabecera = document.querySelector("header");
+                            difumina(cabecera);
+                        });
+                    });
+                });
 
-	cabecera.onmouseleave = function(){											// Cuando salgo
-		console.log("Has salido")
-		document.querySelector("main").classList.remove("difuminado")	// Le quito la clase css
-		document.querySelector("header").classList.remove("grande")
-		cabecera.style.background = "rgba(255,255,255,1)"					// Y le pongo un color blanco sólido
-	}
+                cabecera.prepend(instancia);
+            });
+        }
+    })
+    .catch(function(error) {
+        console.error("Error detallado al cargar los bloques tienda:", error);
+        // Opcional: Mostrar un mensaje al usuario
+        document.querySelector("#categoria").textContent = "Error cargando tienda";
+    });
+
+    // Luego cargar las categorías
+    fetch("../back/?tabla=categorias")
+    .then(function(response) {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(function(datos) {
+        console.log(datos);
+        let cabecera = document.querySelector("header nav ul");			// Selecciono la cabecera
+        let plantilla = document.querySelector("#elementomenu");		// Tomo una plantilla template
+
+        datos.forEach(function(dato) {											// Para cada dato recibido
+            let instancia = plantilla.content.cloneNode(true);			// Creo una instancia
+            let enlace = instancia.querySelector("a");						// Selecciono el enlace interior
+
+            enlace.textContent = dato.nombre;									// Le pongo el atributo de texto
+            enlace.setAttribute("href", "categoria.php?cat=" + dato.Identificador);	// Y le digo a qué página debe ir
+            enlace.setAttribute("cat", dato.Identificador);				// Le pongo un atributo categoría
+            instancia.querySelector("li").classList.add("categoria")
+
+            enlace.addEventListener("mouseover", function() {			// Cuando pase por encima de esa categoria
+                console.log("Vamos a ver que hay en esta categoria");
+                console.log(this.textContent)
+                let tituloseccion = this.textContent						// Cargo el titulo de la categoria
+                fetch("../back/?busca=productos&campo=categorias_nombre&dato="+this.getAttribute("cat"))	// Fetch para obtener productos por cateogrias
+                .then(function(response) { 									// Cuando obtenga respuesta
+                    return response.json(); 									// La convierto en json
+                })
+                .then(function(datos) { 										// Y cuando reciba datos
+                    console.log(datos);
+                    document.querySelector("#categoria").textContent = tituloseccion	// Pongo el titulo de la categoria
+                    document.querySelector("#productos").innerHTML = ""	// Vacio los productos
+                    datos.forEach(function(dato){								// Para cada uno de los productos
+                        document.querySelector("#productos").innerHTML += "<li><a href='producto.php?prod="+dato.Identificador+"'>"+dato.titulo+"</a></li>"	// Los pongo en el listado
+                    })
+                    let cabecera = document.querySelector("header")
+                    difumina(cabecera)
+                })
+            });
+            cabecera.prepend(instancia);
+        });
+    })
+    .catch(function(error) {
+        console.warn("Error al cargar las categorías:", error);
+        document.querySelector("#contienemodal").style.display = "block";
+    });
+
+    // Aplico difuminado en el fondo al entrar y salir de la cabecera /////////////////////
+
+    let cabecera = document.querySelector("header")							// Selecciono la cabecera
+    let categorias = document.querySelectorAll(".categoria")
+
+    /*cabecera.addEventListener("mouseenter",function(){
+        difumina(cabecera)
+    })*/
+
+    cabecera.onmouseleave = function(){											// Cuando salgo
+        console.log("Has salido")
+        document.querySelector("main").classList.remove("difuminado")	// Le quito la clase css
+        document.querySelector("header").classList.remove("grande")
+        cabecera.style.background = "rgba(255,255,255,1)"					// Y le pongo un color blanco sólido
+    }
 }
 
 procesaCabecera()
