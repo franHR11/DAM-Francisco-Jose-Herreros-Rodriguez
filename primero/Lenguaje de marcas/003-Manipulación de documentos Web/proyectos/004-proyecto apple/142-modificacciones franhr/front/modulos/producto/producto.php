@@ -2,15 +2,44 @@
     <?php
     include "modulos/bloque/bloque.php";
     include "config.php";
-	
-	
-		$peticion = "
-		SELECT bp.*, bp.imagen as imagen, bp.fondo as fondo 
-		FROM bloquesproductos bp
-		WHERE productos_titulo = ".$_GET['prod']."
-		;";																					// Creo una petición
-		//echo $peticion;
-		$resultado = mysqli_query($conexion, $peticion);						// Ejecuto la petición contra el servidor
+    
+    // Primero obtener la información del producto
+    $producto_id = intval($_GET['prod']);
+    $query_producto = "SELECT * FROM productos WHERE Identificador = " . $producto_id;
+    $resultado_producto = mysqli_query($conexion, $query_producto);
+    
+    if($producto = mysqli_fetch_assoc($resultado_producto)) {
+        // Mostrar la información del producto
+        echo '<div class="producto-detalle">';
+        echo '<h1>' . htmlspecialchars($producto['titulo']) . '</h1>';
+        echo '<h2>' . htmlspecialchars($producto['subtitulo']) . '</h2>';
+        
+        if (!empty($producto['imagen'])) {
+            echo '<div class="producto-imagen">';
+            echo '<img src="../static/' . htmlspecialchars($producto['imagen']) . '" alt="' . htmlspecialchars($producto['titulo']) . '">';
+            echo '</div>';
+        }
+        
+        echo '<div class="producto-descripcion">';
+        echo '<p>' . nl2br(htmlspecialchars($producto['descripcion'])) . '</p>';
+        echo '</div>';
+        
+        if (!empty($producto['precio'])) {
+            echo '<div class="producto-compra">';
+            echo '<div class="producto-precio">' . number_format($producto['precio'], 2) . ' €</div>';
+            echo '<button class="boton-comprar" onclick="agregarAlCarrito(' . $producto_id . ')">Añadir al carrito</button>';
+            echo '</div>';
+        }
+        echo '</div>';
+    }
+
+    // Luego obtener los bloques asociados al producto
+    $peticion = "
+    SELECT bp.*, bp.imagen as imagen, bp.fondo as fondo 
+    FROM bloquesproductos bp
+    WHERE productos_titulo = " . $producto_id;
+
+    $resultado = mysqli_query($conexion, $peticion);						// Ejecuto la petición contra el servidor
 																								// Creo un array vacio
 		while($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){		// Para cada uno de los resultados
 			$estilo = $fila['estilo'] ? json_decode($fila['estilo'], true) : null;  // Mover esta línea aquí arriba
@@ -94,14 +123,29 @@
 					);																		
     			echo $bloque->getBloque();											
 			}
-		 }
+		} // Cierre del while
     ?>
 </main>
 <script>
-    <?php include "producto.js"; ?>
+    function agregarAlCarrito(productoId) {
+        const producto = {
+            id: productoId,
+            nombre: document.querySelector('.producto-detalle h1').textContent,
+            precio: parseFloat(document.querySelector('.producto-precio').textContent),
+            imagen: document.querySelector('.producto-imagen img')?.src || ''
+        };
+
+        let carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+        carrito.push(producto);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        
+        if(typeof actualizarContadorCarrito === 'function') {
+            actualizarContadorCarrito();
+        }
+        
+        alert('Producto añadido al carrito');
+    }
 </script>
 <style>
-    <?php 
-    	include "producto.css"; 
-    	?>
+    <?php include "producto.css"; ?>
 </style>

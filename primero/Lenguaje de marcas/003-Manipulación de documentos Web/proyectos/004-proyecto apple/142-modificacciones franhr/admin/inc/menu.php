@@ -41,17 +41,37 @@ $peticion = "SELECT t.TABLE_NAME, COALESCE(mv.visible, 1) as visible
             ORDER BY t.TABLE_NAME";
 $resultado = $conexion->query($peticion);
 
+// Array para almacenar las tablas ya mostradas
+$tablasYaMostradas = array();
+
 while ($fila = $resultado->fetch_assoc()) {
-    if ($fila['visible'] == 1 || isset($_GET['mostrar_ocultos'])) {
-        echo "<li class='" . ($fila['visible'] == 0 ? 'oculto' : '') . "'>";
-        echo "<div class='menu-item'>";
-        echo "<a href='?tabla=" . $fila['TABLE_NAME'] . "'>" 
-             . $fila['TABLE_NAME'] . "</a>";
-        echo "<button onclick='toggleTablaVisibilidad(\"" . $fila['TABLE_NAME'] . "\")' class='toggle-visibility'>";
-        echo $fila['visible'] == 1 ? '👁️' : '👁️‍🗨️';
-        echo "</button>";
-        echo "</div>";
-        echo "</li>";
+    $nombreTabla = $fila['TABLE_NAME'];
+    
+    // Evitar mostrar 'tienda' si ya existe 'tiendas'
+    if ($nombreTabla === 'tienda' && in_array('tiendas', $tablasYaMostradas)) {
+        continue;
+    }
+    
+    // Evitar mostrar la misma tabla dos veces
+    if (!in_array($nombreTabla, $tablasYaMostradas)) {
+        $tablasYaMostradas[] = $nombreTabla;
+        
+        // Si es 'tienda', cambiar a 'tiendas'
+        if ($nombreTabla === 'tienda') {
+            $nombreTabla = 'tiendas';
+        }
+        
+        if ($fila['visible'] == 1 || isset($_GET['mostrar_ocultos'])) {
+            echo "<li class='" . ($fila['visible'] == 0 ? 'oculto' : '') . "'>";
+            echo "<div class='menu-item'>";
+            echo "<a href='?tabla=" . $nombreTabla . "'>" 
+                 . ucfirst($nombreTabla) . "</a>";
+            echo "<button onclick='toggleTablaVisibilidad(\"" . $fila['TABLE_NAME'] . "\")' class='toggle-visibility'>";
+            echo $fila['visible'] == 1 ? '👁️' : '👁️‍🗨️';
+            echo "</button>";
+            echo "</div>";
+            echo "</li>";
+        }
     }
 }
 

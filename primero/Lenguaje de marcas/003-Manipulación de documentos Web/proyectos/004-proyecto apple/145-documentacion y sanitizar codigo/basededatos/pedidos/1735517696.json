@@ -1,0 +1,20 @@
+{
+    "cliente": {
+        "nombre": "FRANCISCO JOSE",
+        "apellidos": "HERREROS RODRIGUEZ",
+        "email": "ibericawarez2@gmail.com"
+    },
+    "pedido": {
+        "fecha": "2024-12-30",
+        "numerodepedido": "2024123011456"
+    },
+    "productos": [
+        {
+            "id": 20,
+            "nombre": "Team Group T-Force Delta",
+            "precio": 112,
+            "imagen": "1735493294_ramtforce.webp",
+            "cantidad": 1
+        }
+    ]
+}

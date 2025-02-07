@@ -1,0 +1,73 @@
+/**
+ * @webblock Estilos formulario contacto
+ * @author FranHR
+ * @description Estilos para el módulo de contacto y formulario
+ * @version 1.0.0
+ */
+
+#contacto {
+    width: 1024px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+#formulario,
+iframe {
+    width: 50%;
+}
+
+#formulario input,
+#formulario textarea,
+#formulario button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+iframe {
+    border-radius: 10px;
+}
+
+#formulario button {
+    background: indigo;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#formulario button:hover {
+    background: #4b0082;
+}
+
+#formulario p {
+    margin: 0;
+    padding: 0;
+}
+
+.ayuda {
+    margin-bottom: 10px;
+    color: red;
+    font-size: 0.9em;
+}
+
+.rojo {
+    border: 2px solid red;
+}
+
+#retroalimentacion {
+    text-align: center;
+    color: green;
+    margin-top: 10px;
+}
+
+.seguridad {
+    margin: 15px 0;
+}

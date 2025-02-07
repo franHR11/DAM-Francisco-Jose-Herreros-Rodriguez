@@ -1,6 +1,6 @@
 <?php
 $directorio = "../static/";
-$imagenes = glob($directorio . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+$imagenes = glob($directorio . "*.{jpg,jpeg,png,gif,webp,svg}", GLOB_BRACE);
 
 echo "<div class='gestor-imagenes'>";
 echo "<h2>Gestor de Imágenes</h2>";
@@ -15,10 +15,11 @@ if(isset($_GET['error'])) {
 
 // Formulario de subida
 echo "<div class='upload-form'>";
-echo "<form action='inc/subir_imagen.php' method='post' enctype='multipart/form-data'>";
+echo "<form action='inc/subir_imagen.php' method='post' enctype='multipart/form-data' class='form-inline'>";
 echo "<input type='file' name='imagen' accept='image/*' required>";
 echo "<button type='submit' class='btn-subir'>Subir Imagen</button>";
 echo "</form>";
+echo "<button onclick='eliminarSeleccionadas()' class='btn-eliminar-multiple'>Eliminar seleccionadas</button>";
 echo "</div>";
 
 echo "<div class='grid-imagenes'>";
@@ -27,6 +28,7 @@ foreach($imagenes as $imagen) {
     $nombreArchivo = basename($imagen);
     $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
     echo "<div class='imagen-container'>";
+    echo "<input type='checkbox' class='selector-imagen' data-nombre='$nombreArchivo'>";
     echo "<img src='../static/$nombreArchivo' alt='$nombreArchivo'>";
     echo "<p class='nombre-archivo' onclick='mostrarFormularioRenombrar(this, \"$nombreArchivo\")'>$nombreArchivo</p>";
     echo "<form class='form-renombrar' style='display:none;'>";
@@ -97,6 +99,31 @@ function renombrarImagen(elemento, nombreActual) {
         location.reload();
     });
 }
+
+function eliminarSeleccionadas() {
+    const imagenes = document.querySelectorAll('.selector-imagen:checked');
+    if(imagenes.length === 0) {
+        alert('Por favor, selecciona al menos una imagen');
+        return;
+    }
+    
+    if(confirm('¿Estás seguro de que quieres eliminar las imágenes seleccionadas?')) {
+        const nombresImagenes = Array.from(imagenes).map(checkbox => checkbox.dataset.nombre);
+        
+        fetch('inc/eliminar_imagen.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({imagenes: nombresImagenes})
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+            location.reload();
+        });
+    }
+}
 </script>
 
 <style>
@@ -109,6 +136,15 @@ function renombrarImagen(elemento, nombreActual) {
     padding: 20px;
     background: #f5f5f5;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-inline {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .btn-subir {
@@ -136,6 +172,7 @@ function renombrarImagen(elemento, nombreActual) {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
+    position: relative;
 }
 
 .imagen-container img {
@@ -211,5 +248,25 @@ function renombrarImagen(elemento, nombreActual) {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 3px;
+}
+
+.btn-eliminar-multiple {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.btn-eliminar-multiple:hover {
+    background: #cc0000;
+}
+
+.selector-imagen {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: scale(1.5);
 }
 </style>

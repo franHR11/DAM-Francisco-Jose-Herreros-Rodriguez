@@ -11,8 +11,13 @@ if(isset($_FILES['imagen'])) {
     $ruta_temporal = $archivo['tmp_name'];
     
     // Validar que sea una imagen
-    if(strpos($tipo, 'image/') === 0) {
+    if(strpos($tipo, 'image/') === 0 || $tipo === 'image/webp' || $tipo === 'image/svg+xml') {
         $ruta_destino = "../../static/" . basename($nombre);
+        
+        // Si existe la imagen, la eliminaremos primero
+        if(file_exists($ruta_destino)) {
+            unlink($ruta_destino);
+        }
         
         if(move_uploaded_file($ruta_temporal, $ruta_destino)) {
             header("Location: ../escritorio.php?seccion=imagenes&mensaje=Imagen subida correctamente");

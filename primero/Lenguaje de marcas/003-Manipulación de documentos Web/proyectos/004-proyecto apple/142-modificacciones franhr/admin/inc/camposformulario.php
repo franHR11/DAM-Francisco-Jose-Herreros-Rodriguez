@@ -21,14 +21,61 @@ if($_GET['formulario'] == 'bloquesproductos') {
             </select>
         </div>
 
-        <div class="campo">
-            <label>Título:</label>
-            <input type="text" name="titulo">
+        <div id="campoProductos" style="display:none;" class="campo">
+            <label>Seleccionar Productos:</label>
+            <select name="productos[]" multiple class="producto-selector">
+                <?php
+                $queryProductos = "SELECT * FROM productos";
+                $resultProductos = $conexion->query($queryProductos);
+                while($producto = $resultProductos->fetch_assoc()) {
+                    echo "<option value='".$producto['Identificador']."'>";
+                    echo htmlspecialchars($producto['titulo'] . ' - ' . $producto['precio'] . '€');
+                    echo "</option>";
+                }
+                ?>
+            </select>
+            <small>Mantén presionado Ctrl (Windows) o Cmd (Mac) para seleccionar múltiples productos.</small>
         </div>
 
-        <div class="campo">
-            <label>Subtítulo:</label>
-            <input type="text" name="subtitulo">
+        <div id="campoBloquesTienda" style="display:none;" class="campo">
+            <label>Añadir a bloque tienda existente:</label>
+            <select name="bloque_tienda_existente" onchange="toggleNuevoBloqueFields()">
+                <option value="">Crear nuevo bloque tienda</option>
+                <?php
+                $queryBloquesTienda = "SELECT * FROM bloquesproductos WHERE tipobloque_tipo = '7'";
+                $resultBloquesTienda = $conexion->query($queryBloquesTienda);
+                while($bloque = $resultBloquesTienda->fetch_assoc()) {
+                    echo "<option value='".$bloque['Identificador']."'>";
+                    echo htmlspecialchars($bloque['titulo']);
+                    echo "</option>";
+                }
+                ?>
+            </select>
+            <small>Deja vacío para crear un nuevo bloque tienda</small>
+        </div>
+
+        <div id="camposDatosNuevoBloque">
+            <div class="campo">
+                <label>Título:</label>
+                <input type="text" name="titulo">
+            </div>
+
+            <div class="campo">
+                <label>Subtítulo:</label>
+                <input type="text" name="subtitulo">
+            </div>
+
+            <div class="campo-imagen">
+                <label>Imagen:</label>
+                <input type="file" name="imagen" accept="image/*">
+                <div class="preview-imagen"></div>
+            </div>
+
+            <div class="campo-imagen">
+                <label>Imagen de Fondo:</label>
+                <input type="file" name="fondo" accept="image/*">
+                <div class="preview-fondo"></div>
+            </div>
         </div>
 
         <div class="campo" id="campoTexto">
@@ -41,19 +88,7 @@ if($_GET['formulario'] == 'bloquesproductos') {
             <input type="number" step="0.01" name="precio">
         </div>
 
-        <div class="campo-imagen">
-            <label>Imagen:</label>
-            <input type="file" name="imagen" accept="image/*">
-            <div class="preview-imagen"></div>
-        </div>
-
-        <div class="campo-imagen">
-            <label>Imagen de Fondo:</label>
-            <input type="file" name="fondo" accept="image/*">
-            <div class="preview-fondo"></div>
-        </div>
-
-        <div class="campo">
+        <div class="campo" id="campoAsociarProducto">
             <label>Asociar a Producto:</label>
             <select name="productos_titulo">
                 <option value="">Seleccione el producto al que pertenece</option>
@@ -121,24 +156,307 @@ if($_GET['formulario'] == 'bloquesproductos') {
         color: #666;
         margin-top: 5px;
     }
+    .producto-selector {
+        width: 100%;
+        min-height: 150px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
     </style>
 
     <script>
     function mostrarCamposSegunTipo() {
         const tipoBloque = document.getElementById('tipoBloque').value;
-        const campoPrecio = document.getElementById('campoPrecio');
+        const campoProductos = document.getElementById('campoProductos');
         const campoTexto = document.getElementById('campoTexto');
+        const campoPrecio = document.getElementById('campoPrecio');
+        const campoAsociarProducto = document.getElementById('campoAsociarProducto');
+        const campoBloquesTienda = document.getElementById('campoBloquesTienda');
+        const camposDatosNuevoBloque = document.getElementById('camposDatosNuevoBloque');
 
-        // Por defecto, mostrar el campo de texto y ocultar precio
-        campoTexto.style.display = 'block';
-        campoPrecio.style.display = 'none';
-
-        // Si es bloque tipo tienda (asumiendo que es el tipo 7)
-        if(tipoBloque === '7') {
-            campoPrecio.style.display = 'block';
+        if(tipoBloque === '7') { // Tipo tienda
+            campoProductos.style.display = 'block';
+            campoBloquesTienda.style.display = 'block';
+            campoTexto.style.display = 'none';
+            campoPrecio.style.display = 'none';
+            campoAsociarProducto.style.display = 'none';
+            toggleNuevoBloqueFields(); // Llamar aquí para manejar la visibilidad inicial
+        } else {
+            campoProductos.style.display = 'none';
+            campoBloquesTienda.style.display = 'none';
+            campoTexto.style.display = 'block';
+            campoPrecio.style.display = 'none';
+            campoAsociarProducto.style.display = 'block';
+            camposDatosNuevoBloque.style.display = 'block';
         }
     }
 
+    function toggleNuevoBloqueFields() {
+        const bloqueTiendaSelect = document.querySelector('select[name="bloque_tienda_existente"]');
+        const camposDatosNuevoBloque = document.getElementById('camposDatosNuevoBloque');
+        
+        if (bloqueTiendaSelect.value === '') {
+            camposDatosNuevoBloque.style.display = 'block';
+        } else {
+            camposDatosNuevoBloque.style.display = 'none';
+        }
+    }
+
+    // Manejar previsualizaciones de imágenes
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function(e) {
+            const preview = this.parentElement.querySelector('.preview-imagen, .preview-fondo');
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" style="max-width: 100%">`;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+    </script>
+    <?php
+    return;
+}
+
+// Añadir condición para productos
+if($_GET['formulario'] == 'productos') {
+    ?>
+    <div class="form-productos">
+        <div class="campo">
+            <label>Título:</label>
+            <input type="text" name="titulo" required>
+        </div>
+
+        <div class="campo">
+            <label>Subtítulo:</label>
+            <input type="text" name="subtitulo">
+        </div>
+
+        <div class="campo" id="campoTexto">
+            <label>Descripción:</label>
+            <textarea name="texto" rows="4"></textarea>
+        </div>
+
+        <div class="campo" id="campoDescripcion">
+            <label>Descripción:</label>
+            <textarea name="descripcion" rows="4"></textarea>
+        </div>
+
+        <div class="campo" id="campoPrecio">
+            <label>Precio (€):</label>
+            <input type="number" step="0.01" name="precio" required>
+        </div>
+
+        <div class="campo-imagen">
+            <label>Imagen principal:</label>
+            <input type="file" name="imagen" accept="image/*">
+            <div class="preview-imagen"></div>
+        </div>
+
+        <div class="campo-imagen">
+            <label>Imagen de Fondo:</label>
+            <input type="file" name="fondo" accept="image/*">
+            <div class="preview-fondo"></div>
+        </div>
+
+        <div class="campo">
+            <label>Categoría:</label>
+            <select name="categorias_nombre" required>
+                <option value="">Seleccione una categoría</option>
+                <?php
+                $queryCategorias = "SELECT * FROM categorias";
+                $resultCategorias = $conexion->query($queryCategorias);
+                while($categoria = $resultCategorias->fetch_assoc()) {
+                    echo "<option value='".$categoria['Identificador']."'>";
+                    echo htmlspecialchars($categoria['nombre']);
+                    echo "</option>";
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="campo" id="campoEstilo">
+            <label>Estilos (JSON):</label>
+            <textarea name="estilo" rows="6" placeholder='{
+    "self": {
+        "color": "#000000",
+        "background-color": "#ffffff"
+    },
+    "h3": {
+        "color": "#333333",
+        "font-size": "24px"
+    }
+}'></textarea>
+            <small>Formato JSON para estilos personalizados. Deja vacío para usar estilos por defecto.</small>
+        </div>
+    </div>
+
+    <style>
+    .form-productos {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .campo {
+        margin-bottom: 15px;
+    }
+    .campo label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .campo input, .campo select, .campo textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .campo-imagen {
+        margin: 10px 0;
+        padding: 10px;
+        background: #e3f2fd;
+        border: 1px solid #2196f3;
+        border-radius: 4px;
+    }
+    .preview-imagen, .preview-fondo {
+        margin-top: 10px;
+        max-width: 200px;
+    }
+    </style>
+
+    <script>
+    // Manejar previsualizaciones de imágenes
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function(e) {
+            const preview = this.parentElement.querySelector('.preview-imagen, .preview-fondo');
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" style="max-width: 100%">`;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+    </script>
+    <?php
+    return;
+}
+
+// Añadir condición para tiendas
+if($_GET['formulario'] == 'tiendas') {
+    ?>
+    <div class="form-tienda">
+        <div class="campo">
+            <label>Título de la Tienda:</label>
+            <input type="text" name="titulo" required>
+        </div>
+
+        <div class="campo">
+            <label>Subtítulo:</label>
+            <input type="text" name="subtitulo">
+        </div>
+
+        <div class="campo">
+            <label>Descripción:</label>
+            <textarea name="descripcion" rows="4"></textarea>
+        </div>
+
+        <div class="campo">
+            <label>Seleccionar Productos:</label>
+            <select name="productos[]" multiple class="producto-selector">
+                <?php
+                $queryProductos = "SELECT * FROM productos";
+                $resultProductos = $conexion->query($queryProductos);
+                while($producto = $resultProductos->fetch_assoc()) {
+                    echo "<option value='".$producto['Identificador']."'>";
+                    echo htmlspecialchars($producto['titulo'] . ' - ' . $producto['precio'] . '€');
+                    echo "</option>";
+                }
+                ?>
+            </select>
+            <small>Mantén presionado Ctrl (Windows) o Cmd (Mac) para seleccionar múltiples productos.</small>
+        </div>
+
+        <div class="campo-imagen">
+            <label>Imagen principal:</label>
+            <input type="file" name="imagen" accept="image/*">
+            <div class="preview-imagen"></div>
+        </div>
+
+        <div class="campo-imagen">
+            <label>Imagen de Fondo:</label>
+            <input type="file" name="fondo" accept="image/*">
+            <div class="preview-fondo"></div>
+        </div>
+
+        <div class="campo" id="campoEstilo">
+            <label>Estilos (JSON):</label>
+            <textarea name="estilo" rows="6" placeholder='{
+    "self": {
+        "color": "#000000",
+        "background-color": "#ffffff"
+    },
+    "h3": {
+        "color": "#333333",
+        "font-size": "24px"
+    }
+}'></textarea>
+            <small>Formato JSON para estilos personalizados. Deja vacío para usar estilos por defecto.</small>
+        </div>
+    </div>
+
+    <style>
+    .form-tienda {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .campo {
+        margin-bottom: 15px;
+    }
+    .campo label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .campo input, .campo select, .campo textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .preview-imagen, .preview-fondo {
+        margin-top: 10px;
+        max-width: 200px;
+    }
+    #campoEstilo textarea {
+        font-family: monospace;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    #campoEstilo small {
+        display: block;
+        color: #666;
+        margin-top: 5px;
+    }
+    .producto-selector {
+        width: 100%;
+        min-height: 150px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    </style>
+
+    <script>
     // Manejar previsualizaciones de imágenes
     document.querySelectorAll('input[type="file"]').forEach(input => {
         input.addEventListener('change', function(e) {

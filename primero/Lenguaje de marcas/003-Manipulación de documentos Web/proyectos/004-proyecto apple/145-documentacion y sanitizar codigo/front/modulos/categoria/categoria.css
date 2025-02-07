@@ -1,0 +1,74 @@
+/**
+ * @webblock Estilos de Categorías
+ * @author FranHR
+ * @description Estilos para los diferentes tipos de bloques en la página de categorías
+ */
+
+/* Estilos base compartidos */
+.bloque-base {
+    box-sizing: border-box;
+    padding: 20px;
+    background: rgb(240,240,240);
+    margin-bottom: 20px;
+}
+
+/* Bloque completo */
+.completo {
+    box-sizing: border-box;
+    padding: 20px;
+    background: rgb(240,240,240);
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    height: 200px;
+}
+
+/* Bloque caja */
+.caja {
+    box-sizing: border-box;
+    padding: 20px;
+    background: rgb(240,240,240);
+    margin-bottom: 20px;
+    width: 800px;
+    text-align: justify;
+    height: 200px;
+    margin: auto;
+}
+
+/* Bloque dos columnas */
+.doscolumnas {
+    box-sizing: border-box;
+    padding: 20px;
+    background: rgb(240,240,240);
+    margin-bottom: 20px;
+    width: 800px;
+    text-align: justify;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.doscolumnas div {
+    width: 48%;
+    background: white;
+    padding: 10px;
+}
+
+/* Mensajes de estado */
+.error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+.info-message {
+    color: #004085;
+    background-color: #cce5ff;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+

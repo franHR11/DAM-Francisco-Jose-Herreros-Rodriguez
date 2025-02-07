@@ -1,0 +1,20 @@
+<?php 
+include "inc/errores.php"; 
+
+?>
+<!doctype html>
+<html lang="es">
+<html>
+	<head>
+		<?php include "inc/cabeza.php"; ?>
+	</head>
+	<body>
+		<?php include "modulos/cabecera/cabecera.php"; ?>
+		<?php include "modulos/blog/blog.php"; ?>
+		<?php include "modulos/piedepagina/piedepagina.php"; ?>
+		<?php include "modulos/modal/modal.php"; ?>
+		<?php include "modulos/modalpersonalizado/modalpersonalizado.php"; ?>
+	</body>
+</html>
+
+

@@ -12,10 +12,14 @@ header{
 	transition:all 1s;
 	z-index:100000;
 	overflow:hidden;
+	backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.98);
 }
 
 .grande{
 	height:440px !important;
+	background: rgba(255,255,255,0.95) !important;
 }
 header .contenedor{
 	text-align:center;
@@ -59,6 +63,7 @@ header .contenedor ul li a{
 	column-count:4;
 	padding:40px;
 	box-sizing:border-box;
+	column-gap: 40px;
 }
 #supermenu{
 	
@@ -68,10 +73,74 @@ header .contenedor ul li a{
 	list-style-type:none;
 	padding:0px;
 	margin:0px;
+	break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 20px;
 }
 #supermenu ul li{
 	line-height:26px;
 }
+#supermenu ul li a {
+    color: #1d1d1f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 14px;
+    display: block;
+    padding: 5px 0;
+}
+
+#supermenu ul li a:hover {
+    color: #0071e3;
+    text-decoration: none;
+}
+
+#categoria {
+    font-size: 24px;
+    color: #1d1d1f;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    column-span: all;
+    text-align: left;
+}
+
+.categoria-productos {
+    break-inside: avoid;
+    margin-bottom: 30px !important;
+}
+
+.categoria-titulo {
+    font-weight: 600 !important;
+    color: #1d1d1f !important;
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase;
+}
+
+.categoria-productos li {
+    margin-bottom: 8px !important;
+}
+
+.categoria-productos li a {
+    color: #424245 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease;
+}
+
+.categoria-productos li a:hover {
+    color: #0071e3 !important;
+}
+
+.tienda-menu a {
+    color: #0071e3 !important;
+    font-weight: 500;
+}
+
+.tienda-menu a:hover {
+    color: #0077ed !important;
+    text-decoration: underline !important;
+}
+
 .difuminado{
 	filter:blur(10px);
 }
@@ -93,6 +162,18 @@ main{
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+@media (max-width: 1068px) {
+    #supermenu .columna {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 734px) {
+    #supermenu .columna {
+        column-count: 2;
+    }
 }
 
 
