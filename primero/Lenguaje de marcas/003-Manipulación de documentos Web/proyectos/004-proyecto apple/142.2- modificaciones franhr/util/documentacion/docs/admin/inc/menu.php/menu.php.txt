@@ -1,2 +1,0 @@
-Este archivo carga las entradas del menu de la izquierda
-	Este archivo genera elementos de lista que tienen un hipervinculo
