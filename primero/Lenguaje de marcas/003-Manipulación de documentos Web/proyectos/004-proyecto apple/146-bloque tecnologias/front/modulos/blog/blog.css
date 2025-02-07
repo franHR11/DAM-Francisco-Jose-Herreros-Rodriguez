@@ -1,0 +1,506 @@
+/**
+ * Estilos para el blog
+ * 
+ * Este archivo contiene los estilos necesarios para:
+ * - Layout del blog
+ * - Tarjetas de artículos
+ * - Modal de artículo completo
+ * - Diseño responsive
+ * 
+ * @author Francisco José Herreros Rodríguez
+ * @version 1.0.0
+ */
+
+/* Variables CSS para consistencia en colores y valores */
+:root {
+    --color-primary: #3498db;
+    --color-primary-dark: #2980b9;
+    --color-text: #2c3e50;
+    --color-text-light: #7f8c8d;
+    --shadow-normal: 0 5px 15px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
+    --border-radius: 15px;
+    --spacing-normal: 25px;
+}
+
+/* Reset y estilos base */
+body {
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#blog {
+    margin: 100px auto;
+    width: 1024px;
+    display: grid;
+    gap: var(--spacing-normal);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#blog article {
+    background: white;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-normal);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#blog article:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.imagen-contenedor {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;          /* Añadido para centrar */
+    justify-content: center;/* Centrado horizontal */
+    align-items: center;    /* Centrado vertical */
+    background: #f8f9fa;    /* Fondo suave para ver los límites */
+}
+
+#blog img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;    /* Cambiado a contain para mostrar imagen completa */
+    object-position: center;
+}
+
+#blog article .texto {
+    padding: var(--spacing-normal);
+}
+
+#blog article h4 {
+    color: var(--color-text);
+    font-size: 1.5em;
+    margin: 0 0 15px 0;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+#blog article time {
+    color: var(--color-text-light);
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.categoriablog {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+    max-width: fit-content; /* Se ajusta al contenido */
+    white-space: nowrap; /* Evita saltos de línea */
+}
+
+.contenido-preview {
+    margin: 15px 0;
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.6;
+    max-height: 4.8em; /* 3 líneas de texto */
+    overflow: hidden;
+    position: relative;
+}
+
+.contenido-preview.expandido {
+    max-height: none;
+}
+
+.ver-articulo {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.ver-articulo:hover {
+    background: var(--color-primary-dark);
+}
+
+/* Estilos para el primer artículo destacado */
+#blog article:first-child {
+    grid-column: 1 / -1;
+    display: flex;
+    height: 350px; /* Altura reducida */
+}
+
+#blog article:first-child .imagen-contenedor {
+    height: 100%;
+    width: 50%;
+    background: #f8f9fa;
+}
+
+#blog article:first-child .contenido-preview {
+    max-height: 9.6em; /* 6 líneas para el artículo principal */
+}
+
+#blog article:first-child img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#blog article:first-child .texto {
+    width: 50%; /* Aumentar el espacio para el texto */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#blog article:first-child h4 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Articles 2-5 explicitly placed in a two-column layout */
+#blog > article:nth-child(2),
+#blog > article:nth-child(4) {
+    grid-column: 1 / 3; /* Spans from column 1 to column 2 */
+}
+
+#blog > article:nth-child(3),
+#blog > article:nth-child(5) {
+    grid-column: 2 / 4; /* Spans from column 2 to column 3 */
+}
+
+/* Ensure articles after 5 follow the three-column layout */
+#blog > article:nth-child(n+6) {
+    grid-column: span 1;
+}
+
+#contienemodalpersonalizado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+/* ...existing code... */
+
+.modal-contenedor {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.modal-contenedor .imagen-contenedor {
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.modal-contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.modal-texto {
+    padding: 20px;
+}
+
+.modal-texto h3 {
+    font-size: 2em;
+    color: var(--color-text);
+    margin-bottom: 15px;
+}
+
+.modal-texto time {
+    display: block;
+    color: var(--color-text-light);
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.modal-texto .contenido-completo {
+    margin-top: 20px;
+    line-height: 1.8;
+    color: #34495e;
+    font-size: 1.1em;
+    /* Sin límite de altura */
+    max-height: none;
+    overflow: visible;
+}
+
+.modal-imagen {
+    width: 100%;
+    max-height: 400px; /* Altura máxima para la imagen del modal */
+    object-fit: contain; /* Mantiene la proporción sin recortar */
+    border-radius: 8px;
+    grid-column: 1;
+}
+
+.modal-texto {
+    grid-column: 2;
+    padding: 0 20px;
+}
+
+.modal-texto h3 {
+    font-size: 2.5em;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    font-weight: 700;
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: 15px;
+}
+
+.modal-texto time {
+    display: inline-block;
+    color: var(--color-text-light);
+    font-size: 1.1em;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+.modal-texto p {
+    line-height: 1.8;
+    color: #34495e;
+    font-size: 1.1em;
+    margin: 20px 0;
+}
+
+#modalpersonalizado {
+    background: white;
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 40px;
+    border-radius: 20px;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+/* ...existing code... */
+
+.modal-texto .categoriablog {
+    margin: 15px 0;
+    font-size: 1.1em;
+}
+
+/* Estilos del Modal */
+.modal-close {
+    position: fixed;
+    right: calc(5% + 20px); /* Ajustado para mantener la posición relativa al modal */
+    top: 40px;
+    background: white;
+    border: none;
+    font-size: 30px;
+    color: #666;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.modal-close:hover {
+    background-color: #f8f9fa;
+    color: #333;
+    transform: scale(1.1);
+}
+
+.modal-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    flex-wrap: wrap;
+}
+
+.modal-header .imagen-contenedor {
+    flex: 0 0 400px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-header .imagen-contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+}
+
+.modal-header .contenido-header {
+    flex: 1;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 300px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Ajuste responsive específico para el modal */
+@media (max-width: 768px) {
+    .modal-close {
+        right: 20px;
+        top: 20px;
+    }
+
+    .modal-header .imagen-contenedor {
+        height: 300px;
+    }
+}
+
+.modal-header h3 {
+    font-size: 2.5em;
+    color: var(--color-text);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.modal-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 15px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-meta time {
+    color: #666;
+    font-style: italic;
+}
+
+.modal-contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.modal-contenido {
+    line-height: 1.8;
+    color: #34495e;
+    font-size: 1.1em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+#modalpersonalizado {
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 40px;
+    border-radius: 20px;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Ajustes responsive */
+@media (max-width: 1024px) {
+    #blog {
+        width: 95%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #blog {
+        grid-template-columns: 1fr;
+    }
+    
+    #blog article:first-child {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    #blog article:first-child img,
+    #blog article:first-child .texto {
+        width: 100%;
+    }
+}
+
+/* Estilos del Modal actualizados */
+.modal-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.modal-header .imagen-contenedor {
+    flex: 0 0 400px;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.modal-header .contenido-header {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.modal-header h3 {
+    font-size: 2.5em;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.modal-contenedor {
+    margin-top: 20px;
+    line-height: 1.8;
+    color: #34495e;
+    font-size: 1.1em;
+}
+
+/* Ajuste responsive para el modal */
+@media (max-width: 768px) {
+    .modal-header {
+        flex-direction: column;
+    }
+    
+    .modal-header .imagen-contenedor {
+        width: 100%;
+        height: 250px;
+    }
+}

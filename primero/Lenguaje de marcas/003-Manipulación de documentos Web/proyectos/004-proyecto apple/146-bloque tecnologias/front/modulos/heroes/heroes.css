@@ -1,0 +1,90 @@
+/**
+ * @webblock Heroes
+ * @author FranHR
+ * @description Estilos para el módulo de héroes/productos destacados
+ */
+
+.heroe {
+    text-align: center;
+    min-height: 550px;
+    color: white;
+    box-sizing: border-box;
+    padding: 0; /* Ajustamos el padding vertical para centrar */
+    background-position: center !important;
+    background-size: cover;
+    position: relative;
+    display: grid;
+    grid-template-columns: 30% 70%; /* Cambiamos las proporciones del grid */
+    align-items: center;
+    overflow: hidden; /* Para asegurar que las imágenes no se salgan */
+}
+
+.heroe .product-image {
+    width: 400px; /* Ancho fijo */
+    height: 400px; /* Alto fijo */
+    background-position: center;
+    background-size: cover; /* Cambiar de contain a cover para que llene el espacio */
+    background-repeat: no-repeat;
+    align-self: center;
+    margin: auto; /* Centrar horizontal y verticalmente */
+    padding: 0; /* Quitar padding para que la imagen ocupe todo el espacio */
+    border-radius: 30px; /* Bordes redondeados */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+.heroe .product-image:hover {
+    transform: translateY(-10px); /* Efecto de elevación al hover */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25); /* Sombra más pronunciada al hover */
+}
+
+.heroe .content {
+    width: 60%;
+    margin: 0; /* Quitamos el margin auto */
+    padding: 40px 60px 40px 0; /* Quitamos el padding izquierdo */
+    
+    
+    
+}
+
+.heroe h3,
+.heroe h4 {
+    margin: 0 0 10px;
+    padding: 0;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+    
+}
+
+.heroe h3 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.heroe h4 {
+    font-size: 1.5em;
+    font-weight: normal;
+    max-width: 1100px;
+    
+    word-wrap: break-word;
+}
+
+.heroe button {
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 40px;
+    width: 200px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.heroe button:first-child {
+    background: white;
+    color: black;
+}
+
+.heroe button:last-child {
+    background: transparent;
+    color: white;
+}
