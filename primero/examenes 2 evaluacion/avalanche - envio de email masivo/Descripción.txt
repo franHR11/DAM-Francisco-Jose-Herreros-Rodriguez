@@ -1,0 +1,110 @@
+📢 Descripción
+PCpro Avalanche es una aplicación de escritorio desarrollada en Python para el envío masivo de emails personalizados. Con una interfaz gráfica intuitiva y moderna, esta herramienta permite a los usuarios gestionar campañas de email de manera eficiente y profesional.
+
+🛠️ Stack técnico
+Frontend
+
+  - Python (Tkinter para GUI)
+
+  - ttkbootstrap para estilos modernos
+
+Backend
+
+  - Python
+
+  - smtplib para envío de emails
+
+Arquitectura
+
+Aplicación de escritorio
+
+⚡ Funcionalidades destacadas
+📧 Interfaz gráfica intuitiva y moderna usando ttkbootstrap
+
+📂 Soporte para importación de destinatarios mediante CSV
+
+✉️ Personalización de mensajes usando variables
+
+📜 Sistema de logging en tiempo real
+
+⚙️ Configuración SMTP flexible
+
+📱 Diseño responsive con scroll vertical
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la interfaz gráfica (envioemail.py) y la documentación (README.md)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Contraseñas ocultas en la interfaz
+
+   - Uso de conexiones SMTP con TLS
+
+   - No se almacenan datos sensibles de forma permanente
+
+3. Optimización:
+
+   - Uso de hilos para mantener la interfaz responsiva durante el envío de emails
+
+   - Validación de archivos CSV y direcciones de email
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+🚀 Funcionamiento del Script de Python
+El script envioemail.py proporciona una interfaz gráfica para el envío masivo de emails. A continuación, se detalla su funcionamiento:
+
+1. Inicialización de la Interfaz:
+
+   - Uso de ttkbootstrap para estilos modernos y consistentes
+
+   - Creación de widgets para configuración SMTP, selección de destinatarios, asunto y cuerpo del email
+
+2. Configuración SMTP:
+
+   - Permite configurar el servidor SMTP, puerto, usuario, contraseña y email del remitente
+
+   - Validación de campos para asegurar que todos los datos necesarios están presentes
+
+3. Importación de Destinatarios:
+
+   - Permite importar destinatarios desde un archivo CSV
+
+   - Valida que el CSV contenga las columnas necesarias (`email` y nombre)
+
+4. Personalización de Mensajes:
+
+   - Permite usar variables en el cuerpo del email (`{email}` y {nombre}) para personalizar los mensajes
+
+   - Reemplaza las variables con los datos correspondientes de cada destinatario
+
+5. Envío de Emails:
+
+   - Conecta al servidor SMTP y envía los emails a los destinatarios
+
+   - Muestra un log en tiempo real del proceso de envío, indicando éxito o error para cada destinatario
+
+🔗 Enlaces del proyecto
+
+🚀 Demo en vivo: https://pcprogramacion.es/index.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-avalanche
+
+Este proyecto demuestra cómo se puede crear una herramienta de envío masivo de emails robusta y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.

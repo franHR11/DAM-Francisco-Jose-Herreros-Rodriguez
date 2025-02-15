@@ -1,0 +1,73 @@
+
+
+
+14 de febrero de 2025
+📢 Descripción
+Un blog profesional y responsive que ofrece una experiencia de usuario fluida y moderna. Diseñado para mostrar articulos de manera atractiva con un diseño grid que destaca el contenido mas importante y se adapta perfectamente a cualquier dispositivo. Esta controlado por un panel de control completo.
+
+🛠️ Stack técnico
+
+
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript
+
+Backend
+
+PHP nativo (sin frameworks
+
+MySQL
+
+Arquitectura
+
+MVC modular
+
+Seguridad
+
+ Autenticación JWT
+
+Validación de entradas
+
+Consultas preparadas en MySQL
+
+Comunicación asíncrona
+
+AJAX para mejorar la interactividad sin recargas innecesarias
+
+⚡ Funcionalidades destacadas
+
+
+🎯 Grid adaptativo que prioriza visualmente el contenido destacado
+📱 Diseño 100% responsive 
+🖼️ Sistema de modales para visualización de artículos completos
+🏷️ Categorización de artículos
+🖼️ Gestión optimizada de imágenes
+⚡ Carga asíncrona de contenido
+🔍 Vista previa de artículos con expansión
+📈 Optimización SEO con metadatos dinámicos y URLs
+📝 Editor de texto enriquecido
+🛠️ Panel de administración completo con funcionalidades CRUD para artículos
+
+🔍 Arquitectura y buenas prácticas
+
+
+Modelo MVC para una mejor organización del código y escalabilidad. 
+Consultas optimizadas en MySQL con índices y uso eficiente de claves foráneas. 
+Manejo de sesiones y tokens  para mejorar la seguridad y persistencia del usuario. 
+Validación y sanitización de datos en backend y frontend para evitar vulnerabilidades (XSS, SQL Injection). 
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/blog.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro
+
+
+
+Este proyecto demuestra cómo se puede crear una aplicación web moderna y robusta utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable.
+
+🖼️ Imágenes del proyecto
+Portada del proyecto

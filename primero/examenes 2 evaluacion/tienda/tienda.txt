@@ -1,0 +1,110 @@
+📢 Descripción
+Una tienda online moderna y eficiente que permite a los usuarios explorar y comprar productos de manera intuitiva. Con un carrito de compras interactivo y una interfaz amigable, esta tienda está diseñada para maximizar la experiencia de compra del usuario.
+
+
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript
+
+Backend
+
+PHP nativo (sin frameworks
+
+MySQL
+
+Arquitectura
+
+MVC modular
+
+Seguridad
+
+Autenticación JWT
+
+Validación de entradas
+
+Consultas preparadas en MySQL
+
+Comunicación asíncrona
+
+AJAX para mejorar la interactividad sin recargas innecesarias
+
+
+
+⚡ Funcionalidades destacadas
+🛒 Carrito de compras interactivo con almacenamiento en localStorage
+
+📦 Gestión de productos y categorías
+
+🔍 Búsqueda y filtrado de productos
+
+📱 Diseño responsive y adaptable a cualquier dispositivo
+
+🖼️ Visualización de productos con imágenes y descripciones detalladas
+
+⚡ Carga asíncrona de contenido
+
+🔗 URLs amigables para SEO
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para HTML (tienda.php), JavaScript (tienda.js) y CSS (tienda.css)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Sanitización de datos
+
+   - Encapsulación de lógica sensible
+
+   - Prevención de XSS en el renderizado
+
+3. Optimización:
+
+   - Uso de localStorage para el carrito de compras
+
+   - Lazy loading de imágenes
+
+   - Sistema de caché para productos
+
+4. Mantenibilidad:
+
+   - Variables CSS para consistencia visual
+
+   - Comentarios JSDoc
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Animaciones suaves
+
+   - Interfaz intuitiva
+
+   - Feedback visual en interacciones
+
+   - Diseño adaptativo pensado en el usuario
+
+Este proyecto demuestra cómo se puede crear una tienda online moderna y robusta utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable.
+
+
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/tienda/3/memoria-ram
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro
+
+
+
+Este proyecto demuestra cómo se puede crear una tienda online moderna y robusta utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable
+
+
+🖼️ Imágenes del proyecto
+

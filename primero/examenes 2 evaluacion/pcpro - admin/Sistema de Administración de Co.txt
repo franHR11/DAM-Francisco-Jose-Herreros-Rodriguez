@@ -1,0 +1,98 @@
+🛠️ Sistema de Administración de Contenidos - PCpro Admin
+📢 Descripción
+PCpro Admin es un sistema de administración de contenidos (CMS) desarrollado en PHP que permite gestionar productos, tiendas, bloques de contenido y más. Con una interfaz intuitiva y funcionalidades avanzadas, este sistema es ideal para administrar y mantener sitios web dinámicos y complejos.
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript
+
+Backend
+
+PHP 
+
+MySQL
+
+Arquitectura
+
+PHP embebido en HTML
+
+Seguridad
+
+Autenticación JWT
+
+Validación de entradas
+
+Consultas preparadas en MySQL
+
+Comunicación asíncrona
+
+AJAX para mejorar la interactividad sin recargas innecesarias
+
+⚡ Funcionalidades destacadas
+📋 Gestión de productos, tiendas y bloques de contenido
+
+🖼️ Soporte para imágenes y archivos multimedia
+
+🔒 Sistema de autenticación y permisos
+
+📊 Paginación y filtrado de tablas
+
+⚙️ CRUD (Crear, Leer, Actualizar, Eliminar) completo
+
+📱 Diseño responsive y adaptable
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para configuración (config.php), formularios (camposformulario.php), tablas (tabla.php), y CRUD (insertar.php, actualizar.php, eliminar.php)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada
+
+   - Uso de consultas preparadas para prevenir SQL Injection
+
+   - Manejo seguro de archivos subidos
+
+3. Optimización:
+
+   - Paginación de resultados para mejorar el rendimiento
+
+   - Uso de índices en la base de datos para consultas rápidas
+
+   - Carga asíncrona de imágenes y archivos
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+🛠️ Requisitos del Sistema
+Servidor web con PHP y MySQL
+
+Acceso a la línea de comandos para instalar dependencias
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/index.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro
+
+Este proyecto demuestra cómo se puede crear un sistema de administración de contenidos robusto y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.

@@ -1,0 +1,87 @@
+📢 Descripción
+PCPro Hydra es un sistema avanzado de generación automática de documentación basado en docstrings y comentarios del código fuente. Ideal para desarrolladores que buscan mantener una documentación clara y actualizada sin esfuerzo manual, este sistema procesa las carpetas y archivos del proyecto, generando documentación detallada en formato legible.
+
+🛠️ Stack técnico
+Backend
+
+PHP nativo (sin frameworks
+
+Arquitectura
+
+MVC modular
+
+Aplicación Web
+
+⚡ Funcionalidades destacadas
+- 📝 Generación automática de documentación a partir de docstrings y comentarios
+
+- 📂 Procesamiento de múltiples lenguajes de programación (PHP, JavaScript, Python, CSS, HTML, etc.)
+
+- 📄 Creación de archivos de documentación en formato TXT
+
+- 🔍 Exclusión de carpetas y archivos configurables
+
+- 🖥️ Panel de control intuitivo para generar y ver la documentación
+
+- 📈 Visualización estructurada de la documentación generada
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la generación de documentación (generar.php), visualización (index.php), y panel de control (panel.php)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada
+
+   - Control de acceso a archivos y directorios
+
+   - Requiere autenticación de usuario para generar y ver la documentación
+
+3. Optimización:
+
+   - Procesamiento eficiente de archivos y directorios
+
+   - Almacenamiento de documentación en archivos TXT
+
+   - Generación de documentación en tiempo real
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y exclusiones
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+📱Funcionamiento del Sistema
+Generación de Documentación (generar.php)
+
+El archivo [`generar.php`](generar.php ) procesa las carpetas y archivos del proyecto, generando documentación en la carpeta docs a partir de los docstrings y comentarios en los archivos fuente. Utiliza funciones auxiliares para eliminar directorios, procesar carpetas y extraer docstrings.
+
+Visualización de Documentación (index.php)
+
+El archivo [`index.php`](index.php ) proporciona la estructura básica para visualizar la documentación generada. Incluye el encabezado, el contenedor principal y los estilos necesarios para una presentación atractiva y moderna.
+
+Panel de Control (panel.php)
+
+El archivo [`panel.php`](panel.php ) proporciona una interfaz de usuario para generar y ver la documentación del sistema. Requiere que el usuario haya iniciado sesión y ofrece botones para generar y ver la documentación.
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-hydra
+
+Este proyecto demuestra cómo se puede crear un sistema de generación de documentación robusto y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.
+
+#WebDevelopment #PHP #Documentation #Programming #DeveloperLife

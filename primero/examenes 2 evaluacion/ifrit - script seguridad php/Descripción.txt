@@ -1,0 +1,88 @@
+📢 Descripción
+SecurityGuard es un script de seguridad fácil de implementar para proteger tu aplicación web PHP contra ataques comunes. Con características avanzadas como protección contra XSS, prevención de inyección SQL y defensa contra ataques de fuerza bruta, SecurityGuard es la solución ideal para mantener tu aplicación segura y protegida.
+
+🛠️ Stack técnico
+Backend
+
+PHP nativo (sin frameworks
+
+Arquitectura
+
+MVC modular
+
+Seguridad
+
+⚡ Funcionalidades destacadas
+- ✅ Protección contra XSS (Cross-Site Scripting)
+
+- ✅ Prevención de Inyección SQL
+
+- ✅ Protección contra ataques de fuerza bruta
+
+- ✅ Headers de seguridad básicos
+
+- ✅ Sistema de logs detallado
+
+- ✅ Detección inteligente de IP
+
+- ✅ Bloqueo progresivo de intentos
+
+- ✅ Fácil implementación
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la lógica de seguridad (SecurityGuard.php), implementación (security.php) y pruebas (test.php)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada
+
+   - Uso de consultas preparadas para prevenir SQL Injection
+
+   - Manejo seguro de sesiones y cookies
+
+3. Optimización:
+
+   - Sistema de logs detallado para monitorear intentos de ataque
+
+   - Detección y bloqueo de IPs maliciosas
+
+   - Bloqueo progresivo de intentos de login fallidos
+
+4. Mantenibilidad:
+
+   - Variables configurables para parámetros de seguridad
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+🚀 Funcionamiento del Sistema
+Implementación (security.php)
+
+El archivo [`security.php`](security.php ) inicializa el sistema de seguridad y aplica headers de seguridad básicos. Además, sanitiza automáticamente todas las entradas (`$_GET`, $_POST, $_REQUEST) utilizando la clase SecurityGuard.
+
+Clase de Seguridad (SecurityGuard.php)
+
+El archivo [`SecurityGuard.php`](SecurityGuard.php ) contiene la lógica principal de seguridad, incluyendo la protección contra XSS, la prevención de inyección SQL y la defensa contra ataques de fuerza bruta. Utiliza métodos avanzados para detectar y bloquear intentos maliciosos.
+
+Sistema de Logs (security_log.txt)
+
+El archivo [`security_log.txt`](security_log.txt ) registra todos los eventos de seguridad, incluyendo intentos de XSS, inyecciones SQL y bloqueos por fuerza bruta. Este sistema de logs permite monitorear y analizar los intentos de ataque en tiempo real.
+
+Pruebas (test.php)
+
+El archivo [`test.php`](test.php ) proporciona una suite de pruebas completa para verificar la efectividad del sistema de seguridad. Incluye pruebas para ataques XSS, inyecciones SQL y ataques de fuerza bruta.
+
+🔗 Enlaces del proyecto
+
+🚀 Demo en vivo: https://pcprogramacion.es/
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-ifrit
+
+Este proyecto demuestra cómo se puede crear un sistema de seguridad robusto y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.
+
+#WebDevelopment #PHP #Security #Programming #DeveloperLife

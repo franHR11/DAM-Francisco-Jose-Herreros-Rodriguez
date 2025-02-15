@@ -1,0 +1,134 @@
+📢 Descripción
+PCPro Pine es una herramienta profesional de edición de texto enriquecido diseñada para crear y editar contenido de manera eficiente y atractiva. Con una interfaz intuitiva y moderna, este editor es ideal para desarrolladores, escritores y cualquier persona que necesite una herramienta robusta para la creación de documentos.
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript
+
+Backend
+
+PHP nativo (sin frameworks
+
+Arquitectura
+
+MVC modular
+
+⚡ Funcionalidades destacadas
+- 🖋️ Edición de texto enriquecido con soporte para negrita, cursiva, subrayado y más
+
+- 📋 Inserción de tablas, imágenes y listas
+
+- 🎨 Selector de colores para texto y fondo
+
+- 📄 Importación de documentos Word, Excel y PDF
+
+- 💾 Guardado y carga de plantillas personalizadas
+
+- 🖥️ Interfaz gráfica intuitiva y moderna
+
+- 📱 Diseño responsive y adaptable
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la interfaz gráfica (index.html), estilos (pcpro-pine-editor.css), lógica del editor (pcpro-pine-editor.js) y backend (plantillas.php)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada
+
+   - Manejo seguro de archivos subidos
+
+3. Optimización:
+
+   - Carga asíncrona de dependencias
+
+   - Uso de localStorage para guardar el estado del editor
+
+   - Almacenamiento de plantillas en el servidor para acceso rápido
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+⚡Funcionalidades del Editor
+- Barra de herramientas:
+
+  - Negrita, cursiva, subrayado
+
+  - Alineación de texto (izquierda, centro, derecha)
+
+  - Inserción de tablas e imágenes
+
+  - Selector de colores para texto y fondo
+
+  - Guardado y carga de plantillas
+
+  - Importación de documentos Word, Excel y PDF
+
+  - Fijacion de barra de herramientas en documentos largos
+
+  - Previsualización e impresión de archivos desde el editor
+
+  - Inserción de bloques por columnas
+
+  - Botón para rehacer y deshacer en la barra de herramientas
+
+- Área de contenido:
+
+  - Edición de texto enriquecido
+
+  - Inserción y manipulación de tablas e imágenes
+
+  - Soporte para listas numeradas y con viñetas
+
+  - Creación de listas de verificación
+
+  - Creación de listas de verificación
+
+  - Redimensión de tablas bloques e imágenes visual
+
+🚀 Funcionamiento del Sistema
+Interfaz Gráfica (index.html)
+
+El archivo [`index.html`](index.html ) proporciona la estructura básica de la interfaz gráfica del editor. Incluye el encabezado, el contenedor principal del editor y los estilos necesarios para una presentación atractiva y moderna.
+
+Estilos (pcpro-pine-editor.css)
+
+El archivo [`pcpro-pine-editor.css`](pcpro-pine-editor.css ) define los estilos para el editor, incluyendo la barra de herramientas, el área de contenido y los controles de formato. Utiliza CSS moderno para asegurar una apariencia consistente y profesional.
+
+Lógica del Editor (pcpro-pine-editor.js)
+
+El archivo [`pcpro-pine-editor.js`](pcpro-pine-editor.js ) contiene la lógica principal del editor, gestionando la creación y edición de contenido, la inserción de tablas e imágenes, y la aplicación de estilos. Utiliza JavaScript moderno (ES6+) para proporcionar una experiencia de usuario fluida y responsiva.
+
+Backend (Plantillas.php)
+
+El archivo [`plantillas.php`](plantillas.php ) maneja las operaciones del backend, incluyendo el guardado y carga de plantillas. Utiliza PHP para interactuar con el sistema de archivos y proporcionar una API sencilla para la gestión de plantillas.
+
+
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pine.pcprogramacion.es/
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-pine
+
+Este proyecto demuestra cómo se puede crear una herramienta de edición de texto enriquecido robusta y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.
