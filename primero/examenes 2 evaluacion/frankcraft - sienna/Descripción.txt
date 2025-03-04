@@ -1,0 +1,103 @@
+📢 Descripción
+FranKraft es un juego de construcción en 3D inspirado en Minecraft, desarrollado con A-Frame y PHP. Este proyecto permite a los jugadores crear y destruir bloques en un mundo virtual, ofreciendo una experiencia inmersiva y personalizable. Ideal para entusiastas de los juegos de construcción y desarrolladores interesados en la creación de mundos virtuales.
+
+
+
+🛠️ Stack técnico
+Frontend
+
+  - HTML5
+
+  - CSS3
+
+  - JavaScript (A-Frame)
+
+Backend
+
+  - PHP
+
+  - SQLite
+
+Arquitectura
+
+MVC modular
+
+⚡ Funcionalidades destacadas
+- 🧱 Sistema de construcción y destrucción de bloques
+
+- 🌐 Modo multijugador con sistema de usuarios
+
+- 💾 Guardado automático del progreso
+
+- 🗺️ Sistema de chunks para optimización
+
+- 🌟 Efectos visuales (niebla, sombras, iluminación dinámica)
+
+- 🛠️ Herramientas de construcción:
+
+  -🧱 Modo libre para colocar bloques individuales
+
+  -🧱 Estructuras predefinidas (árboles, etc.)
+
+  -🌟 Selector de colores
+
+  -🌐Radio de construcción ajustable
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para configuración (config.php), lógica del juego (codigo.js), y backend (frankcraftback.php)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada
+
+   - Uso de consultas preparadas para prevenir SQL Injection
+
+   - Manejo seguro de archivos subidos
+
+3. Optimización:
+
+   - Sistema de chunks para cargar y descargar bloques dinámicamente
+
+   - Uso de A-Frame para gráficos 3D eficientes
+
+   - Almacenamiento de datos en SQLite para consultas rápidas
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+🕹️ Componentes del Juego
+1. Sistema de Nieve (snow-system.js):
+
+   - Añade efectos de nieve al mundo virtual, mejorando la inmersión del jugador.
+
+2. Ciclo Día/Noche (daynight.js):
+
+   - Gestiona el ciclo de día y noche, actualizando la iluminación y el color del cielo en tiempo real.
+
+3. Sistema de Clima (weather.js):
+
+   - Permite cambiar el clima en el juego, añadiendo efectos de lluvia, nieve y tormentas.
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://frankcraft.pcprogramacion.es/
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-franKraft
+
+Este proyecto demuestra cómo se puede crear un juego de construcción en 3D robusto y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.

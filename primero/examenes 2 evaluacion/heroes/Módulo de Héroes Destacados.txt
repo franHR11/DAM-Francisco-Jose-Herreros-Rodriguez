@@ -1,0 +1,101 @@
+Módulo de Héroes Destacados en Tienda Online
+
+
+📢 Descripción
+
+
+El módulo de héroes destacados es una sección visualmente atractiva que resalta productos o promociones especiales en la tienda online. Con un diseño moderno y adaptable, este módulo capta la atención del usuario y mejora la experiencia de navegación.
+
+🛠️ Stack técnico
+
+
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript
+
+Backend
+
+PHP nativo (sin frameworks
+
+MySQL
+
+Arquitectura
+
+MVC modular
+
+Seguridad
+
+Validación de entradas
+
+Consultas preparadas en MySQL
+
+Comunicación asíncrona
+
+AJAX para mejorar la interactividad sin recargas innecesarias
+
+⚡ Funcionalidades destacadas
+
+
+🌟 Visualización de productos destacados con imágenes y descripciones
+
+📱 Diseño responsive que se adapta a cualquier dispositivo
+
+🎨 Estilos personalizados para cada héroe
+
+🔗 Botones de llamada a la acción configurables
+
+⚡ Carga asíncrona de contenido desde el backend
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para HTML (heroes.php), JavaScript (heroes.js) y CSS (heroes.css)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Sanitización de datos
+
+   - Encapsulación de lógica sensible
+
+   - Prevención de XSS en el renderizado
+
+3. Optimización:
+
+   - Uso de templates para mejor rendimiento
+
+   - Lazy loading de imágenes
+
+   - Sistema de caché para héroes
+
+4. Mantenibilidad:
+
+   - Variables CSS para consistencia visual
+
+   - Comentarios JSDoc
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Animaciones suaves
+
+   - Interfaz intuitiva
+
+   - Feedback visual en interacciones
+
+   - Diseño adaptativo pensado en el usuario
+
+Este módulo demuestra cómo se puede crear una sección destacada y atractiva en una web online utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable.
+
+🔗 Enlaces del proyecto
+
+🚀 Demo en vivo: https://pcprogramacion.es/index.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro
+

@@ -1,0 +1,101 @@
+📢 Descripción
+PCpro Mermaid es una herramienta profesional de optimización de imágenes que permite a los usuarios reducir el tamaño de sus archivos de imagen sin comprometer la calidad. Con una interfaz gráfica intuitiva y un modo servidor para automatización, esta herramienta es ideal para diseñadores, desarrolladores web y cualquier persona que necesite optimizar imágenes de manera eficiente.
+
+🛠️ Stack técnico
+Frontend 
+
+Python (Tkinter para GUI)
+
+ttkbootstrap para estilos modernos
+
+Backend
+
+PIL (Pillow) para procesamiento de imágenes
+
+Arquitectura
+
+Aplicación de escritorio y modo servidor
+
+⚡ Funcionalidades destacadas
+🖼️ Procesamiento individual o por lotes de imágenes
+
+📂 Soporte para múltiples formatos de imagen (WEBP, JPG, PNG, etc.)
+
+⚙️ Optimización inteligente de calidad/tamaño
+
+🖥️ Interfaz gráfica intuitiva con barra de progreso
+
+🌐 Modo servidor para automatización de tareas
+
+📊 Informes detallados de optimización
+
+📱 Diseño responsive y adaptable
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la interfaz gráfica (pcpro-Mermaid.py) y el modo servidor (pcpro-Mermaid-server.py)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación de rutas de entrada y salida
+
+   - Manejo de excepciones para evitar fallos inesperados
+
+3. Optimización:
+
+   - Uso de PIL (Pillow) para procesamiento eficiente de imágenes
+
+   - Reducción de tamaño manteniendo la calidad visual
+
+   - Preservación de proporciones en redimensionamiento
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+🚀Funcionamiento del Script de Python
+El script pcpro-Mermaid.py proporciona una interfaz gráfica para la optimización de imágenes. A continuación, se detalla su funcionamiento:
+
+1. Inicialización de la Interfaz:
+
+   - Uso de ttkbootstrap para estilos modernos y consistentes
+
+   - Creación de widgets para selección de carpetas y archivos, configuración de formato de salida y barra de progreso
+
+2. Selección de Imágenes:
+
+   - Permite seleccionar una carpeta completa o archivos individuales
+
+   - Muestra el número de archivos seleccionados
+
+3. Optimización de Imágenes:
+
+   - Redimensiona las imágenes manteniendo la proporción
+
+   - Guarda las imágenes optimizadas en el formato seleccionado
+
+   - Muestra el progreso y resultados en tiempo real
+
+4. Procesamiento en Hilo Separado:
+
+   - Utiliza threading para evitar que la interfaz se congele durante el procesamiento
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/index.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-mermaid

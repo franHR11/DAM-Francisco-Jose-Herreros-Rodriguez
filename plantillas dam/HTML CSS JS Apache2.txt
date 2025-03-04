@@ -1,0 +1,39 @@
+
+HTML
+CSS
+JS - Apache2
+
+HTML
+CSS
+JS
+PHP
+MySQL - Apache2 + PHP + MySQL
+
+HTML
+CSS
+JS
+PHP - Apache2 + PHP, personalizar la instalación de PHP
+FireBase
+
+
+HTML
+CSS
+JS
+Python
+MySQL
+
+
+HTML
+CSS
+JS
+nodejs - nodejs
+mongodb - mongodb
+
+HTML
+CSS
+JS
+nodejs
+mongodb
+MySQL
+
+

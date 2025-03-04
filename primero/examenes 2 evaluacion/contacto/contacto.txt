@@ -1,0 +1,103 @@
+📢 Descripción
+El módulo de contacto es una herramienta esencial para cualquier Web, permitiendo a los usuarios comunicarse de manera efectiva con el equipo de soporte. Este formulario de contacto está diseñado para ser intuitivo, seguro y visualmente atractivo, mejorando la experiencia del usuario y facilitando la gestión de mensajes.
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript
+
+Backend
+
+PHP nativo (sin frameworks
+
+MySQL
+
+Arquitectura
+
+MVC modular
+
+Seguridad
+
+Autenticación
+
+Comunicación asíncrona
+
+AJAX para mejorar la interactividad sin recargas innecesarias
+
+⚡ Funcionalidades destacadas
+📧 Formulario de contacto con validación en tiempo real
+
+🔒 Pregunta de seguridad (captcha) para evitar spam
+
+🌍 Integración con Google Maps para mostrar la ubicación
+
+📱 Diseño responsive que se adapta a cualquier dispositivo
+
+⚡ Envío asíncrono de mensajes al backend
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para HTML (contacto.php), JavaScript (contacto.js) y CSS (contacto.css)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación de campos en el frontend
+
+   - Pregunta de seguridad para evitar envíos automáticos
+
+   - Sanitización de datos en el backend
+
+3. Optimización:
+
+   - Uso de FormData para el envío de datos
+
+   - Lazy loading del mapa de Google
+
+   - Sistema de caché para mensajes
+
+4. Mantenibilidad:
+
+   - Comentarios JSDoc
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Animaciones suaves
+
+   - Interfaz intuitiva
+
+   - Feedback visual en interacciones
+
+   - Diseño adaptativo pensado en el usuario
+
+Gestión de mensajes
+
+Los mensajes enviados a través del formulario se procesan en el backend y se almacenan en un archivo JSON para su posterior revisión. Esto asegura que todos los mensajes se mantengan organizados y accesibles para el equipo de soporte.
+
+ Captcha de seguridad
+
+Para evitar el spam, se incluye una pregunta de seguridad que requiere que el usuario ingrese el doble del día actual del mes. Esta medida simple pero efectiva ayuda a mantener la integridad del formulario.
+
+Integración con Google Maps
+
+El formulario incluye un mapa de Google que muestra la ubicación de la tienda, facilitando a los usuarios encontrar la dirección física y mejorando la confianza en la tienda online.
+
+Este módulo de contacto demuestra cómo se puede crear una herramienta de comunicación efectiva y segura utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable.
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/contacto.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro
+
+Este módulo de contacto demuestra cómo se puede crear una herramienta de comunicación efectiva y segura utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable.
+
+🖼️ Imágenes del proyecto
+Portada del formulario de contacto

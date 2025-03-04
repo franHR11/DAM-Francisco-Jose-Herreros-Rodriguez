@@ -1,0 +1,148 @@
+ Descripción
+PCPro Kraken es un sistema completo de analíticas web que proporciona un seguimiento detallado y visualización de métricas en tiempo real. Ideal para administradores de sitios web y desarrolladores que buscan obtener información valiosa sobre el comportamiento de los usuarios y el rendimiento del sitio.
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript (Chart.js)
+
+Backend
+
+PHP nativo (sin frameworks
+
+MySQL
+
+Arquitectura
+
+Aplicación web
+
+⚡ Funcionalidades destacadas
+📊 Dashboard interactivo en tiempo real 
+
+📈 Seguimiento de múltiples métricas:
+
+👥 Visitas totales y usuarios únicos
+
+⏳ Tiempo promedio de sesión
+
+📉 Tasa de rebote
+
+📱 Dispositivos utilizados
+
+🌍 Distribución geográfica
+
+🔗 Fuentes de tráfico
+
+⏰ Horarios de mayor actividad 
+
+🛠️ Configuración y personalización sencilla 
+
+🔒 Seguridad avanzada con sanitización de datos y control de acceso
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la interfaz gráfica (index.php), lógica de registro (registro.php), y API de datos (get_analytics_data.php)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada
+
+   - Control de acceso a archivos
+
+   - Protección contra XSS y validación de IP y User-Agent
+
+3. Optimización:
+
+   - Uso de caché para mejorar el rendimiento
+
+   - Almacenamiento de datos en archivos JSON y CSV
+
+   - Actualización de métricas en tiempo real
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+⚙️Funcionamiento del Sistema
+Interfaz Gráfica (index.php)
+
+El archivo [`index.php`](index.php ) proporciona la estructura básica de la interfaz gráfica del panel de analíticas. Incluye el encabezado, el contenedor principal y los estilos necesarios para una presentación atractiva y moderna.
+
+Estilos (style.css)
+
+El archivo [`style.css`](style.css ) define los estilos para el panel de analíticas, incluyendo el contenedor, el encabezado, los gráficos y las tablas. Utiliza CSS moderno para asegurar una apariencia consistente y profesional.
+
+Lógica de Registro (registro.php)
+
+El archivo [`registro.php`](registro.php ) contiene la lógica principal para registrar las visitas y eventos de los usuarios. Utiliza PHP para capturar información relevante como la IP, el navegador, el sistema operativo y la resolución de pantalla, y guarda estos datos en archivos JSON y CSV.
+
+API de Datos (get_analytics_data.php)
+
+El archivo [`get_analytics_data.php`](get_analytics_data.php ) proporciona una API para obtener los datos de analíticas en formato JSON. Utiliza caché para mejorar el rendimiento y permite la actualización forzada de datos. Filtra eventos por período y calcula diversas métricas y estadísticas.
+
+Este proyecto demuestra cómo se puede crear una tienda online moderna y robusta utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable.
+
+🛠️ Panel de Control
+El panel de control permite visualizar:
+
+- Visitas Totales: Número total de visitas en el período seleccionado
+
+- Usuarios Únicos: Número de usuarios únicos en el período seleccionado
+
+- Tiempo Promedio: Tiempo promedio de sesión de los usuarios
+
+- Tasa de Rebote: Porcentaje de usuarios que abandonan el sitio después de ver una sola página
+
+📊 Gráficos y Tablas
+- Gráfico de Visitas por Día: Muestra el número de visitas diarias en el período seleccionado
+
+- Gráfico de Dispositivos: Distribución de dispositivos utilizados por los usuarios
+
+- Gráfico de Horarios de Mayor Tráfico: Muestra las horas pico de visitas
+
+- Gráfico de Fuentes de Tráfico: Muestra las principales fuentes de tráfico
+
+- Tabla de Páginas Más Visitadas: Lista las páginas más visitadas con el número de visitas y porcentaje del total
+
+- Tabla de Países: Muestra los países de origen de los usuarios con el número de visitas y porcentaje del total
+
+- Tabla de IPs: Lista las IPs de los usuarios con el número de visitas y última visita
+
+🔒 Seguridad
+El sistema implementa:
+
+- Sanitización de datos
+
+- Control de acceso a archivos
+
+- Caché para optimizar rendimiento
+
+- Protección contra XSS
+
+- Validación de IP y User-Agent
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-kraken
+
+Este proyecto demuestra cómo se puede crear un sistema de analíticas web robusto y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.

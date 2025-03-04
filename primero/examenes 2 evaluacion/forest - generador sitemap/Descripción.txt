@@ -1,0 +1,130 @@
+📢 Descripción
+PCPro Forest es una herramienta profesional de generación de sitemaps XML con un panel de control intuitivo para sitios web PHP. Esta herramienta permite crear y gestionar automáticamente sitemaps XML, mejorando la indexación y el SEO de tu sitio web.
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+Backend
+
+PHP nativo (sin frameworks
+
+Arquitectura
+
+MVC modular
+
+⚡ Funcionalidades destacadas
+- 🖥️ Panel de control visual para gestionar la configuración
+
+- 🔍 Rastreo automático de sitio web configurable
+
+- ⏱️ Control de tiempo máximo de rastreo y límite de URLs
+
+- 📊 Asignación automática de prioridades personalizable
+
+- 🚫 Exclusión de rutas configurables desde la interfaz
+
+- 📈 Monitoreo del estado del sitemap generado
+
+- 📄 Soporte para atributos lastmod, changefreq y priority
+
+- 📝 Generación de XML formateado y válido
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la interfaz gráfica (index.php), estilos (style.css), lógica del generador (generador_sitemap.php) y configuración (config.php)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada
+
+   - Manejo seguro de archivos generados
+
+   - Uso de consultas preparadas para prevenir SQL Injection
+
+3. Optimización:
+
+   - Sistema de rastreo eficiente para grandes sitios web
+
+   - Almacenamiento de configuraciones en archivos PHP
+
+   - Generación de XML optimizado y válido
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+⚡Funcionamiento del Sistema
+Interfaz Gráfica (index.php)
+
+El archivo [`index.php`](index.php ) proporciona la estructura básica de la interfaz gráfica del generador de sitemaps. Incluye el encabezado, el contenedor principal y los estilos necesarios para una presentación atractiva y moderna.
+
+Estilos (style.css)
+
+El archivo [`style.css`](style.css ) define los estilos para el generador, incluyendo el contenedor, el encabezado, los formularios y los botones. Utiliza CSS moderno para asegurar una apariencia consistente y profesional.
+
+Lógica del Generador (generador_sitemap.php)
+
+El archivo [`generador_sitemap.php`](generador_sitemap.php ) contiene la lógica principal del generador de sitemaps, gestionando el rastreo del sitio, la exclusión de rutas y la generación del archivo XML. Utiliza PHP para proporcionar una experiencia de usuario fluida y eficiente.
+
+Configuración (config.php)
+
+El archivo [`config.php`](config.php ) define la configuración por defecto del generador, incluyendo la URL base, el nombre del archivo sitemap, el número máximo de URLs, el tiempo máximo de rastreo y las rutas a excluir.
+
+🖥️ Panel de Control
+El panel de control permite configurar:
+
+- URL base del sitio
+
+- Nombre del archivo sitemap
+
+- Número máximo de URLs a incluir
+
+- Tiempo máximo de rastreo
+
+- Rutas a excluir
+
+- Prioridades por tipo de contenido
+
+📊 Configuración Disponible
+- URL del Sitio: URL base para el rastreo
+
+- Nombre del Archivo: Nombre del sitemap.xml
+
+- Máximo de URLs: Límite de URLs a incluir (default: 50000)
+
+- Tiempo máximo: Límite de tiempo de rastreo en segundos (default: 3600)
+
+- Rutas a Excluir: Lista personalizable de rutas a excluir
+
+- Prioridades: Valores de 0.0 a 1.0 para cada tipo de contenido
+
+Este proyecto demuestra cómo se puede crear una tienda online moderna y robusta utilizando tecnologías web fundamentales, sin depender de frameworks pesados, manteniendo un código limpio y escalable.
+
+🔗 Enlaces del proyecto
+
+🚀 Demo en vivo: https://forest.pcprogramacion.es/
+
+📂 Código fuente en GitHub: https://forest.pcprogramacion.es/
+
+Este proyecto demuestra cómo se puede crear una herramienta de generación de sitemaps XML robusta y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.
+
+#WebDevelopment #PHP #SEO #Programming #DeveloperLife

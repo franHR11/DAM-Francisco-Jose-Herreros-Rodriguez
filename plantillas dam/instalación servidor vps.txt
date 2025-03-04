@@ -1,0 +1,32 @@
+sudo apt update					-- Actualizar los repositorios de linux
+sudo apt upgrade
+sudo apt install apache2		-- Instalar apache
+sudo service apache2 start		-- arrancar apache
+sudo service apache2 stop		-- stop apache
+cd .. 								-- bajar de carpeta
+ls -l									-- Listado en formato humano
+cd /var/www/html
+sudo nano index.html
+rm index.html 						-- elimino el archivo index
+ls 					
+clear 								-- borrar la pantalla
+sudo apt install python3 		-- instalar Python	
+sudo apt install python3-pip	-- Instalar PIP	
+sudo pip3 install Flask			-- Instalo Flask encima de Python
+sudo apt install nodejs			-- Instalo nodejs
+sudo apt install npm				-- Instalo el gestor de paquetes de node
+npm install express				-- Instalo express
+
+sudo apt install php
+sudo apt install php-mysqli
+sudo apt install mysql-server
+sudo mysql_secure_installation
+
+sudo mysql -u root -p
+CREATE DATABASE crimson;
+CREATE USER 'crimson'@'localhost' IDENTIFIED BY 'crimson';
+GRANT ALL PRIVILEGES ON crimson.* TO 'crimson'@'localhost';
+FLUSH PRIVILEGES;
+mysql -u root -p crimson < crimson.sql
+logout
+

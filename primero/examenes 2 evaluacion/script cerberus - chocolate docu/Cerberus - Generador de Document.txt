@@ -1,0 +1,116 @@
+📄 Cerberus - Generador de Documentación Automatizada
+📢 Descripción
+Cerberus es una herramienta avanzada de generación de documentación automatizada que analiza tu proyecto y crea un archivo Markdown completo con la estructura, documentación y código de tus archivos. Ideal para desarrolladores que buscan mantener una documentación clara y actualizada sin esfuerzo manual.
+
+🛠️ Stack técnico
+Frontend
+
+Python (Tkinter para GUI)
+
+ttkbootstrap para estilos modernos
+
+Backend
+
+Python
+
+Arquitectura
+
+Aplicación de escritorio
+
+⚡ Funcionalidades destacadas
+📂 Genera estructura de directorios en formato Markdown
+
+📝 Extrae docstrings y comentarios de varios lenguajes (Python, JavaScript, PHP, HTML, CSS)
+
+💻 Incluye el código fuente con resaltado de sintaxis
+
+🚫 Excluye automáticamente archivos binarios y directorios ocultos
+
+🖥️ Interfaz gráfica intuitiva
+
+⚡ Procesamiento en hilos separados para mantener la interfaz responsiva
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para la interfaz gráfica (Cerberus.py) y la documentación (README.md)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación de rutas de entrada y salida
+
+   - Manejo de excepciones para evitar fallos inesperados
+
+3. Optimización:
+
+   - Uso de hilos para mantener la interfaz responsiva durante el procesamiento
+
+   - Filtrado de archivos binarios y directorios ocultos para mejorar el rendimiento
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+El script Cerberus.py proporciona una interfaz gráfica para la generación de documentación automatizada. A continuación, se detalla su funcionamiento:
+
+🚀 Funcionamiento del Script de Python
+1. Inicialización de la Interfaz:
+
+   - Uso de ttkbootstrap para estilos modernos y consistentes
+
+   - Creación de widgets para selección de carpetas y archivos, configuración de archivo de salida y barra de progreso
+
+2. Selección de Carpeta y Archivo:
+
+   - Permite seleccionar la carpeta del proyecto a documentar
+
+   - Permite seleccionar la ubicación donde guardar el archivo Markdown generado
+
+3. Generación de Documentación:
+
+   - Genera la estructura del proyecto en formato Markdown
+
+   - Extrae docstrings y comentarios de archivos soportados (Python, JavaScript, PHP, HTML, CSS)
+
+   - Incluye el código fuente con resaltado de sintaxis
+
+4. Procesamiento en Hilo Separado:
+
+   - Utiliza threading para evitar que la interfaz se congele durante el procesamiento
+
+📄 Formato de la Documentación Generada
+El archivo Markdown generado incluirá:
+
+1. Estructura completa del proyecto:
+
+   - Muestra la jerarquía de carpetas y archivos
+
+2. Documentación extraída de docstrings y comentarios:
+
+   - Incluye la documentación encontrada en los archivos soportados
+
+3. Código fuente con resaltado de sintaxis:
+
+   - Incluye el código fuente de los archivos soportados con resaltado de sintaxis
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://pcprogramacion.es/index.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-Cerberus
+
+Este proyecto demuestra cómo se puede crear una herramienta de generación de documentación automatizada robusta y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.
+

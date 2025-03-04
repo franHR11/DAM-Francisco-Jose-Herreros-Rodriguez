@@ -1,0 +1,133 @@
+📢 Descripción
+PCPro FranHR es un portfolio personal desarrollado para mostrar las habilidades, proyectos y experiencia de Francisco José Herreros Rodríguez. Este sitio web está diseñado con una interfaz moderna y responsiva, utilizando tecnologías web avanzadas para proporcionar una experiencia de usuario fluida y atractiva.
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+-JavaScript (jQuery, Typed.js, ScrollReveal, VanillaTilt)
+
+Backend
+
+PHP nativo (sin frameworks
+
+Arquitectura
+
+Aplicación web
+
+⚡ Funcionalidades destacadas
+- 🖥️ Interfaz gráfica moderna y responsiva
+
+- 📂 Secciones dedicadas para habilidades, proyectos, experiencia y contacto
+
+- 📊 Animaciones y efectos visuales avanzados
+
+- 📧 Integración con EmailJS para el envío de formularios de contacto
+
+- 🔍 Navegación intuitiva con menú hamburguesa para dispositivos móviles
+
+- 📈 Seguimiento de visitas y eventos con Pcpro - Kraken
+
+- 🛠️ Panel de administración para gestionar contenido
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para estilos (style.css), scripts (script.js), y contenido HTML (index.html)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación y sanitización de datos de entrada en formularios
+
+   - Protección contra XSS y CSRF
+
+   - Uso de HTTPS para asegurar la comunicación
+
+3. Optimización:
+
+   - Uso de CDN para cargar librerías y scripts externos
+
+   - Minificación de archivos CSS y JavaScript
+
+   - Carga diferida de imágenes y recursos pesados
+
+4. Mantenibilidad:
+
+   - Variables configurables para rutas y formatos
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y fácil de usar
+
+   - Feedback visual en tiempo real
+
+   - Diseño adaptativo pensado en el usuario
+
+📱Funcionamiento del Sistema
+Interfaz Gráfica (index.html)
+
+El archivo [`index.html`](index.html ) proporciona la estructura básica de la interfaz gráfica del portfolio. Incluye el encabezado, el contenedor principal y los estilos necesarios para una presentación atractiva y moderna.
+
+Estilos (style.css)
+
+El archivo [`style.css`](style.css ) define los estilos para el portfolio, incluyendo el contenedor, el encabezado, los gráficos y las tablas. Utiliza CSS moderno para asegurar una apariencia consistente y profesional.
+
+Lógica del Portfolio (script.js)
+
+El archivo [`script.js`](script.js ) contiene la lógica principal para la interacción del usuario, incluyendo la navegación, las animaciones y el envío de formularios. Utiliza jQuery y otras librerías JavaScript para proporcionar una experiencia de usuario fluida y eficiente.
+
+👥 Secciones del Portfolio
+Sección Héroe
+
+La sección héroe presenta una introducción del desarrollador con una imagen y enlaces a redes sociales. Utiliza efectos de partículas y animaciones de texto para captar la atención del usuario.
+
+Sección Sobre Mi
+
+Esta sección proporciona una descripción detallada del desarrollador, incluyendo su experiencia, habilidades y contacto. Incluye un enlace para descargar el currículum vitae.
+
+Sección Habilidades
+
+Muestra las habilidades del desarrollador con iconos y descripciones. Utiliza animaciones para resaltar cada habilidad.
+
+Sección Educación
+
+Lista los estudios y certificaciones del desarrollador, con imágenes y descripciones detalladas.
+
+Sección Proyectos
+
+Presenta los proyectos realizados por el desarrollador, con imágenes, descripciones y enlaces para ver el código y la demo en vivo.
+
+Sección Experiencia
+
+Muestra la experiencia laboral del desarrollador en una línea de tiempo interactiva.
+
+Sección Contacto
+
+Incluye un formulario de contacto que utiliza EmailJS para enviar mensajes directamente al correo del desarrollador.
+
+🔒Seguridad
+El portfolio implementa:
+
+- Sanitización de datos de entrada
+
+- Protección contra XSS y CSRF
+
+- Uso de HTTPS para asegurar la comunicación
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://franhr.pcprogramacion.es/
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-franHR
+
+Este proyecto demuestra cómo se puede crear un portfolio personal robusto y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.
+
+#WebDevelopment #HTML #CSS #JavaScript #PHP #Programming #DeveloperLife

@@ -1,0 +1,132 @@
+📢 Descripción
+PCPRO-TOPAZ es un sistema avanzado de monitorización en tiempo real que permite a los usuarios realizar un seguimiento detallado de varios aspectos del sistema, incluyendo el uso de CPU, RAM, disco, red y más. Este sistema está diseñado para proporcionar información crítica de manera eficiente y accesible, mejorando la gestión y el rendimiento del sistema.
+
+🛠️ Stack técnico
+Frontend
+
+HTML5
+
+CSS3
+
+Javascript
+
+Backend
+
+PHP nativo (sin frameworks
+
+MySQL
+
+Python
+
+Arquitectura
+
+MVC modular
+
+⚡ Funcionalidades destacadas
+📊 Monitorización en tiempo real de uso de CPU, RAM, disco y red
+
+🌡️ Seguimiento de la temperatura del sistema
+
+📈 Visualización de métricas con gráficas generadas dinámicamente
+
+🔍 Monitorización de procesos específicos
+
+🌐 Verificación del estado de servicios web
+
+📥 Exportación de datos en múltiples formatos (JSON, SQLite)
+
+🔒 Sistema de autenticación para acceso seguro
+
+🔍 Arquitectura y buenas prácticas
+1. Separación de responsabilidades:
+
+   - Archivos independientes para HTML (index.php), Python (topaz.py), y CSS (styles.css)
+
+   - Código modular y bien documentado
+
+2. Seguridad:
+
+   - Validación de credenciales en el backend
+
+   - Sanitización de datos
+
+   - Prevención de XSS y CSRF
+
+3. Optimización:
+
+   - Uso de psutil para obtener métricas del sistema
+
+   - Generación de gráficas con matplotlib
+
+   - Almacenamiento de datos en SQLite para consultas rápidas
+
+4. Mantenibilidad:
+
+   - Variables CSS para consistencia visual
+
+   - Comentarios detallados en el código
+
+   - Estructura de código clara y escalable
+
+5. UX/UI:
+
+   - Interfaz intuitiva y responsive
+
+   - Feedback visual en interacciones
+
+   - Diseño adaptativo pensado en el usuario
+
+
+
+Funcionamiento del Script de Python
+El script topaz.py es el núcleo del sistema de monitorización, encargado de recopilar y procesar las métricas del sistema. A continuación, se detalla su funcionamiento:
+
+1. Recopilación de Métricas:
+
+   - Uso de CPU, RAM y disco mediante psutil
+
+   - Velocidad de descarga y subida de la red
+
+   - Número de conexiones activas
+
+   - Temperatura del sistema (si está disponible)
+
+2. Monitorización de Procesos:
+
+   - Seguimiento de procesos específicos, como httpd.exe, mysqld.exe, php-cgi.exe, entre otros
+
+   - Obtención de uso de CPU y memoria de cada proceso
+
+3. Verificación de Servicios Web:
+
+   - Comprobación del estado de servicios web en URLs específicas
+
+   - Registro del tiempo de respuesta y estado HTTP
+
+4. Generación de Gráficas:
+
+   - Uso de matplotlib para crear gráficas de las métricas recopiladas
+
+   - Guardado de las gráficas en formato JPG en carpetas específicas
+
+5. Almacenamiento de Datos:
+
+   - Guardado de métricas en un archivo SQLite para consultas rápidas
+
+   - Exportación de datos a un archivo JSON para análisis externo
+
+6. Alertas y Notificaciones:
+
+   - Envío de alertas por email si las métricas superan ciertos umbrales (CPU, RAM, disco)
+
+   - Configuración de umbrales de alerta personalizables
+
+🚀 Ejecución y Configuración
+El script se ejecuta periódicamente para actualizar las métricas y generar las gráficas. La configuración de los procesos monitorizados y los servicios web se puede ajustar en el archivo topaz.py.
+
+🔗 Enlaces del proyecto
+🚀 Demo en vivo: https://topaz.pcprogramacion.es/index.php
+
+📂 Código fuente en GitHub: https://github.com/franHR11/pcpro-topaz
+
+Este proyecto demuestra cómo se puede crear un sistema de monitorización robusto y eficiente utilizando tecnologías web fundamentales, manteniendo un código limpio y escalable.
