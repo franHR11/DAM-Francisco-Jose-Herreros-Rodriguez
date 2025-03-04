@@ -14,6 +14,50 @@ class EmailSenderGUI:
         master.title("Sistema de Envío Masivo de Emails")
         master.geometry("900x800")
         
+        # Crear container principal
+        container = ttk.Frame(master)
+        container.pack(fill="both", expand=True)
+        
+        # Configurar grid del container
+        container.grid_rowconfigure(0, weight=1)
+        container.grid_columnconfigure(0, weight=1)
+        
+        # Crear canvas con scrollbar
+        self.canvas = tk.Canvas(container)
+        self.scrollbar = ttk.Scrollbar(container, orient="vertical", command=self.canvas.yview)
+        self.scrollable_frame = ttk.Frame(self.canvas)
+        
+        # Configurar el canvas
+        self.scrollable_frame.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        )
+        
+        # Hacer que el frame scrollable ocupe todo el ancho disponible
+        self.scrollable_frame.grid_columnconfigure(0, weight=1)
+        
+        # Crear ventana dentro del canvas que se expanda horizontalmente
+        self.canvas_window = self.canvas.create_window(
+            (0, 0),
+            window=self.scrollable_frame,
+            anchor="nw",
+            width=self.canvas.winfo_width()  # Establecer el ancho inicial
+        )
+        
+        # Configurar el canvas para que se expanda
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        
+        # Colocar canvas y scrollbar usando grid
+        self.canvas.grid(row=0, column=0, sticky="nsew")
+        self.scrollbar.grid(row=0, column=1, sticky="ns")
+        
+        # Vincular eventos de redimensionamiento
+        self.canvas.bind('<Configure>', self._on_canvas_configure)
+        
+        # Configurar el scroll con el mouse
+        self.scrollable_frame.bind('<Enter>', self._bound_to_mousewheel)
+        self.scrollable_frame.bind('<Leave>', self._unbound_to_mousewheel)
+        
         # Variables para configuración SMTP y email
         self.smtp_server_var = tk.StringVar()
         self.smtp_port_var = tk.StringVar(value="587")
@@ -26,7 +70,7 @@ class EmailSenderGUI:
         self.recipients = []  # Lista de diccionarios: {"email": ..., "nombre": ...}
         
         # --- Header con título ---
-        header = ttk.Frame(master, bootstyle="primary")
+        header = ttk.Frame(self.scrollable_frame, bootstyle="primary")
         header.grid(row=0, column=0, sticky="ew", pady=(0, 10))
         ttk.Label(
             header,
@@ -37,7 +81,7 @@ class EmailSenderGUI:
         ).pack(fill="x")
 
         # --- Configuración SMTP ---
-        smtp_frame = ttk.Labelframe(master, text="Configuración SMTP", padding=10)
+        smtp_frame = ttk.Labelframe(self.scrollable_frame, text="Configuración SMTP", padding=10)
         smtp_frame.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
         smtp_frame.columnconfigure(1, weight=1)
         
@@ -55,13 +99,13 @@ class EmailSenderGUI:
                     row=idx, column=1, sticky="ew", padx=5, pady=2)
 
         # --- Asunto del Email ---
-        subject_frame = ttk.Labelframe(master, text="Asunto del Email", padding=10)
+        subject_frame = ttk.Labelframe(self.scrollable_frame, text="Asunto del Email", padding=10)
         subject_frame.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
         ttk.Entry(subject_frame, textvariable=self.subject_var).pack(fill="x", padx=5, pady=2)
 
         # --- Lista de Destinatarios ---
         recipients_frame = ttk.Labelframe(
-            master, 
+            self.scrollable_frame, 
             text="Lista de Emails (separados por comas o importar CSV)",
             padding=10
         )
@@ -78,13 +122,13 @@ class EmailSenderGUI:
         self.recipients_text.pack(fill="both", expand=True, padx=5, pady=2)
 
         # --- Cuerpo del Email ---
-        message_frame = ttk.Labelframe(master, text="Cuerpo del Email", padding=10)
+        message_frame = ttk.Labelframe(self.scrollable_frame, text="Cuerpo del Email", padding=10)
         message_frame.grid(row=4, column=0, padx=10, pady=5, sticky="nsew")
         self.message_text = ScrolledText(message_frame, height=10)
         self.message_text.pack(fill="both", expand=True, padx=5, pady=2)
 
         # --- Variables Disponibles (Tutorial) ---
-        tutorial_frame = ttk.Labelframe(master, text="Variables Disponibles", padding=10)
+        tutorial_frame = ttk.Labelframe(self.scrollable_frame, text="Variables Disponibles", padding=10)
         tutorial_frame.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
         tutorial_msg = (
             "Puedes usar las siguientes variables en el cuerpo del email:\n"
@@ -94,14 +138,14 @@ class EmailSenderGUI:
         ttk.Label(tutorial_frame, text=tutorial_msg).pack(anchor="w")
 
         # --- Log de Envío ---
-        log_frame = ttk.Labelframe(master, text="Log de Envío", padding=10)
+        log_frame = ttk.Labelframe(self.scrollable_frame, text="Log de Envío", padding=10)
         log_frame.grid(row=6, column=0, padx=10, pady=5, sticky="nsew")
         self.log_text = ScrolledText(log_frame, height=10, state="disabled")
         self.log_text.pack(fill="both", expand=True, padx=5, pady=2)
 
         # --- Botón Enviar ---
         ttk.Button(
-            master,
+            self.scrollable_frame,
             text="Enviar Emails",
             command=self.send_emails,
             bootstyle="success",
@@ -109,7 +153,7 @@ class EmailSenderGUI:
         ).grid(row=7, column=0, pady=10)
 
         # --- Footer ---
-        footer = ttk.Frame(master)
+        footer = ttk.Frame(self.scrollable_frame)
         footer.grid(row=8, column=0, sticky="ew", pady=10)
         ttk.Label(
             footer,
@@ -118,8 +162,17 @@ class EmailSenderGUI:
         ).pack()
 
         # Configuración de peso para que se redimensione bien la ventana
-        master.grid_rowconfigure(4, weight=1)
-        master.grid_columnconfigure(0, weight=1)
+        self.scrollable_frame.grid_rowconfigure(4, weight=1)
+        self.scrollable_frame.grid_columnconfigure(0, weight=1)
+    
+    def _bound_to_mousewheel(self, event):
+        self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
+        
+    def _unbound_to_mousewheel(self, event):
+        self.canvas.unbind_all("<MouseWheel>")
+        
+    def _on_mousewheel(self, event):
+        self.canvas.yview_scroll(int(-1*(event.delta/120)), "units")
     
     def import_csv(self):
         """Importa una lista de destinatarios desde un archivo CSV."""
@@ -224,6 +277,11 @@ class EmailSenderGUI:
         server.quit()
         self.log("Proceso completado. Correos enviados exitosamente: {}".format(success_count))
         messagebox.showinfo("Información", "Proceso completado. Correos enviados: {}".format(success_count))
+
+    def _on_canvas_configure(self, event):
+        """Ajusta el ancho del frame scrollable cuando se redimensiona la ventana"""
+        # Actualizar el ancho de la ventana del canvas para que coincida con el canvas
+        self.canvas.itemconfig(self.canvas_window, width=event.width)
 
 if __name__ == "__main__":
     root = ttk.Window(themename="cosmo")

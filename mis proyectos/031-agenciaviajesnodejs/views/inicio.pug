@@ -1,0 +1,31 @@
+extends ./layout/index
+block slider 
+    .slider 
+        h1  Rio de Janeiro
+        em aventura
+
+block contenido
+    main.container.mt-5
+        h2.text-center.mb-5 Sobre Nosotros
+        .row.mb-5 
+            .col-md-6 
+                p Lorem ipsum dolor sit amet. Sit dolor velit ea magni voluptates et aliquam iste. Et nesciunt velit et numquam quam et commodi deserunt eum quisquam nihil sed harum sunt.
+                p Sit velit minima ut enim facilis et dolores placeat sit velit fugit quo Quis quasi aut omnis optio sed necessitatibus blanditiis. Ad esse excepturi et nulla nisi aut iure magni et suscipit atque et excepturi sint et itaque omnis est dolor earum.
+            .col-md-6 
+                img(src="/img/inicio_nosotros.jpg", alt="nosotros", class="img-fluid")
+
+        include ./layout/bloque_viajes
+
+    .descuento
+        .container 
+            .row
+                .col-md-6 
+                    .contenido
+                        h3 5% de descuento
+                        p.titulo Viaje a Canada 
+                        p.fecha 20 de Marzo de 2025 - 28 de Marzo de 2025
+                        p.precio 2.500 €
+    .container 
+        h2.mt-5.text-center Testimoniales 
+        
+            include ./layout/bloque_testimoniales            

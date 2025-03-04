@@ -1,0 +1,11 @@
+{
+    "name": "Administrador de Citas",
+    "short_name": "Administrador de Citas",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#D41872",
+    "theme_color": "#D41872",
+    "orientation": "portrait",
+    "description": "Administrador de Citas"
+    
+}

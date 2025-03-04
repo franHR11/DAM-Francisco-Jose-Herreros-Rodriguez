@@ -328,12 +328,159 @@ function mensajePedidoVacio(){
         heading.classList.add('my-4', 'text-center');
         heading.textContent = 'Suplemento';
 
-        divFormulario.appendChild(heading);        
+        // Radio button 10%
+
+        const radio10 = document.createElement('INPUT');
+        radio10.type = 'radio';
+        radio10.name = 'suplemento';
+        radio10.value = "10";
+        radio10.classList.add('form-check-input');
+        radio10.onclick = calcularSuplemento;
+
+        const radio10Label = document.createElement('LABEL');
+        radio10Label.textContent = '10%';
+        radio10Label.classList.add('form-check-label');
+
+        const radio10Div = document.createElement('DIV');
+        radio10Div.classList.add('form-check');
+
+        radio10Div.appendChild(radio10);
+        radio10Div.appendChild(radio10Label);
+
+        // Radio button 25%
+
+        const radio25 = document.createElement('INPUT');
+        radio25.type = 'radio';
+        radio25.name = 'suplemento';
+        radio25.value = "25";
+        radio25.classList.add('form-check-input');
+        radio25.onclick = calcularSuplemento;
+
+        const radio25Label = document.createElement('LABEL');
+        radio25Label.textContent = '25%';
+        radio25Label.classList.add('form-check-label');
+
+        const radio25Div = document.createElement('DIV');
+        radio25Div.classList.add('form-check');
+
+        radio25Div.appendChild(radio25);
+        radio25Div.appendChild(radio25Label);
+
+                // Radio button 50%
+
+        const radio50 = document.createElement('INPUT');
+        radio50.type = 'radio';
+        radio50.name = 'suplemento';
+        radio50.value = "50";
+        radio50.classList.add('form-check-input');
+        radio50.onclick = calcularSuplemento;
+
+
+        const radio50Label = document.createElement('LABEL');
+        radio50Label.textContent = '50%';
+        radio50Label.classList.add('form-check-label');
+
+        const radio50Div = document.createElement('DIV');
+        radio50Div.classList.add('form-check');
+
+        radio50Div.appendChild(radio50);
+        radio50Div.appendChild(radio50Label);
+
+        // Agregar al div Principal
+        divFormulario.appendChild(heading);
+        divFormulario.appendChild(radio10Div);
+        divFormulario.appendChild(radio25Div);
+        divFormulario.appendChild(radio50Div);
+
+        // Agregar al formulario
         formulario.appendChild(divFormulario);
+
+
 
         contenido.appendChild(formulario);
 
     }
 
+function calcularSuplemento(){
+    const {pedido} = cliente;
+    let subtotal = 0;
+    // calcular el subtotal
+    pedido.forEach(articulo => {
+        subtotal += articulo.cantidad * articulo.precio;
+    })
+        // seleccionar el radio button con el suplemento del cliente
+    const SuplementoSleccionado = document.querySelector('[name="suplemento"]:checked').value;
+ 
 
+    // calcular subtotal
+    const suplemento = ((subtotal* parseInt(SuplementoSleccionado)) / 100);
+    
+
+    // calcular total a pagar
+
+    const total = subtotal + suplemento
+console.log(total)
+
+mostrarTotalHTML(subtotal, total, suplemento);
+}
+
+function mostrarTotalHTML(subtotal, total, suplemento) {
+
+    const divTotales = document.createElement('DIV');
+    divTotales.classList.add('total-pagar', 'my-5');
+
+    // subtotal
+
+    const subtotalParrafo = document.createElement('P');
+    subtotalParrafo.classList.add('fs-4', 'fw-bold', 'mt-2');
+    subtotalParrafo.textContent = 'Subtotal Consumo';
+
+    const subtotalSpan = document.createElement('SPAN');
+    subtotalSpan.classList.add('fw-normal');
+    subtotalSpan.textContent = `$${subtotal}`;
+
+    subtotalParrafo.appendChild(subtotalSpan);
+
+
+    // Suplemento
+
+    const suplementoParrafo = document.createElement('P');
+    suplementoParrafo.classList.add('fs-4', 'fw-bold', 'mt-2');
+    suplementoParrafo.textContent = 'Suplemento Consumo';
+
+    const suplementoSpan = document.createElement('SPAN');
+    suplementoSpan.classList.add('fw-normal');
+    suplementoSpan.textContent = `$${suplemento}`;
+
+    suplementoParrafo.appendChild(suplementoSpan);
+
+    
+    // Total
+
+    const totalParrafo = document.createElement('P');
+    totalParrafo.classList.add('fs-4', 'fw-bold', 'mt-2');
+    totalParrafo.textContent = 'Total Consumo';
+
+    const totalSpan = document.createElement('SPAN');
+    totalSpan.classList.add('fw-normal');
+    totalSpan.textContent = `$${total}`;
+
+    totalParrafo.appendChild(totalSpan);
+
+    // Eliminar el ultimo resultado
+
+   const limpiarTotal = document.querySelector('.total-pagar');
+   if(limpiarTotal) {
+    limpiarTotal.remove();
+   }
+
+
+    divTotales.appendChild(subtotalParrafo);
+    divTotales.appendChild(suplementoParrafo);
+    divTotales.appendChild(totalParrafo);
+        
+
+    const formulario = document.querySelector('.formulario > div');
+    formulario.appendChild(divTotales);
+}
     
