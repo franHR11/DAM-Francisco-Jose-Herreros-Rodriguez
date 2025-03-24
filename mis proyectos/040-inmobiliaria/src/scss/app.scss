@@ -1,0 +1,26 @@
+@use 'base/normalize';
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'base/globales';
+@use 'base/utilidades';
+@use 'base/botones';
+
+/**
+ * Componentes
+ */
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/navegacion';
+@use 'layout/iconos';
+@use 'layout/anuncios';
+@use 'layout/contactar';
+@use 'layout/inferior';
+@use 'layout/testimoniales';
+
+/**
+ * Paginas Internar
+ */
+ @use 'internas/nosotros';
+ @use 'internas/anuncios' as *;
+ @use 'internas/contacto';
+
