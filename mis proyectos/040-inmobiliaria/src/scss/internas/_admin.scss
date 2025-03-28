@@ -1,0 +1,33 @@
+.alerta {
+    padding: .5rem;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 1rem 0;
+&.error {
+    background-color: rgb(234, 96, 96);
+}
+&.correcto {
+    background-color: rgb(70, 199, 63);
+}
+}
+table.propiedades {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+    thead{
+        background-color: green;
+    
+        th{
+            color: white;
+            padding: 2rem;
+        }
+}
+.imagen-tabla {
+    width: 10rem;
+}
+}
+.imagen-actualizar{
+    width: 10rem;
+}

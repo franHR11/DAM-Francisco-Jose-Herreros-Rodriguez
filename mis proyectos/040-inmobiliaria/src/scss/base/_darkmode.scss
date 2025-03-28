@@ -1,0 +1,44 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.dark-mode {
+  background-color: rgb(40, 40, 40);
+
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: white;
+  }
+
+  .anuncios,
+  .resumen-propiedad {
+    background: rgb(83, 83, 83);
+    border: 1px solid rgb(82, 82, 82);
+    .precio {
+      color: v.$verde;
+    }
+    .icono {
+      filter: invert(100%);
+    }
+  }
+  .texto-nosotros blockquote {
+    color: white;
+  }
+  .formulario {
+    label,
+    legend,
+    p {
+      color: rgb(224, 221, 221);
+    }
+    input:not([type="submit"]),
+    textarea,
+    select{
+        background-color: rgb(69, 69, 69);
+        color: white;
+        border: 1px rgb(39, 39, 39) solid;
+    }
+  }
+}

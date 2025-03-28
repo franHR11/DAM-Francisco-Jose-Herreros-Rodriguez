@@ -9,5 +9,12 @@
 }
 
 .boton-verde {
-    @include m.boton(v.$verde);
+    @include m.boton(v.$verde, inline-block);
+}
+.boton-rojo-block{
+    @include m.boton(v.$rojo, block);
+    width: 100%;
+}
+.boton-verde-block{
+    @include m.boton(v.$verde, block);
 }

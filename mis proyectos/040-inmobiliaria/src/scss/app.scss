@@ -4,6 +4,7 @@
 @use 'base/globales';
 @use 'base/utilidades';
 @use 'base/botones';
+@use 'base/darkmode';
 
 /**
  * Componentes
@@ -16,6 +17,7 @@
 @use 'layout/contactar';
 @use 'layout/inferior';
 @use 'layout/testimoniales';
+@use 'layout/formularios';
 
 /**
  * Paginas Internar
@@ -23,4 +25,5 @@
  @use 'internas/nosotros';
  @use 'internas/anuncios' as *;
  @use 'internas/contacto';
+ @use 'internas/admin';
 
