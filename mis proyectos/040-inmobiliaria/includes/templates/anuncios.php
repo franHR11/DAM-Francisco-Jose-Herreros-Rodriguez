@@ -1,11 +1,11 @@
 <?php
     
-// IMPORTAR LA CONEXION
-require 'includes/config/database.php';
+// A CONEXION BASE DE DATOS
+
 $db = conectarDB();
 // CONSULTAR BASE DE datos
-$limite = 10;
-$query = "SELECT * FROM propiedades LIMIT ${limite}";
+$limite = $limite ?? 10;  // Usa el valor pasado desde el archivo que incluye, o 10 si no está definido
+$query = "SELECT * FROM propiedades LIMIT {$limite}";
 
 
 // OBTENER LOS RESULTADOS
@@ -21,7 +21,7 @@ $resultado = mysqli_query($db, $query);
 
     <div class="anuncios">
 
-        <img loading="lazy" src="/imagenes/<?php echo $propiedad['imagen']; ?>" alt="anuncio imagen" />
+        <img loading="lazy" src="imagenes/<?php echo $propiedad['imagen']; ?>" alt="anuncio imagen" />
 
       <div class="contenido-anuncio">
         <h3><?php echo $propiedad['titulo']; ?></h3>

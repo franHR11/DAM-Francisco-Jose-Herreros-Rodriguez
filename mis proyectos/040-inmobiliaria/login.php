@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errores)) {
         // revisar si el usuario existe
-        $query = "SELECT * FROM usuarios WHERE email = '${email}'";
+        $query = "SELECT * FROM usuarios WHERE email = '{$email}'";
         $resultado = mysqli_query($db, $query);
 
         
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION["usuario"] = $usuario["email"];
                     $_SESSION['login'] = true;
 
-                    header('location: /admin');
+                    header('location: admin');
             }else{
                 $errores[] = "El password es incorrecto";
             }

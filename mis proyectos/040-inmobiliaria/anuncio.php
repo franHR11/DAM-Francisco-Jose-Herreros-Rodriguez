@@ -7,12 +7,12 @@ $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 if(!$id){
   header("Location: /");
 }
+require 'includes/app.php';
+//  CONEXION BASE DE DATOS
 
-// IMPORTAR LA CONEXION
-require 'includes/config/database.php';
 $db = conectarDB();
 // CONSULTAR BASE DE datos
-$query = "SELECT * FROM propiedades WHERE id = ${id}";
+$query = "SELECT * FROM propiedades WHERE id = {$id}";
 
 // OBTENER LOS RESULTADOS
 $resultado = mysqli_query($db, $query);
@@ -25,14 +25,14 @@ $propiedad = mysqli_fetch_assoc($resultado);
 
 
 
-require 'includes/funciones.php';
+
 incluirTemplate('header');
 ?>
 
 <main class="contenedor seccion contenido-centrado">
   <h1><?php echo $propiedad['titulo']; ?></h1>
 
-  <img src="/imagenes/<?php echo $propiedad['imagen']; ?>" loading="lazy" alt="imagen de la propiedad">
+  <img src="imagenes/<?php echo $propiedad['imagen']; ?>" loading="lazy" alt="imagen de la propiedad">
   <div class="resumen-propiedad">
 
     <p class="precio"><?php echo $propiedad['precio']; ?> €</p>

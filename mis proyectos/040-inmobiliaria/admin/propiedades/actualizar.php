@@ -3,7 +3,7 @@ require '../../includes/funciones.php';
 
 $auth = estaAutenticado();
 if(!$auth){
-    header('location: /');
+    header('location: ../../');
 }
 // echo"<pre>";
 // var_dump($_GET);
@@ -16,7 +16,7 @@ $id = $_GET['id'];
 $id = filter_var($id, FILTER_VALIDATE_INT);
 
 if ($id === false) {
-    header('Location: /admin');
+    header('Location: ../');
 }
 
 // Base de datos
@@ -25,7 +25,7 @@ $db = conectarDB();
 
 // consultar para obtener las propiedades
 
-$consulta = "SELECT * FROM propiedades WHERE id = ${id}";
+$consulta = "SELECT * FROM propiedades WHERE id = {$id}";
 $resultado = mysqli_query($db, $consulta);
 $propiedad = mysqli_fetch_assoc($resultado);
 
@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // insertar en la base de datos
 
-        $query = " UPDATE propiedades SET titulo = '${titulo}',Precio = ${precio}, imagen = '${nombreImagen}', descripcion = '${descripcion}', habitaciones = ${habitaciones}, wc = ${wc}, estacionamiento = ${estacionamiento}, vendedorId = ${vendedorId} WHERE id= ${id}";
+        $query = " UPDATE propiedades SET titulo = '{$titulo}',Precio = {$precio}, imagen = '{$nombreImagen}', descripcion = '{$descripcion}', habitaciones = {$habitaciones}, wc = {$wc}, estacionamiento = {$estacionamiento}, vendedorId = {$vendedorId} WHERE id= {$id}";
 
         // echo $query;
 
@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultado = mysqli_query($db, $query);
         if ($resultado) {
             // redireccionar al usuario
-            header("Location:/admin?resultado=2");
+            header("Location:../../admin?resultado=2");
         }
     }
 }
@@ -159,7 +159,7 @@ incluirTemplate('header');
 
 <main class="contenedor seccion">
     <h1>Actualizar Propiedad</h1>
-    <a href="/admin" class="boton boton-verde">Volver</a>
+    <a href="../" class="boton boton-verde">Volver</a>
     <?php
     foreach ($errores as $error): ?>
 
@@ -186,7 +186,7 @@ incluirTemplate('header');
 
             <label for="imagen">Imagen:</label>
             <input type="file" id="imagen" name="imagen" accept="image/jpeg,image/png,image/webp">
-            <img src="/imagenes/<?php echo $imagenPropiedad; ?>" class="imagen-actualizar">
+            <img src="../../imagenes/<?php echo $imagenPropiedad; ?>" class="imagen-actualizar">
 
 
 

@@ -3,5 +3,6 @@
 
     $_SESSION = [];
 
-    header("location: /");
+    header("Location: ./");
+    exit;
 ?>

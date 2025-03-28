@@ -1,0 +1,19 @@
+{
+    "name": "franh/040-inmobiliaria",
+    "description": "proyecto poo inmobiliaria",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Francisco Jose",
+            "email": "franhr1113@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^3.11"
+    }
+}
