@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION["usuario"] = $usuario["email"];
                     $_SESSION['login'] = true;
 
-                    header('location: admin');
+                    header('location: admin/index.php');
             }else{
                 $errores[] = "El password es incorrecto";
             }

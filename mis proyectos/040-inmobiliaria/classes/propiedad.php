@@ -6,7 +6,7 @@ class Propiedad
 {
     // base de date
     protected static $db;
-    protected static $columnasDB = ['id', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones', 'wc', 'estacionamiento', 'creado', 'vendedorId'];
+    protected static $columnasDB = ['id', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones', 'wc', 'estacionamiento', 'creado', 'vendedorId', 'destacado', 'categoria_id'];
 
     // errores
 
@@ -22,6 +22,8 @@ class Propiedad
     public $estacionamiento;
     public $creado;
     public $vendedorId;
+    public $destacado;
+    public $categoria_id;
 
     // definir la conexion a la base de datos
 
@@ -43,6 +45,8 @@ class Propiedad
         $this->estacionamiento = $args['estacionamiento'] ?? '';
         $this->creado = date('Y/m/d');
         $this->vendedorId = $args['vendedorId'] ?? '';
+        $this->destacado = $args['destacado'] ?? 0;
+        $this->categoria_id = $args['categoria_id'] ?? null;
 
     }
 
@@ -57,6 +61,24 @@ class Propiedad
         $query .= " ) VALUES (' ";
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
+
+        $resultado = self::$db->query($query);
+        return $resultado;
+    }
+
+    public function actualizar() {
+        // Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+
+        $valores = [];
+        foreach($atributos as $key => $value) {
+            $valores[] = "{$key}='{$value}'";
+        }
+
+        $query = "UPDATE propiedades SET ";
+        $query .= join(', ', $valores);
+        $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+        $query .= " LIMIT 1 ";
 
         $resultado = self::$db->query($query);
         return $resultado;
@@ -96,9 +118,6 @@ class Propiedad
 
     public function validar()
     {
-
-
-
         if (!$this->titulo) {
             self::$errores[] = 'Debes Añadir un Titulo';
         }
@@ -121,16 +140,11 @@ class Propiedad
             self::$errores[] = 'Elije un Vendedor';
         }
 
-
-
         if (!$this->imagen) {
             self::$errores[] = 'La imagen es obligatoria';
         }
 
-
-
         return self::$errores;
-
     }
 
     public function setImagen($imagen)
@@ -140,8 +154,12 @@ class Propiedad
         }
     }
 
-    // lista todas las propiedades
+    // Cambiar el estado de destacado
+    public function setDestacado($destacado) {
+        $this->destacado = $destacado;
+    }
 
+    // lista todas las propiedades
     public static function all()
     {
         $query = "SELECT * FROM propiedades";
@@ -149,31 +167,114 @@ class Propiedad
         $resultado = self::consultarSQL($query);
 
         return $resultado;
+    }
 
+    // Obtiene un número limitado de propiedades
+    public static function get($limite)
+    {
+        $query = "SELECT * FROM propiedades LIMIT {$limite}";
+
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
+
+    // Obtiene propiedades destacadas
+    public static function getDestacados($limite = 6)
+    {
+        $query = "SELECT * FROM propiedades WHERE destacado = 1 LIMIT {$limite}";
+        
+        $resultado = self::consultarSQL($query);
+        
+        return $resultado;
+    }
+
+    // Obtiene propiedades por categoría
+    public static function getPorCategoria($categoria_id, $por_pagina = 10, $offset = 0)
+    {
+        $query = "SELECT * FROM propiedades WHERE categoria_id = {$categoria_id} LIMIT {$por_pagina} OFFSET {$offset}";
+        
+        $resultado = self::consultarSQL($query);
+        
+        return $resultado;
+    }
+
+    // Cuenta el total de propiedades
+    public static function count()
+    {
+        $query = "SELECT COUNT(*) as total FROM propiedades";
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_assoc();
+        
+        return $total['total'];
+    }
+
+    // Cuenta el total de propiedades por categoría
+    public static function countPorCategoria($categoria_id)
+    {
+        $query = "SELECT COUNT(*) as total FROM propiedades WHERE categoria_id = {$categoria_id}";
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_assoc();
+        
+        return $total['total'];
+    }
+
+    // Obtiene propiedades con paginación
+    public static function paginar($por_pagina, $offset)
+    {
+        $query = "SELECT * FROM propiedades LIMIT {$por_pagina} OFFSET {$offset}";
+        
+        $resultado = self::consultarSQL($query);
+        
+        return $resultado;
+    }
+
+    // Busca propiedades por término
+    public static function buscar($termino, $por_pagina = null, $offset = 0)
+    {
+        $query = "SELECT * FROM propiedades WHERE titulo LIKE '%{$termino}%' OR descripcion LIKE '%{$termino}%'";
+        
+        if($por_pagina) {
+            $query .= " LIMIT {$por_pagina} OFFSET {$offset}";
+        }
+        
+        $resultado = self::consultarSQL($query);
+        
+        return $resultado;
+    }
+
+    // Cuenta resultados de búsqueda
+    public static function countBusqueda($termino)
+    {
+        $query = "SELECT COUNT(*) as total FROM propiedades WHERE titulo LIKE '%{$termino}%' OR descripcion LIKE '%{$termino}%'";
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_assoc();
+        
+        return $total['total'];
+    }
+
+    // Buscar propiedad por ID
+    public static function find($id) {
+        $query = "SELECT * FROM propiedades WHERE id = {$id}";
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
     }
 
     public static function consultarSQL($query)
     {
-
         // consultar base datos
-
         $resultado = self::$db->query($query);
 
         //iterar resultados
-
         $array = [];
         while ($registro = $resultado->fetch_assoc()) {
             $array[] = self::crearObjeto($registro);
         }
 
         //liberar memoria
-
-$resultado ->free();
-
-
+        $resultado->free();
 
         // retornar los resultados
-
         return $array;
     }
 
@@ -185,9 +286,8 @@ $resultado ->free();
                 $objeto->$key = $value;
             }
         }
-return $objeto;
+        return $objeto;
     }
 }
-
 
 ?>

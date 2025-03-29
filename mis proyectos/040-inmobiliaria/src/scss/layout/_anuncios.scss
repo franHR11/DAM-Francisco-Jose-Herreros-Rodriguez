@@ -1,45 +1,221 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
+// Grid base para anuncios
+@mixin grid-anuncios($columnas) {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat($columnas, 1fr);
+}
 
-@include m.tablet {
-    .contenedor-anuncios {
-        @include m.grid(3,2rem);
+// Estilos para el contenedor de anuncios regular
+.contenedor-anuncios {
+    @include m.tablet {
+        @include grid-anuncios(2);
+    }
+    
+    @include m.desktop {
+        @include grid-anuncios(3);
     }
 }
-.anuncios {
-    background-color: rgb(236, 236, 238);
-    border: 1px solid grey;
+
+// Estilos para el contenedor de anuncios destacados en la página principal
+.contenedor-anuncios-destacados {
+    margin-top: 2rem;
+    
+    @include m.movil {
+        @include grid-anuncios(1);
+    }
+    
+    @include m.tablet {
+        @include grid-anuncios(2);
+    }
+    
+    @include m.desktop {
+        @include grid-anuncios(3);
+    }
+}
+
+// Anuncios home sección
+.anuncios-home {
     margin-bottom: 2rem;
-
-    .contenido-anuncio{
-        padding: 2rem;
-        
+    
+    h2 {
+        margin-bottom: 3rem;
     }
-    h3,p {
-        margin: 0;
-    }
-
 }
-.precio{
+
+// Estilos para cada anuncio individual
+.anuncio {
+    background-color: lighten(v.$gris, 5%);
+    border: 1px solid darken(v.$gris, 10%);
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .contenido-anuncio {
+        padding: 2rem;
+    }
+    
+    h3 {
+        margin: 0 0 1rem 0;
+        font-size: 2.4rem;
+    }
+    
+    .descripcion-anuncio {
+        margin-bottom: 1.5rem;
+        color: darken(v.$gris, 20%);
+    }
+    
+    img {
+        width: 100%;
+        height: 30rem;
+        object-fit: cover;
+    }
+}
+
+.precio {
     color: v.$verde;
     font-weight: v.$bold;
     font-size: 3rem;
 }
+
 .iconos-caracteristicas {
     display: flex;
     list-style: none;
     padding: 0;
     max-width: 40rem;
-    li{
+    
+    li {
         flex: 1;
         display: flex;
-        img{
+        align-items: center;
+        
+        img {
             flex: 0 0 3rem;
             margin-right: 1rem;
+            width: 3rem;
+            height: 3rem;
         }
+        
         p {
             font-weight: bold;
         }
+    }
+}
+
+// Estilos para los filtros y búsqueda
+.filtros-busqueda {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: lighten(v.$gris, 15%);
+    border-radius: 0.5rem;
+    
+    @include m.tablet {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+    }
+    
+    .formulario-busqueda {
+        margin-bottom: 2rem;
+        
+        @include m.tablet {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.filtros-categorias {
+    h3 {
+        margin-top: 0;
+    }
+    
+    .lista-categorias {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            margin-bottom: 1rem;
+            
+            a {
+                display: block;
+                padding: 0.5rem 1rem;
+                border-radius: 0.3rem;
+                background-color: v.$blanco;
+                color: v.$negro;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                
+                &:hover,
+                &.activo {
+                    background-color: v.$verde;
+                    color: v.$blanco;
+                }
+            }
+        }
+    }
+}
+
+// Paginación
+.paginacion {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    
+    .paginador {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        
+        li {
+            a.boton {
+                display: block;
+                padding: 0.5rem 1rem;
+                background-color: v.$blanco;
+                border: 1px solid v.$verde;
+                border-radius: 0.3rem;
+                color: v.$verde;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    background-color: v.$verde;
+                    color: v.$blanco;
+                }
+            }
+            
+            &.actual a.boton {
+                background-color: v.$verde;
+                color: v.$blanco;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// Checkbox destacado
+.checkbox-destacado {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    
+    label {
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+    
+    input[type="checkbox"] {
+        width: 2rem;
+        height: 2rem;
     }
 }

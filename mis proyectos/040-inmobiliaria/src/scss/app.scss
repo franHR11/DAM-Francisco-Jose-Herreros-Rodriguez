@@ -18,12 +18,27 @@
 @use 'layout/inferior';
 @use 'layout/testimoniales';
 @use 'layout/formularios';
+@use 'layout/admin' as layoutAdmin;
+@use 'layout/admin/menu';
+@use 'layout/admin/busqueda';
+@use 'layout/admin/blog' as adminBlog;
 
 /**
  * Paginas Internar
  */
- @use 'internas/nosotros';
- @use 'internas/anuncios' as *;
- @use 'internas/contacto';
- @use 'internas/admin';
+@use 'internas/nosotros';
+@use 'internas/anuncios' as *;
+@use 'internas/contacto';
+@use 'internas/admin' as internasAdmin;
+@use 'internas/blog' as internasBlog;
+
+@forward 'base';
+@forward 'layout';
+@forward 'internas';
+@forward 'admin/categorias';
+
+// Utilizar las variables aquí si es necesario para overrides globales
+@use 'base/variables' as v;
+
+/** Media Queries **/
 

@@ -4,8 +4,16 @@ if(!isset($rutaBase)) {
   $rutaBase = '';
   if (strpos($_SERVER['SCRIPT_NAME'], '/admin/') !== false) {
     // Estamos en alguna parte del admin
-    if (strpos($_SERVER['SCRIPT_NAME'], '/admin/propiedades/') !== false) {
-      // Estamos en admin/propiedades/
+    if (strpos($_SERVER['SCRIPT_NAME'], '/admin/propiedades/ver-todas/') !== false || 
+        strpos($_SERVER['SCRIPT_NAME'], '/admin/vendedores/ver-todos/') !== false ||
+        strpos($_SERVER['SCRIPT_NAME'], '/admin/categorias/ver-todas/') !== false) {
+      // Estamos en subcarpetas de nivel 3 (admin/propiedades/ver-todas/ o admin/vendedores/ver-todos/)
+      $rutaBase = '../../../';
+    } elseif (strpos($_SERVER['SCRIPT_NAME'], '/admin/propiedades/') !== false || 
+              strpos($_SERVER['SCRIPT_NAME'], '/admin/vendedores/') !== false ||
+              strpos($_SERVER['SCRIPT_NAME'], '/admin/categorias/') !== false ||
+              strpos($_SERVER['SCRIPT_NAME'], '/admin/blog/') !== false) {
+      // Estamos en admin/propiedades/ o admin/vendedores/ o admin/blog/
       $rutaBase = '../../';
     } else {
       // Estamos en admin/ (primer nivel)

@@ -23,8 +23,7 @@ $resultado = mysqli_query($db, $consulta);
 
 $errores = Propiedad::getErrores();
 
-
-
+// Variables con valores por defecto
 $titulo = '';
 $precio = '';
 $descripcion = '';
@@ -32,23 +31,36 @@ $habitaciones = '';
 $wc = '';
 $estacionamiento = '';
 $vendedorId = '';
+$destacado = false;
+$categoria_id = '';
 
 
 // ejecuta el codigo despues de que el usuario envia el formulario
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    // Asignar los valores enviados
+    $titulo = $_POST['titulo'] ?? '';
+    $precio = $_POST['precio'] ?? '';
+    $descripcion = $_POST['descripcion'] ?? '';
+    $habitaciones = $_POST['habitaciones'] ?? '';
+    $wc = $_POST['wc'] ?? '';
+    $estacionamiento = $_POST['estacionamiento'] ?? '';
+    $vendedorId = $_POST['vendedorId'] ?? '';
+    $destacado = isset($_POST['destacado']) && $_POST['destacado'] === '1';
+    $categoria_id = $_POST['categoria_id'] ?? '';
+
     $propiedad = new Propiedad($_POST);
 
-        // generar un nombre unico para la Imagen
+    // generar un nombre unico para la Imagen
 
-        $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
+    $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
 
-        if($_FILES['imagen']['tmp_name']){
-            $manager = new Image(Driver::class);
-            $imagen = $manager->read($_FILES['imagen']['tmp_name'])->cover(800, 600);
-            $propiedad->setImagen($nombreImagen);
-        }
+    if($_FILES['imagen']['tmp_name']){
+        $manager = new Image(Driver::class);
+        $imagen = $manager->read($_FILES['imagen']['tmp_name'])->cover(800, 600);
+        $propiedad->setImagen($nombreImagen);
+    }
 
 
     $errores = $propiedad->validar();
@@ -64,9 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mkdir($CARPETA_IMAGENES );
         }
 
-// guarda la imagen en el servidor
+        // guarda la imagen en el servidor
 
-$imagen->save(CARPETA_IMAGENES . $nombreImagen);
+        $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
         $resultado = $propiedad->guardar();
         if ($resultado) {
@@ -79,7 +91,11 @@ $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
 $nombrePagina = 'crear propiedades';
 incluirTemplate('header');
+incluirTemplate('admin-menu');
 ?>
+
+<!-- Enlace a los estilos de SunEditor -->
+<link href="../../node_modules/suneditor/dist/css/suneditor.min.css" rel="stylesheet">
 
 <main class="contenedor seccion">
     <h1>Crear</h1>
@@ -136,6 +152,11 @@ incluirTemplate('header');
             <label for="estacionamiento">Numero Estacionamientos:</label>
             <input type="number" name="estacionamiento" id="estacionamiento" placeholder="Ej: 3" min="1" value="<?php
             echo $estacionamiento; ?>">
+            
+            <div class="checkbox-destacado">
+                <label for="destacado">¿Mostrar en la página principal?</label>
+                <input type="checkbox" id="destacado" name="destacado" value="1" <?php echo $destacado ? 'checked' : ''; ?>>
+            </div>
         </fieldset>
 
         <fieldset>
@@ -159,12 +180,34 @@ incluirTemplate('header');
             </select>
         </fieldset>
 
+        <fieldset>
+            <legend>Categoría</legend>
+            <?php
+            $consulta_categorias = "SELECT * FROM categorias";
+            $resultado_categorias = mysqli_query($db, $consulta_categorias);
+            ?>
+            
+            <select name="categoria_id">
+                <option value="">-- Seleccione --</option>
+                <?php while ($categoria = mysqli_fetch_assoc($resultado_categorias)): ?>
+                    <option <?php echo $categoria_id == $categoria['id'] ? 'selected' : ''; ?> 
+                            value="<?php echo $categoria['id']; ?>">
+                        <?php echo $categoria['nombre']; ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
+        </fieldset>
+
         <input type="submit" value="Crear Propiedad" class="boton boton-verde">
 
     </form>
 
 
 </main>
+
+<!-- SunEditor scripts -->
+<script src="../../node_modules/suneditor/dist/suneditor.min.js"></script>
+<script src="../../build/js/suneditor-config.js"></script>
 
 <?php
 incluirTemplate('footer');

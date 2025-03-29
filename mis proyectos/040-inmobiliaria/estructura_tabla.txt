@@ -1,0 +1,15 @@
+Estructura actual de la tabla blog_entries:
+------------------------------------
+Campo | Tipo | Nulo | Clave | Predeterminado
+------------------------------------
+id | int | NO | PRI | 
+titulo | varchar(200) | NO |  | 
+imagen | varchar(200) | NO |  | 
+contenido | text | NO |  | 
+extracto | varchar(250) | YES |  | 
+categoria_id | int | YES | MUL | 
+destacado | tinyint(1) | NO |  | 0
+creado | date | NO |  | 
+autor_id | int | YES | MUL | 
+
+La tabla tiene todas las columnas necesarias.

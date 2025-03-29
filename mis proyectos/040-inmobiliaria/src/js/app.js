@@ -1,3 +1,6 @@
+// Importar el archivo de inicialización de SunEditor
+import './suneditor-init.js';
+
 document.addEventListener("DOMContentLoaded", function () {
   eventListeners();
   darkMode();

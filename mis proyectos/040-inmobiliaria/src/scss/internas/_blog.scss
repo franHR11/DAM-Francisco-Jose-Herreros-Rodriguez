@@ -1,0 +1,114 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.blog-contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 2rem;
+    
+    @include m.tablet {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 4rem;
+    }
+}
+
+.blog-main {
+    h2 {
+        margin-bottom: 2rem;
+        color: v.$verde;
+    }
+}
+
+.blog-sidebar {
+    h3 {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .categorias {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            margin-bottom: 1rem;
+            
+            a {
+                display: block;
+                padding: 1rem;
+                background-color: lighten(v.$gris, 10%);
+                border-radius: 0.5rem;
+                color: v.$negro;
+                font-weight: v.$bold;
+                transition: all 0.3s ease;
+                text-align: center;
+                
+                &:hover {
+                    background-color: v.$verde;
+                    color: v.$blanco;
+                    transform: translateY(-2px);
+                }
+            }
+        }
+    }
+}
+
+.entrada-completa {
+    margin-bottom: 3rem;
+    
+    h1 {
+        margin: 2rem 0;
+        font-size: 3.4rem;
+    }
+    
+    .meta-entrada {
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        border-top: 1px solid v.$gris;
+        border-bottom: 1px solid v.$gris;
+        display: flex;
+        flex-direction: column;
+        
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        span {
+            color: v.$verde;
+            font-weight: v.$bold;
+        }
+    }
+    
+    .imagen-entrada {
+        width: 100%;
+        height: auto;
+        max-height: 40rem;
+        object-fit: cover;
+        margin-bottom: 2rem;
+    }
+    
+    .contenido-entrada {
+        p {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        ul, ol {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        h2, h3, h4 {
+            margin: 2.5rem 0 1.5rem 0;
+            color: v.$verde;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+        }
+    }
+} 

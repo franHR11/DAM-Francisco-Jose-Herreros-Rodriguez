@@ -9,24 +9,32 @@ define('CARPETA_IMAGENES',__DIR__ . '/../imagenes/');
     function estaAutenticado() {
         session_start();
         
-        if(!isset($_SESSION['login'])) {
-            return false;
+        if(!isset($_SESSION['login']) || !$_SESSION['login']) {
+            // Redirigir usando la función url() para obtener la ruta absoluta
+            header("Location: " . url('/login.php?error=no_auth'));
+            exit;
         }
-        
-        return true;
-    
-
-}
+        // Si está autenticado, simplemente retorna true (o no hace nada si no necesitas el valor de retorno)
+        return true; 
+    }
 
 function debuguear($variable){
     echo'<pre>';
     var_dump($variable);
     echo'</pre>';
     exit;
+}
 
+// Función para sanitizar el HTML
+function sanitizar($html) {
+    $sanitizado = htmlspecialchars($html ?? '');
+    return $sanitizado;
+}
+
+// Validar tipo de contenido
+function validarTipoContenido($tipo) {
+    $tipos = ['vendedor', 'propiedad', 'entrada', 'categoria'];
+    return in_array($tipo, $tipos);
 }
     
-
-
-
 ?>

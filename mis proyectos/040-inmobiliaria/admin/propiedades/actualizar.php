@@ -1,83 +1,70 @@
 <?php
-require '../../includes/funciones.php';
+require '../../includes/app.php';
 
-$auth = estaAutenticado();
-if(!$auth){
-    header('location: ../../');
-}
-// echo"<pre>";
-// var_dump($_GET);
-// echo "</pre>";
+use App\Propiedad;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager as Image;
 
+estaAutenticado();
 
 // validar que el id sea valido
-
 $id = $_GET['id'];
 $id = filter_var($id, FILTER_VALIDATE_INT);
 
-if ($id === false) {
+if (!$id) {
     header('Location: ../');
 }
 
 // Base de datos
-require '../../includes/config/database.php';
 $db = conectarDB();
 
-// consultar para obtener las propiedades
-
+// Obtener los datos de la propiedad
 $consulta = "SELECT * FROM propiedades WHERE id = {$id}";
 $resultado = mysqli_query($db, $consulta);
-$propiedad = mysqli_fetch_assoc($resultado);
+$propiedadData = mysqli_fetch_assoc($resultado);
+
+// Verificar que la propiedad exista
+if (!$propiedadData) {
+    header('Location: ../');
+}
 
 // consultar para obtener los vendedores
-
 $consulta = "SELECT * FROM vendedores";
 $resultado = mysqli_query($db, $consulta);
 
-// arrego mensaje de errores
+// arreglo mensaje de errores
 $errores = [];
 
-$titulo = $propiedad["titulo"];
-$precio = $propiedad["precio"];
-$descripcion = $propiedad["descripcion"];
-$habitaciones = $propiedad["habitaciones"];
-$wc = $propiedad["wc"];
-$estacionamiento = $propiedad["estacionamiento"];
-$vendedorId = $propiedad["vendedorId"];
-$imagenPropiedad = $propiedad["imagen"];
-
+// Inicializar variables con los valores de la base de datos
+$titulo = $propiedadData["titulo"];
+$precio = $propiedadData["precio"];
+$descripcion = $propiedadData["descripcion"];
+$habitaciones = $propiedadData["habitaciones"];
+$wc = $propiedadData["wc"];
+$estacionamiento = $propiedadData["estacionamiento"];
+$vendedorId = $propiedadData["vendedorId"];
+$imagenPropiedad = $propiedadData["imagen"];
+$destacado = $propiedadData["destacado"];
+$categoria_id = $propiedadData["categoria_id"];
 
 // ejecuta el codigo despues de que el usuario envia el formulario
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // echo'<pre>';
-    // var_dump($_POST);
-    // echo '</pre>';
-
-    // echo'<pre>';
-    // var_dump($_FILES);
-    // echo '</pre>';
-
-
-
+    // Obtener los datos del formulario
     $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
     $precio = mysqli_real_escape_string($db, $_POST['precio']);
     $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']);
     $habitaciones = mysqli_real_escape_string($db, $_POST['habitaciones']);
     $wc = mysqli_real_escape_string($db, $_POST['wc']);
     $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']);
-    $vendedorId = mysqli_real_escape_string($db, $_POST['vendedor']);
+    $vendedorId = mysqli_real_escape_string($db, $_POST['vendedorId']);
+    $destacado = isset($_POST['destacado']) ? 1 : 0;
+    $categoria_id = $_POST['categoria_id'] ?? '';
     $creado = date('Y/m/d');
 
     // ASIGNAR FILES HACIA UNA VARIABLE
-
     $imagen = $_FILES['imagen'];
 
-
-
-
-
+    // Validar
     if (!$titulo) {
         $errores[] = 'Debes Añadir un Titulo';
     }
@@ -108,54 +95,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nombreImagen = '';
 
-    // echo'<pre>';
-    // var_dump($errores);
-    //echo '</pre>';
-
     // revisar que el arreglo de errores este vacio
-
     if (empty($errores)) {
-
         // crear $carpetaImagenes
         $carpetaImagenes = '../../imagenes/';
 
         if (!is_dir($carpetaImagenes)) {
-            mkdir($carpetaImagenes, );
+            mkdir($carpetaImagenes);
         }
 
-        // // Subida de archivos
+        // Subida de archivos
         if ($imagen['name']) {
+            // Eliminar imagen anterior
+            if (file_exists($carpetaImagenes . $propiedadData['imagen'])) {
+                unlink($carpetaImagenes . $propiedadData['imagen']);
+            }
 
-            unlink($carpetaImagenes . $propiedad['imagen']);
-
-            // // generar un nombre unico para la Imagen
+            // Generar un nombre unico para la Imagen
             $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
-            // // Subir la imagen 
+            // Subir la imagen
             move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
-
-        }else{
-            $nombreImagen = $propiedad['imagen'];
+        } else {
+            $nombreImagen = $propiedadData['imagen'];
         }
 
-
-        // insertar en la base de datos
-
-        $query = " UPDATE propiedades SET titulo = '{$titulo}',Precio = {$precio}, imagen = '{$nombreImagen}', descripcion = '{$descripcion}', habitaciones = {$habitaciones}, wc = {$wc}, estacionamiento = {$estacionamiento}, vendedorId = {$vendedorId} WHERE id= {$id}";
-
-        // echo $query;
-
+        // Construir la consulta SQL
+        // Manejar correctamente el valor NULL para categoria_id
+        if (empty($categoria_id)) {
+            $categoria_id_sql = "NULL"; // Sin comillas en la consulta SQL
+        } else {
+            $categoria_id_sql = intval($categoria_id);
+        }
+        
+        $query = "UPDATE propiedades SET titulo = '{$titulo}', precio = {$precio}, imagen = '{$nombreImagen}', 
+                  descripcion = '{$descripcion}', habitaciones = {$habitaciones}, wc = {$wc}, 
+                  estacionamiento = {$estacionamiento}, vendedorId = {$vendedorId},
+                  destacado = {$destacado}, categoria_id = " . $categoria_id_sql . " WHERE id = {$id}";
 
         $resultado = mysqli_query($db, $query);
         if ($resultado) {
-            // redireccionar al usuario
-            header("Location:../../admin?resultado=2");
+            // Redireccionar al usuario
+            header("Location: ../?resultado=2");
+            exit;
+        } else {
+            // Si hay un error en la consulta, mostrarlo
+            $errores[] = "Error al actualizar: " . mysqli_error($db);
         }
     }
 }
 
-
 incluirTemplate('header');
+incluirTemplate('admin-menu');
 ?>
+
+<!-- Enlace a los estilos de SunEditor -->
+<link href="../../node_modules/suneditor/dist/css/suneditor.min.css" rel="stylesheet">
 
 <main class="contenedor seccion">
     <h1>Actualizar Propiedad</h1>
@@ -210,12 +204,17 @@ incluirTemplate('header');
             <label for="estacionamiento">Numero Estacionamientos:</label>
             <input type="number" name="estacionamiento" id="estacionamiento" placeholder="Ej: 3" min="1" value="<?php
             echo $estacionamiento; ?>">
+            
+            <div class="checkbox-destacado">
+                <label for="destacado">¿Mostrar en la página principal?</label>
+                <input type="checkbox" id="destacado" name="destacado" value="1" <?php echo $destacado == 1 ? 'checked' : ''; ?>>
+            </div>
         </fieldset>
 
         <fieldset>
             <legend>Vendedor</legend>
 
-            <select name="vendedor" value="<?php
+            <select name="vendedorId" value="<?php
             echo $vendedorId; ?>">
                 <option value="">-- Seleccione --</option>
                 <?php
@@ -230,7 +229,24 @@ incluirTemplate('header');
                     <?php
                 endwhile;
                 ?>
-
+            </select>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Categoría</legend>
+            <?php
+            $consulta_categorias = "SELECT * FROM categorias";
+            $resultado_categorias = mysqli_query($db, $consulta_categorias);
+            ?>
+            
+            <select name="categoria_id">
+                <option value="">-- Seleccione --</option>
+                <?php while ($categoria = mysqli_fetch_assoc($resultado_categorias)): ?>
+                    <option <?php echo $categoria_id == $categoria['id'] ? 'selected' : ''; ?> 
+                            value="<?php echo $categoria['id']; ?>">
+                        <?php echo $categoria['nombre']; ?>
+                    </option>
+                <?php endwhile; ?>
             </select>
         </fieldset>
 
@@ -240,6 +256,10 @@ incluirTemplate('header');
 
 
 </main>
+
+<!-- SunEditor scripts -->
+<script src="../../node_modules/suneditor/dist/suneditor.min.js"></script>
+<script src="../../build/js/suneditor-config.js"></script>
 
 <?php
 incluirTemplate('footer');

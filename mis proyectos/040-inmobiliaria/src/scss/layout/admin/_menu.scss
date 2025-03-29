@@ -1,0 +1,55 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.admin-navbar {
+    background-color: darken(v.$grisOscuro, 10%);
+    padding: 1.2rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 2rem;
+    
+    .contenedor {
+        width: 95%;
+        max-width: 120rem;
+        margin: 0 auto;
+    }
+}
+
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    @include m.tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    a {
+        color: v.$blanco;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        transition: all 0.3s ease;
+        text-align: center;
+        border-radius: 0.5rem;
+        font-size: 1.4rem;
+        
+        &:hover {
+            background-color: v.$verde;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        &.activo {
+            background-color: v.$verde;
+            color: v.$blanco;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+    }
+} 
