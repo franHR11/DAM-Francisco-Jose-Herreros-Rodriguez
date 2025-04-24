@@ -50,7 +50,9 @@ incluirTemplate('header');
         <p><?php echo $propiedad['habitaciones']; ?></p>
       </li>
     </ul>
-    <p><?php echo $propiedad['descripcion']; ?></p>
+    <div class="propiedad-descripcion">
+      <?php echo $propiedad['descripcion']; ?>
+    </div>
 
   </div>
 </main>

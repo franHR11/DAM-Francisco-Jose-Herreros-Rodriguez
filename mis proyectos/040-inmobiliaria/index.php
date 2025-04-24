@@ -2,6 +2,7 @@
 require 'includes/app.php';
 
 use App\BlogEntry;
+use App\Propiedad;
 
 // Importar la conexión
 $db = conectarDB();
@@ -56,9 +57,65 @@ incluirTemplate('header', $inicio);
   <h2>Casas y Departamentos en Venta</h2>
 
   <?php 
-    $limite = 3;
-    include 'includes/templates/anuncios.php';
+    $total_propiedades_a_mostrar = 6;
+    $propiedades_destacadas = Propiedad::getDestacados($total_propiedades_a_mostrar);
+    
+    $num_destacadas = count($propiedades_destacadas);
+    $propiedades_finales = $propiedades_destacadas; // Empezar con las destacadas
+
+    if ($num_destacadas < $total_propiedades_a_mostrar) {
+        $faltantes = $total_propiedades_a_mostrar - $num_destacadas;
+        
+        // Obtener IDs de las destacadas para excluirlas
+        $ids_destacadas = [];
+        foreach ($propiedades_destacadas as $propiedad) {
+            $ids_destacadas[] = $propiedad->id;
+        }
+        
+        // Obtener propiedades recientes no destacadas
+        $propiedades_recientes = Propiedad::getRecientesNoDestacados($faltantes, $ids_destacadas);
+        
+        // Combinar arrays
+        $propiedades_finales = array_merge($propiedades_destacadas, $propiedades_recientes);
+    }
   ?>
+
+  <div class="contenedor-anuncios-destacados">
+    <?php foreach($propiedades_finales as $propiedad): ?>
+    <div class="anuncios">
+      <picture>
+        <img loading="lazy" src="imagenes/<?php echo $propiedad->imagen; ?>" alt="anuncio imagen">
+      </picture>
+
+      <div class="contenido-anuncio">
+        <h3><?php echo $propiedad->titulo; ?></h3>
+        <p class="descripcion-anuncio">
+          <?php 
+            // Quitar etiquetas HTML y limitar a 100 caracteres
+            $descripcion_limpia = strip_tags($propiedad->descripcion);
+            echo substr($descripcion_limpia, 0, 100) . '...'; 
+          ?>
+        </p>
+        <p class="precio"><?php echo $propiedad->precio; ?> €</p>
+        <ul class="iconos-caracteristicas">
+          <li>
+            <img class="icono" loading="lazy" src="build/img/icono_wc.svg" alt="icono wc">
+            <p><?php echo $propiedad->wc; ?></p>
+          </li>
+          <li>
+            <img class="icono" loading="lazy" src="build/img/icono_estacionamiento.svg" alt="icono estacionamiento">
+            <p><?php echo $propiedad->estacionamiento; ?></p>
+          </li>
+          <li>
+            <img class="icono" loading="lazy" src="build/img/icono_dormitorio.svg" alt="icono habitaciones">
+            <p><?php echo $propiedad->habitaciones; ?></p>
+          </li>
+        </ul>
+        <a href="anuncio.php?id=<?php echo $propiedad->id; ?>" class="boton-amarillo-block">Ver Propiedad</a>
+      </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
 
   <div class="alinear-derecha">
     <a href="anuncios.php" class="boton-verde">Ver Todas</a>
@@ -83,7 +140,7 @@ incluirTemplate('header', $inicio);
         <article class="entrada-blog">
           <div class="imagen">
             <?php if($entrada->imagen): ?>
-              <img src="/imagenes/<?php echo $entrada->imagen; ?>" loading="lazy" alt="Imagen del blog" />
+              <img src="imagenes/<?php echo $entrada->imagen; ?>" loading="lazy" alt="Imagen del blog" />
             <?php else: ?>
               <img src="build/img/blog1.webp" loading="lazy" alt="Imagen blog" />
             <?php endif; ?>
@@ -108,9 +165,10 @@ incluirTemplate('header', $inicio);
               </p>
               <p>
                 <?php
-                  // Mostrar extracto o generar uno del contenido
-                  $extracto = substr(strip_tags($entrada->contenido), 0, 150);
-                  echo $extracto . (strlen(strip_tags($entrada->contenido)) > 150 ? '...' : '');
+                  // Mostrar extracto limpio eliminando etiquetas HTML
+                  $contenido_limpio = strip_tags($entrada->contenido);
+                  $extracto = substr($contenido_limpio, 0, 150);
+                  echo $extracto . (strlen($contenido_limpio) > 150 ? '...' : '');
                 ?>
               </p>
             </a>

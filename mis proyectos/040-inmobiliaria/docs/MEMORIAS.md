@@ -262,6 +262,143 @@ Se implementó POO para mejorar la organización del código:
 - Corrección del problema de posicionamiento de botones en la sección de categorías
 - Reporte y corrección de errores visuales en secciones específicas del panel de administración 
 
+### Corrección de Errores de Compilación SASS (Abril 2025)
+- Identificación del error `Can't find stylesheet to import` causado por el uso incorrecto de `@forward` en `src/scss/app.scss`.
+- Corrección de `src/scss/app.scss` para utilizar la directiva `@use` en lugar de `@forward`, siguiendo la estructura existente del proyecto.
+- Se verificó que el archivo `src/scss/admin/_categorias.scss` utiliza la función `darken()`, pero se determinó que no era la causa principal del error de compilación. Se decidió mantenerla por el momento y corregirla solo si genera problemas específicos.
+- Se aseguró que la importación de `admin/categorias` se realizara correctamente en `app.scss` para aplicar los estilos del panel de administración de categorías.
+
+### Corrección de Errores de Variables y Deprecación SASS (Abril 2025)
+- Se identificó un error `Undefined variable` para `v.$grisClaro` en `_categorias.scss`, a pesar de la importación correcta.
+- La causa fue una importación duplicada de `@use 'base/variables' as v;` al final de `app.scss`, la cual fue eliminada.
+- Se abordaron las advertencias de funciones deprecadas (`darken`) en `_categorias.scss`.
+- Se añadió `@use 'sass:color';` al inicio de `_categorias.scss`.
+- Se reemplazó `darken(v.$grisClaro, 10%)` con la alternativa moderna `color.adjust(v.$grisClaro, $lightness: -10%)`.
+
+### Depuración de Error `Undefined variable` en SASS (Abril 2025)
+- A pesar de las correcciones anteriores, el error `Undefined variable` para `variables.$grisClaro` persistió en `_categorias.scss`.
+- Como paso de depuración, se modificó `_categorias.scss` para usar los namespaces por defecto de SASS en lugar de alias.
+- Se cambiaron las importaciones a `@use '../base/variables';` y `@use '../base/mixins';`.
+- Todas las referencias a `v.$variable` y `m.mixin()` fueron actualizadas a `variables.$variable` y `mixins.mixin()` respectivamente.
+- El objetivo es descartar si el problema está relacionado con el manejo de alias (`as v`, `as m`) por parte del compilador SASS en este contexto.
+
+### Corrección Definitiva de Error `Undefined variable` en SASS (Abril 2025)
+- Se descubrió que la causa raíz del error `Undefined variable: variables.$grisClaro` no estaba relacionada con la importación o los alias, sino que la variable `$grisClaro` simplemente **no existía** en `src/scss/base/_variables.scss`.
+- El archivo `_variables.scss` define `$gris: #e1e1e1;` pero no `$grisClaro`.
+- Se corrigió `src/scss/admin/_categorias.scss` reemplazando todas las instancias de la variable inexistente `variables.$grisClaro` con la variable correcta `variables.$gris`.
+- Esto resolvió finalmente el error de compilación.
+
+### Mejora de Estilos para Tarjetas de Categorías (Abril 2025)
+- Se aplicaron mejoras visuales al archivo `src/scss/admin/_categorias.scss` para las tarjetas de categorías en el panel de administración.
+- **Título:** Se aumentó el `font-weight` a `bold` para mayor jerarquía.
+- **Contador de Entradas:** Se incrementó el `font-size` a `2rem` y el `font-weight` a `black` para destacarlo.
+- **Efecto Hover:** Se hizo la sombra (`box-shadow`) más pronunciada al pasar el ratón sobre la tarjeta.
+- **Footer:** Se cambió el fondo a blanco (`variables.$blanco`) y se simplificó el `border-top`.
+- **Botones:** Se añadió una transición y un efecto `hover` (`filter: brightness(90%)`) para mejorar la interactividad.
+
+### Corrección de Menú Faltante en Secciones del Blog (Abril 2025)
+- Se detectó que la barra de navegación del administrador (`admin-navbar`) no aparecía en las páginas de "Blog - Ver todas las entradas" (`admin/blog/ver-todas/index.php`) ni en "Blog - Gestión de Categorías" (`admin/blog/categorias/index.php`).
+- La causa era que estos archivos PHP no incluían la plantilla `includes/templates/admin-menu.php`, que es la que contiene el HTML de la barra de navegación.
+- Se corrigieron ambos archivos añadiendo la línea `incluirTemplate('admin-menu');` después de la línea `incluirTemplate('header');`.
+- Esto aseguró que el menú de administración se muestre consistentemente en todas las secciones del panel.
+
+### Creación de Funcionalidad para Actualizar Categorías de Blog (Abril 2025)
+- Se detectó un error 404 al intentar acceder a la edición de categorías de blog (`/admin/blog/categorias/actualizar.php`).
+- La causa era que el archivo `actualizar.php` no existía en ese directorio. Existía un directorio vacío llamado `actualizar/`.
+- Se creó el archivo `admin/blog/categorias/actualizar.php` basándose en la lógica de actualización de otras entidades, usando la clase `App\BlogCategory`.
+- Se corrigió un error inicial relacionado con el método `sincronizar()` (que no existe en `BlogCategory`), asignando los valores POST directamente al objeto.
+- Se creó el archivo `admin/blog/categorias/formulario.php` con los campos `nombre` y `descripcion`, asegurando que use el objeto `$categoria` para mostrar los valores.
+- Se intentó eliminar el directorio vacío `admin/blog/categorias/actualizar/`, pero la herramienta no lo encontró (posiblemente ya no existía).
+
+### Implementación de Sección de Configuración del Sitio (Abril 2025)
+- Se creó una nueva sección en el panel de administración (`/admin/configuracion/`) para gestionar configuraciones globales del sitio.
+- **Base de Datos:** Se añadió la tabla `site_config` con una única fila (id=1) para almacenar `site_name`, `meta_description`, `logo_filename`, `header_image_filename`. Se actualizó `docs/CONEXIONES_BD.md`.
+- **Backend:** 
+    - Se creó la clase `App\SiteConfig` (heredando de `ActiveRecord`) con validaciones y métodos básicos.
+    - Se creó el controlador `admin/configuracion/index.php` para cargar/guardar la configuración y manejar la subida de imágenes (logo y cabecera) usando Intervention Image. Se definió la constante `CARPETA_IMAGENES_CONFIG`.
+    - Se creó el formulario `admin/configuracion/formulario.php`.
+- **Frontend Admin:** Se añadió el enlace "Configuración" a `includes/templates/admin-menu.php`.
+- **Integración Frontend:**
+    - En `includes/templates/header.php`, se cargan los datos de `SiteConfig`. Se usan `site_name` y `meta_description` en las etiquetas `<title>` y `<meta name="description">`.
+    - El logo (`<img>`) ahora carga dinámicamente desde `logo_filename` (con fallback a `logo.svg`).
+    - Se define una variable CSS `--header-bg-image` con la ruta de `header_image_filename` solo en la página de inicio.
+- **CSS:** Se modificó `src/scss/layout/_header.scss` para que `.header.inicio` use la variable `--header-bg-image` con una imagen de fallback.
+
+### Corrección de Errores en ActiveRecord y Carga de Configuración (Abril 2025)
+- Se detectaron advertencias `Deprecated: Using ${var}` en `classes/ActiveRecord.php`.
+    - **Causa:** Uso de sintaxis obsoleta para interpolación de strings.
+    - **Solución:** Se reemplazaron todas las instancias de `${var}` por `{$var}` en los métodos `limit`, `find`, `where`, y `buscar`.
+- Se detectó un error `Fatal error: Call to a member function query() on null` en `ActiveRecord::consultarSQL` al intentar cargar la configuración (`SiteConfig::find(1)`) desde `header.php`.
+    - **Causa:** La conexión a la base de datos (`$db`) no se estaba estableciendo en la clase base `ActiveRecord` mediante `ActiveRecord::setDB($db)`. Solo se establecía en clases hijas específicas.
+    - **Solución:** Se modificó `includes/app.php` para añadir `use App\ActiveRecord;` y llamar a `ActiveRecord::setDB($db)` inmediatamente después de conectar a la base de datos. Se eliminaron las llamadas redundantes a `setDB()` en las clases hijas.
+
+### Corrección de Error Fatal en BlogEntry (Abril 2025)
+- Se detectó un error `Fatal error: Call to a member function query() on null` en `classes/BlogEntry.php` al intentar cargar entradas destacadas en `index.php`.
+- **Causa:** Similar al error anterior, la conexión `$db` era `null` dentro de `BlogEntry`. Se descubrió que `BlogEntry` **no** hereda de `ActiveRecord`, por lo que no recibía la conexión establecida en la clase base.
+- **Solución:** Se modificó `includes/app.php` para descomentar la línea `BlogEntry::setDB($db);`, asegurando que la conexión se pase explícitamente a esta clase independiente.
+
+### Corrección de Error Fatal `Call to undefined function s()` (Abril 2025)
+- Después de las correcciones anteriores, apareció una página en blanco. Los logs de PHP revelaron el error `Fatal error: Call to undefined function s()` en `includes/templates/header.php`.
+- **Causa:** Se intentaba usar una función `s()` para sanitizar HTML, pero esta función no estaba definida. Existía una función similar llamada `sanitizar()` en `includes/funciones.php`.
+- **Solución:** Se reemplazaron todas las llamadas a `s()` por `sanitizar()` en los archivos afectados (`includes/templates/header.php`, `admin/configuracion/formulario.php`, `admin/blog/categorias/formulario.php`).
+
+### Corrección de Error Fatal en Propiedad (Abril 2025)
+- Se detectó un error `Fatal error: Call to a member function query() on null` en `classes/propiedad.php` al intentar cargar propiedades en `admin/index.php`.
+- **Causa:** A pesar de establecer la conexión en `ActiveRecord::setDB($db)`, las clases hijas como `Propiedad` no la estaban heredando o utilizando correctamente. La suposición de que la herencia sería suficiente para la conexión estática `$db` fue incorrecta.
+- **Solución:** Se revirtió la estrategia en `includes/app.php`. Se mantivo `ActiveRecord::setDB($db)` pero se descomentaron todas las llamadas explícitas a `Clase::setDB($db)` para cada clase (`Propiedad`, `Vendedor`, `Categoria`, `BlogEntry`, `BlogCategory`, `SiteConfig`) para garantizar que cada una reciba la conexión independientemente de la herencia.
+
+### Corrección de Estilos Faltantes en Admin/Configuracion (Abril 2025)
+- Se reportó que la página `/admin/configuracion/index.php` se mostraba sin estilos, header ni footer.
+- **Causa:** La lógica para calcular la ruta relativa (`$rutaBase`) en `includes/templates/header.php` no contemplaba la ruta `/admin/configuracion/`. Esto rompía el enlace al archivo CSS.
+- **Solución:** Se modificó `includes/templates/header.php`, añadiendo la comprobación para `/admin/configuracion/` en la condición que asigna `$rutaBase = '../../';`. Se verificó que la lógica similar en `admin-menu.php` ya era correcta.
+
+### Adición de Soporte para SVG en Configuración (Abril 2025)
+- Se solicitó permitir la subida de archivos SVG para el logo y la imagen de cabecera en `/admin/configuracion/`.
+- **Problema:** La lógica existente usaba Intervention Image, que no procesa SVG.
+- **Solución:**
+    - Se modificó `admin/configuracion/index.php` para detectar la extensión del archivo subido.
+    - Si es `.svg`, se genera un nombre único `.svg` y se usa `move_uploaded_file()` para guardar el archivo original sin procesar.
+    - Si es raster (JPG, PNG, GIF), se mantiene la lógica de procesar con Intervention Image y guardar como JPG.
+    - Se modificó `admin/configuracion/formulario.php` para añadir `image/svg+xml` al atributo `accept` de los inputs de archivo.
+
+### Corrección de Error SQL Syntax en `UPDATE site_config` (Abril 2025)
+- Se detectó un error `Fatal error: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual ... near 'WHERE id = '1' LIMIT 1'` al guardar la configuración.
+- **Causa:** La consulta `UPDATE` generada por el método `actualizar()` (llamado por `guardar()`) tenía la cláusula `SET` vacía. Esto probablemente se debía a que la sobrescritura del método `guardar()` que habíamos añadido en `SiteConfig.php` era innecesaria y/o interfería con la lógica heredada de `ActiveRecord` (que sí tiene métodos `guardar` y `actualizar` funcionales).
+- **Solución:** Se eliminó la sobrescritura del método `guardar()` en `classes/SiteConfig.php`, permitiendo que utilice el método `guardar()` heredado de `ActiveRecord`.
+
+### Corrección de Error Fatal `Class "Intervention\Image\ImageManagerStatic" not found` (Abril 2025)
+- Al intentar guardar la configuración con una imagen raster (JPG/PNG), se produjo el error `Fatal error: Class Intervention\Image\ImageManagerStatic not found`.
+- **Causa:** La librería `intervention/image`, necesaria para procesar las imágenes rasterizadas en `admin/configuracion/index.php`, no estaba instalada en el proyecto.
+- **Solución:** Se instaló la librería ejecutando `composer require intervention/image` en la terminal del proyecto.
+
+## [17/05/2024] Corrección del guardado de contenido HTML en entradas de blog
+
+### Problema detectado
+Al implementar el editor SunEditor para el blog, se encontró que el contenido HTML generado no se estaba guardando correctamente en la base de datos al crear o editar entradas de blog. Mientras que el editor funcionaba visualmente, al enviar el formulario el contenido no se transfiere al elemento `textarea` antes del envío.
+
+### Causa
+El problema se debía a que el evento `submit` del formulario se procesaba antes de que el contenido del editor SunEditor se pudiera transferir al campo `textarea` que es el que realmente se envía al servidor. En particular, para el editor de blog (campo `contenido`), el proceso de transferencia no estaba siendo completado a tiempo.
+
+### Solución implementada
+1. Se modificó el archivo `build/js/suneditor-config.js` para mejorar el manejo del evento `submit` en los formularios:
+   - Para el campo de blog, se previene temporalmente el envío automático del formulario con `e.preventDefault()`
+   - Se transfiere explícitamente el contenido del editor al campo `textarea` usando `editor.getContents()`
+   - Se implementa un pequeño retraso (100ms) mediante `setTimeout()` antes de enviar el formulario manualmente, asegurando que el contenido HTML se haya transferido correctamente
+   - Se añadieron mensajes de depuración en la consola para verificar que el contenido se está transfiriendo correctamente
+
+2. Estas modificaciones aseguran que:
+   - El contenido HTML completo se guarde correctamente en la base de datos
+   - No se pierda el formato aplicado en el editor (negritas, listas, enlaces, etc.)
+   - La experiencia de usuario no se vea afectada durante el proceso
+
+### Beneficios
+- Funcionamiento completo del editor SunEditor en las entradas de blog
+- Preservación del contenido formateado en HTML al guardar o actualizar entradas
+- Mayor fiabilidad en la transferencia de datos entre el editor y el servidor
+- Mejora en la experiencia de creación de contenido para los administradores del sitio
+
+Esta corrección complementa la implementación inicial del editor SunEditor, asegurando que funcione correctamente tanto en propiedades como en entradas de blog.
+
 # Registro de Cambios y Decisiones
 
 ## Sistema de Autenticación (Febrero 2024)
@@ -312,3 +449,211 @@ Se implementó POO para mejorar la organización del código:
 - Implementación de la vista para mostrar las entradas del blog en la página principal del sitio
 - Mejora en la gestión de imágenes para las entradas del blog con soporte para la biblioteca Intervention Image
 - Implementación de funcionalidad para destacar entradas en la página principal 
+
+### [26/06/2024] - Lógica mejorada para mostrar propiedades en la página principal
+
+**Problema:**  
+La sección "Casas y Departamentos en Venta" de la página principal solo mostraba hasta 6 propiedades destacadas. Si había menos de 6, el espacio no se aprovechaba.
+
+**Cambios realizados:**
+1. Se añadió un nuevo método estático `getRecientesNoDestacados(\$limite, \$exclude_ids = [])` a la clase `Propiedad` (`classes/Propiedad.php`). Este método recupera las propiedades más recientes que no están marcadas como destacadas y permite excluir un conjunto de IDs.
+2. Se modificó la lógica en `index.php`:\n   - Primero se obtienen hasta 6 propiedades destacadas (`getDestacados`).\n   - Si el número de destacadas es menor a 6, se calcula cuántas faltan.\n   - Se llama al nuevo método `getRecientesNoDestacados` para obtener las propiedades recientes no destacadas necesarias para completar el total de 6, asegurándose de excluir las IDs de las destacadas ya obtenidas.\n   - Se combinan ambos conjuntos de propiedades usando `array_merge()`.\n   - El grid siempre se renderiza con el array final, que contiene una mezcla de destacadas y recientes hasta un máximo de 6.
+
+**Resultado:**  \nLa sección de propiedades en la página principal ahora siempre muestra 6 anuncios. Se da prioridad a las propiedades marcadas como destacadas, y si hay menos de 6, el espacio se completa automáticamente con las propiedades añadidas más recientemente, optimizando la visibilidad y el uso del espacio en la página de inicio.
+
+### [26/06/2024] - Corrección de estilos para los iconos de características en la página principal
+
+**Problema:**  
+Después de implementar el grid de 3x2 para las propiedades destacadas en la página principal, se identificó que los iconos de características (baños, estacionamiento, habitaciones) no se mostraban correctamente. Esto ocurría porque en el template original `includes/templates/anuncios.php` se usaba la clase `anuncios` mientras que en la nueva implementación directa en `index.php` se utilizaba la clase `anuncio` (singular).
+
+**Cambios realizados:**
+1. Se modificó el `index.php` para utilizar la clase correcta `anuncios` en lugar de `anuncio`, manteniendo consistencia con el template original.
+2. Se actualizaron los estilos en `src/scss/layout/_anuncios.scss` para:
+   - Aplicar los mismos estilos a `.anuncio` y `.anuncios` (usando la sintaxis `.anuncio, .anuncios { ... }`)
+   - Asegurar que los ajustes específicos para las tarjetas en la página principal aplican a ambas clases
+   - Mantener las características de diseño responsivo y visualización compacta
+
+**Resultado:**  
+Los iconos de características ahora se muestran correctamente en la página principal, con el mismo estilo y espaciado que en otras secciones del sitio. Se ha mantenido la estructura de 3 columnas y 2 filas para las propiedades destacadas, pero con una visualización consistente y correcta de todos los elementos. 
+
+### [26/06/2024] - Ajuste final de estilos para iconos en propiedades destacadas
+
+**Problema:**  
+A pesar de las correcciones anteriores, los iconos de características (`.iconos-caracteristicas`) en la sección de propiedades destacadas de la página principal seguían presentando problemas de alineación o desbordamiento intermitentes.
+
+**Cambios realizados:**
+1. Se identificó que el problema persistía debido a las dimensiones fijas de las imágenes de los iconos (`width: 3rem`, `height: 3rem`, `margin-right: 1rem`) que no se adaptaban bien al espacio más compacto de las tarjetas en `.contenedor-anuncios-destacados`.
+2. Se aplicó un ajuste específico en `src/scss/layout/_anuncios.scss` para las imágenes de los iconos *solo* dentro del contenedor destacado:
+   - Se redujo el `width` y `height` a `2.5rem`.
+   - Se redujo el `margin-right` a `0.5rem`.
+   - Se ajustó el `flex-basis` a `2.5rem`.
+
+**Resultado:**  
+Los iconos de características ahora se muestran correctamente y de forma estable en las propiedades destacadas de la página principal. El ajuste fino del tamaño y margen de los iconos en este contexto específico resolvió el conflicto de layout, asegurando una visualización consistente y estéticamente agradable. 
+
+### [26/06/2024] - Solución final al corte de iconos de características
+
+**Problema:**  
+Los iconos de características (`.iconos-caracteristicas > li > img`) se veían ligeramente cortados en los bordes superior/inferior y/o laterales, tanto en la sección de destacados como en la vista general de anuncios, a pesar de los intentos previos de añadir padding o ajustar tamaños.
+
+**Diagnóstico:**  
+Tras inspeccionar los elementos, se observó que el `height` calculado del `li` y el `padding` interactuaban de forma imprecisa con el `align-items: center` y el tamaño fijo de la imagen, causando problemas de renderizado de subpíxeles o espacio insuficiente.
+
+**Cambios realizados:**
+1. Se adoptó un enfoque diferente en `src/scss/layout/_anuncios.scss` para el estilo general de `.iconos-caracteristicas`:
+   - Se eliminó el `padding` de los elementos `li`.
+   - Se añadió `object-fit: contain;` a las imágenes (`img`) para asegurar que se escalen correctamente dentro de su contenedor.
+   - Se estableció explícitamente `line-height: 1;` en los párrafos (`p`) para minimizar su altura vertical y tener un control más predecible.
+   - Se mantuvo el `align-items: center;` en los `li` para el centrado vertical.
+2. Se conservaron los ajustes específicos de tamaño (`width`, `height`, `margin-right`, `flex`) para `img` y `font-size` para `p` dentro de `.contenedor-anuncios-destacados` para mantener la compacidad visual en la página principal.
+
+**Resultado:**  
+El problema del corte de los iconos se ha resuelto de forma definitiva. Al eliminar la dependencia del `padding` para el espaciado vertical y controlar explícitamente las alturas y el ajuste de la imagen, se logra una alineación y visualización correcta y estable en todos los contextos. 
+
+### [18/05/2024] - Mejora del menú de categorías en el blog
+
+**Problema:**  
+El menú de categorías en la página de blog (`blog.php`) carecía de estilos adecuados debido a una inconsistencia entre el nombre de la clase utilizada en el HTML (`categorias-blog`) y la definida en el archivo SCSS (`categorias`).
+
+**Cambios realizados:**
+1. Se modificó el archivo `src/scss/internas/_blog.scss` para usar la clase correcta `.categorias-blog` en lugar de `.categorias`.
+2. Se mejoró significativamente el diseño visual del menú con las siguientes características:
+   - Título de sección "Categorías" con mayor presencia (color verde, borde inferior, tamaño de fuente mejorado)
+   - Botones con bordes redondeados y sombras ligeras para efecto de elevación
+   - Efecto de animación al pasar el cursor: elevación suave y flecha de indicación visual
+   - Transición de color con fondo verde al hacer hover, mejorando la experiencia interactiva
+   - Espaciado optimizado entre elementos para mejor legibilidad
+
+**Resultado:**  
+El menú de categorías del blog ahora tiene una apariencia moderna y atractiva, con animaciones suaves que mejoran la experiencia del usuario e invitan a la interacción. La consistencia visual con el resto del sitio se mantiene mediante el uso de la paleta de colores principal y los estilos generales de la aplicación. 
+
+### [19/05/2024] - Mejora del diseño de filtros en anuncios.php
+
+**Problema:**  
+La sección de filtros en la página de anuncios (`anuncios.php`) presentaba un diseño en columnas que no optimizaba el espacio en dispositivos móviles y dificultaba la visualización en algunos dispositivos.
+
+**Cambios realizados:**
+1. Se modificó el archivo `src/scss/layout/_anuncios.scss` para convertir el diseño de los filtros de búsqueda de columnas a filas:
+   - Se reemplazó el grid de columnas por un contenedor flex con dirección de columna.
+   - Se limitó el ancho del formulario de búsqueda en pantallas grandes para mejorar la legibilidad.
+   - Se centró el formulario en pantallas grandes para una apariencia más equilibrada.
+   
+2. Se mejoró el diseño visual de la sección de categorías:
+   - Se actualizó el título "Categorías" con estilos más prominentes (color verde, borde inferior, centrado).
+   - Se implementó un diseño flexible para las categorías que se adapta a diferentes tamaños de pantalla.
+   - Se dispusieron las categorías en filas horizontales flexibles, permitiendo un mejor uso del espacio disponible.
+   - Se añadieron márgenes y espaciados optimizados usando la propiedad gap.
+
+**Resultado:**  
+La sección de filtros de búsqueda en `anuncios.php` ahora presenta un diseño más limpio y responsivo, con el buscador en una fila y las categorías distribuidas uniformemente en otra fila debajo. Esta organización mejora la experiencia del usuario en dispositivos móviles y aprovecha mejor el espacio en pantallas grandes, manteniendo la coherencia visual con el resto del sitio. 
+
+### [19/05/2024] - Añadir información de empresa a la configuración y footer
+
+**Problema:**  
+No existía una sección para gestionar la información básica de la empresa (nombre, dirección, horario) ni se mostraba esta información en el footer del sitio. Inicialmente, estos campos se hicieron obligatorios.
+
+**Cambios realizados:**
+1.  **Base de Datos:** Se añadieron las columnas `company_name`, `address`, `city`, `zip_code`, `opening_hours`, `closing_hours` a la tabla `site_config`.
+2.  **Clase `SiteConfig`:**
+    *   Se añadieron las propiedades correspondientes en `classes/SiteConfig.php`.
+    *   Se actualizó `$columnasDB` para incluir las nuevas columnas.
+    *   Se eliminaron las validaciones básicas que hacían obligatorios los campos de la empresa en el método `validar()`. **Los campos de empresa son ahora opcionales**.
+3.  **Formulario de Configuración:** Se añadió un nuevo `fieldset` en `admin/configuracion/formulario.php` con campos para editar la información de la empresa.
+4.  **Footer:**
+    *   Se modificó `includes/templates/footer.php` para cargar la configuración del sitio (`SiteConfig::find(1)`) si no estaba ya disponible.
+    *   Se añadió una nueva sección (`div.info-empresa`) para mostrar los datos de la empresa (nombre, dirección, ciudad, CP, horario) en el footer.
+5.  **Estilos CSS:**
+    *   Se añadieron estilos en `src/scss/layout/_footer.scss` para el nuevo `div.info-empresa`.
+    *   Se ajustaron los estilos del `.contenedor-footer` para usar `flexbox`, permitiendo que la navegación y la información de la empresa se muestren en columnas en pantallas de tablet y escritorio, y en filas en móvil.
+    *   Se compiló el archivo CSS (`npx gulp css`).
+6.  **Persistencia de Datos:** Se modificó `admin/configuracion/index.php` para usar `$config->sincronizar($_POST)` antes de llamar a `$config->validar()`. Esto asegura que si hay un error de validación (p. ej., el campo obligatorio "Nombre del Sitio" está vacío), los datos ya introducidos en los campos opcionales de la empresa se mantengan visibles en el formulario.
+7.  **Documentación:** Se actualizaron `docs/CONEXIONES_BD.md` y `docs/MEMORIAS.md` para reflejar estos cambios.
+
+**Resultado:**  
+Ahora es posible gestionar la información básica de la empresa desde el panel de administración (`/admin/configuracion/`). Esta información es opcional y se muestra de forma clara y estructurada en el footer del sitio si se proporciona. Los datos introducidos se conservan en el formulario en caso de errores de validación en otros campos. 
+
+### [19/05/2024] - Reorganización del Footer en dos columnas
+
+**Problema:**  
+La información de la empresa en el footer se mostraba en una sola columna, lo que podía ocupar mucho espacio vertical en pantallas grandes.
+
+**Cambios realizados:**
+1.  **HTML:** Se modificó `includes/templates/footer.php`, dividiendo el contenido de `div.info-empresa` en dos `div`s: `div.columna-datos` (Nombre, Dirección, Ciudad, CP) y `div.columna-horario` (Horario).
+2.  **CSS:** Se actualizaron los estilos en `src/scss/layout/_footer.scss`:
+    *   Se aplicó `display: flex` a `div.info-empresa`.
+    *   En pantallas de tablet y superiores, se estableció `flex-direction: row` para colocar las columnas una al lado de la otra, alineadas a la derecha (`justify-content: flex-end`) y con espacio (`gap`) entre ellas.
+    *   En pantallas móviles, se mantuvo `flex-direction: column` para apilar la información.
+    *   Se ajustaron los estilos de los títulos (`h4`, `h5`) y párrafos dentro de las columnas para una mejor presentación.
+3.  **Compilación:** Se compiló el CSS (`npx gulp css`).
+
+**Resultado:**  
+En pantallas grandes (tablet y escritorio), la información de la empresa en el footer ahora se muestra en dos columnas (datos a la izquierda, horario a la derecha), optimizando el espacio y mejorando la legibilidad. En pantallas móviles, la información se apila verticalmente como antes. 
+
+### [30/05/2024] - Implementación del Sistema de Mensajes de Contacto
+
+**Problema:**  
+El formulario de contacto no procesaba los datos enviados ni existía un sistema para gestionar los mensajes recibidos desde el panel de administración.
+
+**Cambios realizados:**
+1. **Base de Datos:**
+   * Creación de la tabla `mensajes_contacto` para almacenar todos los mensajes del formulario de contacto.
+   * Implementación de campos para tipo de operación (compra/vende), preferencia de contacto y seguimiento.
+2. **Frontend:**
+   * Corrección del formulario de contacto (`contacto.php`) añadiendo atributos `method="POST"`, `action` y `name` a todos los campos.
+   * Implementación de persistencia de datos y validación en el formulario.
+   * Adición de JavaScript para mostrar/ocultar campos de fecha/hora según preferencia de contacto.
+3. **Backend:**
+   * Creación de la clase `App\Contacto` extendiendo `ActiveRecord` para gestionar los mensajes.
+   * Implementación de métodos específicos como `mensajesNoLeidos()` y `marcarComoLeido()`.
+4. **Panel de Administración:**
+   * Creación de nueva sección "Mensajes" en el menú de administración con contador de mensajes no leídos.
+   * Implementación de listado paginado de mensajes con indicador visual de mensajes no leídos.
+   * Pantalla de detalle para ver y gestionar cada mensaje.
+   * Funcionalidad para marcar mensajes como leídos y eliminarlos.
+5. **Estilos:**
+   * Estilos específicos para los mensajes en el panel de administración.
+   * Indicador visual (badge) para mostrar el número de mensajes no leídos.
+   * Diseño responsivo para la visualización de mensajes.
+
+**Resultado:**  
+La implementación permite a los usuarios enviar mensajes a través del formulario de contacto y al administrador gestionar estos mensajes desde el panel de administración. El sistema proporciona información clara sobre el estado de los mensajes (leídos/no leídos) y permite responder directamente por email o teléfono según la preferencia indicada por el usuario.
+
+### [31/05/2024] - Corrección de alineación de botones en las tarjetas de anuncios
+
+**Problema:**  
+En las tarjetas de anuncios tanto en la página principal (`index.php`) como en la página de anuncios (`anuncios.php`), los botones "Ver Propiedad" aparecían a diferentes alturas dependiendo de la longitud del título o descripción de cada propiedad, lo que causaba un efecto visual inconsistente.
+
+**Cambios realizados:**
+1. Se modificó el archivo `src/scss/layout/_anuncios.scss` para implementar una estructura flexbox que garantiza la uniformidad de la altura de las tarjetas:
+   - Se aplicó `display: flex` y `flex-direction: column` a las tarjetas (`.anuncio, .anuncios`) para crear un contenedor flexible.
+   - Se estableció `height: 100%` para asegurar que todas las tarjetas tengan la misma altura dentro del grid.
+   - Se convirtió `.contenido-anuncio` en un contenedor flex con `flex-grow: 1` para que ocupe todo el espacio disponible.
+   - Se añadió `min-height: 3.5rem` al título (`h3`) para proporcionar un espacio consistente.
+   - Se aplicó `margin-top: auto` al botón `.boton-amarillo-block` para asegurar que siempre se posicione al final del contenedor.
+
+**Resultado:**  
+Las tarjetas de anuncios ahora presentan una apariencia uniforme con todos los botones "Ver Propiedad" alineados a la misma altura, independientemente de la longitud del título o la descripción. Esta mejora proporciona una experiencia visual más coherente y profesional, sin necesidad de truncar los títulos o descripciones de las propiedades.
+
+### [31/05/2024] - Mejora en la alineación de elementos en tarjetas de anuncios
+
+**Problema:**  
+Aunque los botones "Ver Propiedad" se alinearon correctamente al final de las tarjetas de anuncios, los precios y los iconos de características (baños, estacionamientos, habitaciones) no mantenían una posición uniforme, apareciendo a diferentes alturas dependiendo de la longitud del contenido de cada tarjeta.
+
+**Cambios realizados:**
+1. Se perfeccionó la estructura flexbox en `src/scss/layout/_anuncios.scss` para garantizar que todos los elementos tengan una posición consistente:
+   - Se asignó `flex-grow: 1` a la descripción para que ocupe todo el espacio disponible y empuje el resto de elementos hacia abajo.
+   - Se utilizó la propiedad `order` para determinar el orden de apilamiento de los elementos dentro del contenedor flex:
+     - `.precio` con `order: 1` para que aparezca primero en la parte inferior
+     - `.iconos-caracteristicas` con `order: 2` para colocarlo después del precio
+     - `.boton-amarillo-block` con `order: 3` para que siempre sea el último elemento
+   - Se agregó `margin-top: auto` al precio para empujarlo hasta el final del espacio disponible.
+   - Se definieron márgenes específicos entre estos elementos para un espaciado consistente.
+
+**Resultado:**  
+Las tarjetas de anuncios ahora presentan una estructura visual completamente uniforme, donde independientemente del contenido:
+1. La descripción ocupa el espacio variable necesario.
+2. El precio siempre aparece en la misma posición relativa respecto al final de la tarjeta.
+3. Los iconos de características se muestran consistentemente entre el precio y el botón.
+4. El botón "Ver Propiedad" siempre es el último elemento, a una distancia fija de los iconos.
+
+Esta mejora eleva significativamente la calidad visual de las tarjetas, proporcionando una experiencia de usuario más profesional y coherente en todas las páginas del sitio.

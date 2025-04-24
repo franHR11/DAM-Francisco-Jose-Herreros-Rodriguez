@@ -1,4 +1,11 @@
 <?php
+use App\SiteConfig;
+
+// Cargar configuración del sitio si aún no existe
+if (!isset($config)) {
+    $config = SiteConfig::find(1);
+}
+
 // Determinar si estamos en admin para ajustar las rutas si no está definida la variable
 if(!isset($rutaBase)) {
   $rutaBase = '';
@@ -23,13 +30,30 @@ if(!isset($rutaBase)) {
 }
 ?>
 <footer class="footer seccion">
-      <div class="contendor contenedor-footer">
+      <div class="contenedor contenedor-footer">
         <nav class="navegacion">
           <a href="<?php echo $rutaBase; ?>nosotros.php">Nosotros</a>
           <a href="<?php echo $rutaBase; ?>anuncios.php">Anuncios</a>
           <a href="<?php echo $rutaBase; ?>blog.php">Blog</a>
           <a href="<?php echo $rutaBase; ?>contacto.php">Contacto</a>
         </nav>
+        
+        <?php if (isset($config)): ?>
+        <div class="info-empresa">
+            <div class="columna-datos">
+                <h4><?php echo sanitizar($config->company_name ?? 'Empresa Inmobiliaria'); ?></h4>
+                <p><?php echo sanitizar($config->address ?? 'Dirección no especificada'); ?></p>
+                <p><?php echo sanitizar($config->city ?? 'Ciudad no especificada'); ?>, <?php echo sanitizar($config->zip_code ?? 'CP no especificado'); ?></p>
+            </div>
+            <div class="columna-horario">
+                <h5>Horario</h5>
+                <p><?php echo sanitizar($config->opening_hours ?? 'Horario no disponible'); ?></p>
+                <?php if (property_exists($config, 'closing_hours') && !empty($config->closing_hours)): ?>
+                    <p><?php echo sanitizar($config->closing_hours); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
       </div>
 
       <p class="copyright">Todos los derechos reservados <?php echo date ( 'Y');  ?> &copy;</p>

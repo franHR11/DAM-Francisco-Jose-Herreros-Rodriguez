@@ -89,7 +89,13 @@ incluirTemplate('header');
 
         <div class="contenido-anuncio">
           <h3><?php echo $propiedad->titulo; ?></h3>
-          <p class="descripcion-anuncio"><?php echo substr($propiedad->descripcion, 0, 100) . '...'; ?></p>
+          <p class="descripcion-anuncio">
+            <?php 
+              // Quitar etiquetas HTML y limitar a 100 caracteres
+              $descripcion_limpia = strip_tags($propiedad->descripcion);
+              echo substr($descripcion_limpia, 0, 100) . '...'; 
+            ?>
+          </p>
           <p class="precio"><?php echo $propiedad->precio; ?> €</p>
           <ul class="iconos-caracteristicas">
             <li>

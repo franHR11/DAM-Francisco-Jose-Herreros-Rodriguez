@@ -5,6 +5,10 @@ if(!isset($_SESSION)){
 
 $auth = $_SESSION["login"] ?? false;
 
+// Obtener configuración del sitio
+use App\SiteConfig; // Asegurar que el namespace está disponible
+$config = SiteConfig::find(1); // Cargar configuración ID 1
+
 // Determinar si estamos en admin para ajustar las rutas
 $rutaBase = '';
 if (strpos($_SERVER['SCRIPT_NAME'], '/admin/') !== false) {
@@ -19,8 +23,10 @@ if (strpos($_SERVER['SCRIPT_NAME'], '/admin/') !== false) {
   } elseif (strpos($_SERVER['SCRIPT_NAME'], '/admin/propiedades/') !== false || 
             strpos($_SERVER['SCRIPT_NAME'], '/admin/vendedores/') !== false ||
             strpos($_SERVER['SCRIPT_NAME'], '/admin/categorias/') !== false ||
-            strpos($_SERVER['SCRIPT_NAME'], '/admin/blog/') !== false) {
-    // Estamos en admin/propiedades/ o admin/vendedores/ o admin/categorias/ o admin/blog/
+            strpos($_SERVER['SCRIPT_NAME'], '/admin/blog/') !== false ||
+            strpos($_SERVER['SCRIPT_NAME'], '/admin/mensajes/') !== false ||
+            strpos($_SERVER['SCRIPT_NAME'], '/admin/configuracion/') !== false) {
+    // Estamos en admin/[carpeta]/ (nivel 2)
     $rutaBase = '../../';
   } else {
     // Estamos en admin/ (primer nivel)
@@ -36,15 +42,41 @@ if (strpos($_SERVER['SCRIPT_NAME'], '/admin/') !== false) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inmobiliaria</title>
+    <title><?php echo sanitizar(obtenerPropiedad($config, 'site_name', 'Inmobiliaria')); ?> <?php echo isset($pageTitle) ? ' - ' . sanitizar($pageTitle) : ''; ?></title>
+    <meta name="description" content="<?php echo sanitizar(obtenerPropiedad($config, 'meta_description', '')); ?>">
     <link rel="stylesheet" href="<?php echo $rutaBase; ?>build/css/app.css" />
+
+    <?php
+    // Comprobamos si estamos en la página inicial y existe una imagen de cabecera
+    $headerImagen = obtenerPropiedad($config, 'header_image_filename');
+    if ($inicio && !empty($headerImagen)): 
+    ?>
+    <style>
+      .header.inicio {
+        background-image: url('<?php echo $rutaBase; ?>imagenes/config/<?php echo sanitizar($headerImagen); ?>') !important;
+        background-size: cover;
+        background-position: center center;
+      }
+      /* Comentario para depuración */
+      /* Ruta imagen cabecera: <?php echo $rutaBase; ?>imagenes/config/<?php echo sanitizar($headerImagen); ?> */
+    </style>
+    <?php endif; ?>
+
   </head>
   <body>
     <header class="header <?php echo $inicio ? 'inicio' : ''; ?>">
       <div class="contenedor contenido-header">
         <div class="barra">
           <a href="<?php echo $rutaBase; ?>index.php">
-            <img src="<?php echo $rutaBase; ?>build/img/logo.svg" alt="Logotipo Inmobiliaria" />
+            <?php 
+            $logoImagen = obtenerPropiedad($config, 'logo_filename');
+            if (!empty($logoImagen)): 
+            ?>
+              <img src="<?php echo $rutaBase; ?>imagenes/config/<?php echo sanitizar($logoImagen); ?>" alt="Logotipo <?php echo sanitizar(obtenerPropiedad($config, 'site_name', 'Inmobiliaria')); ?>" />
+              <!-- Ruta logo: <?php echo $rutaBase; ?>imagenes/config/<?php echo sanitizar($logoImagen); ?> -->
+            <?php else: ?>
+              <img src="<?php echo $rutaBase; ?>build/img/logo.svg" alt="Logotipo por defecto" />
+            <?php endif; ?>
           </a>
 
 

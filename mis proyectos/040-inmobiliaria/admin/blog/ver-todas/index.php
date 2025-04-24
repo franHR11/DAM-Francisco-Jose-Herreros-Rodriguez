@@ -35,6 +35,7 @@ $totalPaginas = ceil($totalEntradas / $limit);
 
 // TEMPLATES
 incluirTemplate('header');
+incluirTemplate('admin-menu');
 ?>
 
 <main class="contenedor seccion">

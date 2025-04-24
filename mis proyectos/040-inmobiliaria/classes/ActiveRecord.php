@@ -81,28 +81,28 @@ class ActiveRecord {
 
     // Obtener registros con un límite
     public static function limit($limit, $offset = 0) {
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limit} OFFSET ${offset}";
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT {$limit} OFFSET {$offset}";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
     // Buscar un registro por su id
     public static function find($id) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE id = ${id}";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE id = {$id}";
         $resultado = self::consultarSQL($query);
         return array_shift($resultado);
     }
 
     // Buscar registros por una columna específica
     public static function where($columna, $valor) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
     // Realizar búsqueda en base a una columna
     public static function buscar($texto, $columna = 'nombre') {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} LIKE '%${texto}%'";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} LIKE '%{$texto}%'";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }

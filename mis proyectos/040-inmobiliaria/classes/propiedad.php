@@ -253,6 +253,25 @@ class Propiedad
         return $total['total'];
     }
 
+    // Obtiene las propiedades más recientes que NO son destacadas, excluyendo IDs específicos
+    public static function getRecientesNoDestacados($limite, $exclude_ids = []) {
+        $query = "SELECT * FROM propiedades WHERE destacado = 0 ";
+        
+        if (!empty($exclude_ids)) {
+            // Sanitizar y preparar los IDs para la cláusula NOT IN
+            $ids_sanitizados = [];
+            foreach ($exclude_ids as $id) {
+                $ids_sanitizados[] = self::$db->escape_string($id);
+            }
+            $query .= " AND id NOT IN (" . join(',', $ids_sanitizados) . ")";
+        }
+        
+        $query .= " ORDER BY creado DESC LIMIT " . self::$db->escape_string($limite);
+
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     // Buscar propiedad por ID
     public static function find($id) {
         $query = "SELECT * FROM propiedades WHERE id = {$id}";

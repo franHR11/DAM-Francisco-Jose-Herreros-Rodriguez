@@ -95,7 +95,7 @@ incluirTemplate('admin-menu');
 ?>
 
 <!-- Enlace a los estilos de SunEditor -->
-<link href="../../node_modules/suneditor/dist/css/suneditor.min.css" rel="stylesheet">
+<link href="<?php echo url('/node_modules/suneditor/dist/css/suneditor.min.css'); ?>" rel="stylesheet">
 
 <main class="contenedor seccion">
     <h1>Crear</h1>
@@ -107,13 +107,7 @@ incluirTemplate('admin-menu');
             <?php echo $error; ?>
         </div>
 
-
-
-
     <?php endforeach; ?>
-
-
-
 
     <form action="crear.php" class="formulario" method="POST" enctype="multipart/form-data">
 
@@ -133,7 +127,7 @@ incluirTemplate('admin-menu');
             <input type="file" id="imagen" name="imagen" accept="image/jpeg,image/png,image/webp">
 
             <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion"><?php
+            <textarea id="descripcion" name="descripcion" class="sun-editor"><?php
             echo $descripcion; ?></textarea>
 
         </fieldset>
@@ -206,8 +200,16 @@ incluirTemplate('admin-menu');
 </main>
 
 <!-- SunEditor scripts -->
-<script src="../../node_modules/suneditor/dist/suneditor.min.js"></script>
-<script src="../../build/js/suneditor-config.js"></script>
+<script src="<?php echo url('/node_modules/suneditor/dist/suneditor.min.js'); ?>"></script>
+<!-- Incluir soporte de idiomas -->
+<script>
+    // Crear variable global para los idiomas
+    var SUNEDITOR_LANG = {};
+</script>
+<!-- Archivo de idioma español para SunEditor -->
+<script src="<?php echo url('/node_modules/suneditor/src/lang/es.js'); ?>"></script>
+<!-- Configuración personalizada para SunEditor -->
+<script src="<?php echo url('/build/js/suneditor-config.js'); ?>"></script>
 
 <?php
 incluirTemplate('footer');

@@ -44,6 +44,16 @@ if (strpos($_SERVER['SCRIPT_NAME'], '/admin/propiedades/') !== false) {
     $seccionActual = 'categorias';
 } elseif (strpos($_SERVER['SCRIPT_NAME'], '/admin/blog/') !== false) {
     $seccionActual = 'blog';
+} elseif (strpos($_SERVER['SCRIPT_NAME'], '/admin/configuracion/') !== false) {
+    $seccionActual = 'configuracion';
+} elseif (strpos($_SERVER['SCRIPT_NAME'], '/admin/mensajes/') !== false) {
+    $seccionActual = 'mensajes';
+}
+
+// Obtener el número de mensajes no leídos para mostrar en el menú
+$totalMensajesNoLeidos = 0;
+if (class_exists('App\Contacto')) {
+    $totalMensajesNoLeidos = App\Contacto::mensajesNoLeidos();
 }
 ?>
 
@@ -55,6 +65,12 @@ if (strpos($_SERVER['SCRIPT_NAME'], '/admin/propiedades/') !== false) {
             <a href="<?php echo $rutaBase; ?>admin/vendedores/ver-todos/index.php" class="<?php echo $seccionActual === 'vendedores' ? 'activo' : ''; ?>">Vendedores</a>
             <a href="<?php echo $rutaBase; ?>admin/categorias/ver-todas/index.php" class="<?php echo $seccionActual === 'categorias' ? 'activo' : ''; ?>">Categorías</a>
             <a href="<?php echo $rutaBase; ?>admin/blog/index.php" class="<?php echo $seccionActual === 'blog' ? 'activo' : ''; ?>">Blog</a>
+            <a href="<?php echo $rutaBase; ?>admin/configuracion/index.php" class="<?php echo $seccionActual === 'configuracion' ? 'activo' : ''; ?>">Configuración</a>
+            <a href="<?php echo $rutaBase; ?>admin/mensajes/index.php" class="<?php echo $seccionActual === 'mensajes' ? 'activo' : ''; ?>">
+                Mensajes <?php if($totalMensajesNoLeidos > 0): ?>
+                    <span class="badge"><?php echo $totalMensajesNoLeidos; ?></span>
+                <?php endif; ?>
+            </a>
         </nav>
     </div>
 </div> 

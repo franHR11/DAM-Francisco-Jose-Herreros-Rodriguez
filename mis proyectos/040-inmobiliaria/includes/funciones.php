@@ -36,5 +36,20 @@ function validarTipoContenido($tipo) {
     $tipos = ['vendedor', 'propiedad', 'entrada', 'categoria'];
     return in_array($tipo, $tipos);
 }
+
+/**
+ * Obtiene una propiedad de un objeto de forma segura
+ * 
+ * @param object|null $objeto El objeto del que obtener la propiedad
+ * @param string $propiedad El nombre de la propiedad a obtener
+ * @param mixed $default El valor por defecto si la propiedad no existe
+ * @return mixed El valor de la propiedad o el valor por defecto
+ */
+function obtenerPropiedad($objeto, $propiedad, $default = '') {
+    if (!$objeto || !isset($objeto->$propiedad)) {
+        return $default;
+    }
+    return $objeto->$propiedad;
+}
     
 ?>

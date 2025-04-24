@@ -22,6 +22,7 @@ if (isset($_GET['busqueda'])) {
 
 // TEMPLATES
 incluirTemplate('header');
+incluirTemplate('admin-menu');
 ?>
 
 <main class="contenedor seccion">

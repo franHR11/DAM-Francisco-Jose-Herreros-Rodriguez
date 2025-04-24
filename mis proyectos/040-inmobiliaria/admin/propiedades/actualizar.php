@@ -149,7 +149,7 @@ incluirTemplate('admin-menu');
 ?>
 
 <!-- Enlace a los estilos de SunEditor -->
-<link href="../../node_modules/suneditor/dist/css/suneditor.min.css" rel="stylesheet">
+<link href="<?php echo url('/node_modules/suneditor/dist/css/suneditor.min.css'); ?>" rel="stylesheet">
 
 <main class="contenedor seccion">
     <h1>Actualizar Propiedad</h1>
@@ -185,7 +185,7 @@ incluirTemplate('admin-menu');
 
 
             <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion"><?php
+            <textarea id="descripcion" name="descripcion" class="sun-editor"><?php
             echo $descripcion; ?></textarea>
 
         </fieldset>
@@ -258,8 +258,16 @@ incluirTemplate('admin-menu');
 </main>
 
 <!-- SunEditor scripts -->
-<script src="../../node_modules/suneditor/dist/suneditor.min.js"></script>
-<script src="../../build/js/suneditor-config.js"></script>
+<script src="<?php echo url('/node_modules/suneditor/dist/suneditor.min.js'); ?>"></script>
+<!-- Incluir soporte de idiomas -->
+<script>
+    // Crear variable global para los idiomas
+    var SUNEDITOR_LANG = {};
+</script>
+<!-- Archivo de idioma español para SunEditor -->
+<script src="<?php echo url('/node_modules/suneditor/src/lang/es.js'); ?>"></script>
+<!-- Configuración personalizada para SunEditor -->
+<script src="<?php echo url('/build/js/suneditor-config.js'); ?>"></script>
 
 <?php
 incluirTemplate('footer');

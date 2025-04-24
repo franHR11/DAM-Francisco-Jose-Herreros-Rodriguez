@@ -1,20 +1,115 @@
 @use '../base/variables' as v;
+@use '../base/mixins' as m;
 
 .footer {
     padding: calc(v.$separacion / 2);
     background-color: v.$grisOscuro;
     margin-bottom: 0;
+    
     .contenedor-footer {
         padding-top: calc(v.$separacion / 2);
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
     }
 
     .navegacion {
         visibility: visible;
         opacity: 1;
         height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        @include m.tablet {
+            flex-direction: row;
+            margin-bottom: 0;
+            gap: 2rem;
+        }
+        
+        a {
+            color: v.$blanco;
+        }
     }
+
+    .info-empresa {
+        color: v.$blanco;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 4rem;
+            text-align: left;
+        }
+        
+        .columna-datos, .columna-horario {
+            // Estilos comunes si los hubiera
+        }
+
+        .columna-datos {
+            @include m.tablet {
+                text-align: left;
+            }
+        }
+
+        .columna-horario {
+             @include m.tablet {
+                text-align: left;
+            }
+        }
+
+        h4 {
+            font-size: 1.8rem;
+            margin: 0 0 1rem 0;
+            font-weight: v.$bold;
+            color: v.$blanco;
+            border-bottom: 1px solid v.$gris;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            
+            @include m.tablet {
+                 margin-top: 0;
+            }
+        }
+        
+        p {
+            margin: 0.5rem 0;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: v.$gris;
+        }
+        
+        h5 {
+            font-size: 1.6rem;
+            margin: 0 0 1rem 0;
+            font-weight: v.$bold;
+            color: v.$blanco;
+            text-transform: uppercase;
+            border-bottom: 1px solid v.$gris;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            
+            @include m.tablet {
+                 margin-top: 0;
+            }
+        }
+    }
+    
     .copyright {
         color: v.$blanco;
         text-align: center;
+        margin-top: 3rem;
     }
 }

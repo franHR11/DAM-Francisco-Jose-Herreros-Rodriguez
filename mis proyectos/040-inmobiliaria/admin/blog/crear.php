@@ -6,7 +6,8 @@ estaAutenticado();
 // Importar clases
 use App\BlogEntry;
 use App\BlogCategory;
-use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager as Image;
 
 // Obtener categorías de blog
 $categorias = BlogCategory::all();
@@ -29,15 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_FILES['imagen']['tmp_name']) {
         $imagen = $_FILES['imagen']['tmp_name'];
         
-        // Verificar que la clase Image está disponible
-        if (class_exists('Intervention\Image\ImageManagerStatic')) {
-            // Realizar un resize a la imagen con intervención
-            $image = Image::make($imagen)->fit(800, 600);
-            $entrada->setImagen($nombreImagen);
-        } else {
-            // Si no existe la clase, simplemente almacenar el nombre
-            $entrada->setImagen($nombreImagen);
-        }
+        // Crear instancia del administrador de imágenes con driver GD
+        $manager = new Image(Driver::class);
+        // Realizar un resize a la imagen (en v3 se usa cover en lugar de fit)
+        $image = $manager->read($imagen)->cover(800, 600);
+        $entrada->setImagen($nombreImagen);
     }
     
     // Validar
@@ -52,11 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Guardar la imagen en el servidor
         if (isset($_FILES['imagen']['tmp_name']) && $_FILES['imagen']['tmp_name']) {
-            if (isset($image) && class_exists('Intervention\Image\ImageManagerStatic')) {
-                // Si tenemos intervención image, lo usamos
+            if (isset($image)) {
+                // Guardar la imagen procesada con Intervention
                 $image->save(CARPETA_IMAGENES . $nombreImagen);
             } else {
-                // Si no, usamos move_uploaded_file
+                // Si por alguna razón no se procesó con Intervention, usar move_uploaded_file
                 move_uploaded_file($_FILES['imagen']['tmp_name'], CARPETA_IMAGENES . $nombreImagen);
             }
         }
@@ -118,7 +115,7 @@ incluirTemplate('admin-menu');
         <fieldset>
             <legend>Contenido</legend>
             <label for="contenido">Contenido del artículo:</label>
-            <textarea id="contenido" name="contenido" placeholder="Contenido del artículo"><?php echo sanitizar($entrada->contenido); ?></textarea>
+            <textarea id="contenido" name="contenido" class="sun-editor" placeholder="Contenido del artículo"><?php echo sanitizar($entrada->contenido); ?></textarea>
         </fieldset>
 
         <div class="alinear-derecha">
@@ -133,6 +130,14 @@ incluirTemplate('admin-menu');
 
 <!-- SunEditor scripts -->
 <script src="<?php echo url('/node_modules/suneditor/dist/suneditor.min.js'); ?>"></script>
+<!-- Incluir soporte de idiomas -->
+<script>
+    // Crear variable global para los idiomas
+    var SUNEDITOR_LANG = {};
+</script>
+<!-- Archivo de idioma español para SunEditor -->
+<script src="<?php echo url('/node_modules/suneditor/src/lang/es.js'); ?>"></script>
+<!-- Configuración personalizada para SunEditor -->
 <script src="<?php echo url('/build/js/suneditor-config.js'); ?>"></script>
 
 <?php

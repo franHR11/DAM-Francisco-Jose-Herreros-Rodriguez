@@ -55,6 +55,61 @@ Almacena los usuarios para acceso al panel de administración.
 | email          | VARCHAR(100) | Email/usuario para login                  |
 | password       | CHAR(60)     | Contraseña hasheada                       |
 
+### Tabla `site_config`
+
+Almacena la configuración general del sitio y datos de la empresa.
+
+- **Propósito:** Guardar datos como el nombre del sitio, meta descripción, nombres de archivo del logo, imagen de cabecera, y la información de contacto y horario de la empresa.
+- **Estructura:**
+  ```sql
+  CREATE TABLE IF NOT EXISTS site_config (
+    id INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+    site_name VARCHAR(255) DEFAULT NULL,
+    meta_description TEXT DEFAULT NULL,
+    logo_filename VARCHAR(255) DEFAULT NULL,
+    header_image_filename VARCHAR(255) DEFAULT NULL,
+    company_name VARCHAR(255) NULL,
+    address VARCHAR(255) NULL,
+    city VARCHAR(100) NULL,
+    zip_code VARCHAR(10) NULL,
+    opening_hours VARCHAR(50) NULL,
+    closing_hours VARCHAR(50) NULL,
+    PRIMARY KEY (id)
+  );
+  -- Se espera que esta tabla tenga una única fila con id=1
+  -- Si la tabla ya existe y no tiene los campos de empresa, usar:
+  /*
+  ALTER TABLE site_config
+  ADD COLUMN company_name VARCHAR(255) NULL,
+  ADD COLUMN address VARCHAR(255) NULL,
+  ADD COLUMN city VARCHAR(100) NULL,
+  ADD COLUMN zip_code VARCHAR(10) NULL,
+  ADD COLUMN opening_hours VARCHAR(50) NULL,
+  ADD COLUMN closing_hours VARCHAR(50) NULL;
+  */
+  -- Para asegurar que la fila 1 existe:
+  INSERT INTO site_config (id) VALUES (1) ON DUPLICATE KEY UPDATE id=1;
+  ```
+
+### Tabla: mensajes_contacto
+
+Almacena los mensajes enviados a través del formulario de contacto.
+
+| Campo           | Tipo           | Descripción                                    |
+|----------------|----------------|------------------------------------------------|
+| id              | INT            | Identificador único (clave primaria)           |
+| nombre          | VARCHAR(100)   | Nombre de la persona que contacta              |
+| email           | VARCHAR(100)   | Email de contacto                              |
+| telefono        | VARCHAR(15)    | Teléfono de contacto                           |
+| mensaje         | TEXT           | Contenido del mensaje                          |
+| tipo            | ENUM           | Tipo de operación (compra/vende)               |
+| presupuesto     | DECIMAL(10,2)  | Presupuesto o precio esperado                  |
+| contacto_via    | ENUM           | Preferencia de contacto (telefono/email)       |
+| fecha_contacto  | DATE           | Fecha preferida para contacto (si es teléfono) |
+| hora_contacto   | TIME           | Hora preferida para contacto (si es teléfono)  |
+| creado          | DATETIME       | Fecha y hora de creación del mensaje           |
+| leido           | TINYINT(1)     | Indica si el mensaje ha sido leído (0 o 1)     |
+
 ## Tablas del Blog
 
 ### blog_categories
@@ -236,3 +291,7 @@ Ubicada en el namespace `App`, implementa métodos para:
 - Validar datos antes de guardar
 
 La conexión a la base de datos se establece mediante el método estático `setDB()` que recibe la conexión y la almacena en una propiedad estática para su uso en los métodos de la clase. 
+
+- Implementación de índices para optimizar búsquedas y filtros 
+
+## Sistema de Archivos 

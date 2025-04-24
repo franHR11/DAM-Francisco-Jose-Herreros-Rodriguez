@@ -12,8 +12,9 @@
     background-color: v.$grisOscuro;
     padding: 1rem 0 3rem 0;
     &.inicio {
-        background-position: center center;
+        background-image: var(--header-bg-image, url(../img/header.jpg));
         background-size: cover;
+        background-position: center center;
         @include m.tablet {
             min-height: 70rem;
         }
@@ -31,7 +32,7 @@
     justify-content: space-between;
 
     h1 {
-        text-align: left;
+        text-align: center;
         color: v.$blanco;
         font-weight: v.$bold;
         line-height: 2;

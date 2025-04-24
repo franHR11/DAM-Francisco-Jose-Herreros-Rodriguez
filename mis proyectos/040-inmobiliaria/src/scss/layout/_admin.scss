@@ -2,4 +2,61 @@
 @use 'admin/busqueda';
 @use 'admin/tablas';
 @use 'admin/menu';
-@use 'admin/blog'; 
+@use 'admin/blog';
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+// Estilos para mensajes
+.mensaje-no-leido {
+    font-weight: bold;
+    background-color: rgba(v.$verde, 0.1);
+    
+    &:hover {
+        background-color: rgba(v.$verde, 0.15);
+    }
+}
+
+.mensaje-detalle {
+    background-color: v.$blanco;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+
+    .mensaje-info {
+        margin-bottom: 2rem;
+        p {
+            margin: 0.5rem 0;
+        }
+    }
+
+    .mensaje-contenido {
+        margin-bottom: 2rem;
+        
+        .contenido-texto {
+            background-color: v.$gris;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            white-space: pre-wrap;
+        }
+    }
+
+    .mensaje-acciones {
+        display: flex;
+        gap: 1rem;
+        
+        @include m.telefono {
+            flex-direction: column;
+        }
+    }
+}
+
+.badge {
+    display: inline-block;
+    background-color: v.$rojo;
+    color: v.$blanco;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+} 

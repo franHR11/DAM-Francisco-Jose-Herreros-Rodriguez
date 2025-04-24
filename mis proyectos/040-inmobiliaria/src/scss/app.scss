@@ -31,14 +31,7 @@
 @use 'internas/contacto';
 @use 'internas/admin' as internasAdmin;
 @use 'internas/blog' as internasBlog;
-
-@forward 'base';
-@forward 'layout';
-@forward 'internas';
-@forward 'admin/categorias';
-
-// Utilizar las variables aquí si es necesario para overrides globales
-@use 'base/variables' as v;
+@use 'admin/categorias';
 
 /** Media Queries **/
 
