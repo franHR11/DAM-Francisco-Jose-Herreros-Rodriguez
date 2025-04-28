@@ -42,6 +42,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'signup' %}">Registro</a>
               </li>
+
               {% else %}
               {% if request.user.is_staff %}
               <li class="nav-item">
@@ -50,6 +51,9 @@
               {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'messenger:list' %}">Mensajes</a>
               </li>
               <li class="nav-item">
                 <form id="logout-form" method="post" action="{% url 'logout' %}">

@@ -19,6 +19,7 @@ from django.urls import path, include
 from pages.urls import pages_patterns
 from django.conf import settings
 from profiles.urls import profiles_patterns
+from messenger.urls import messenger_patterns
 
 urlpatterns = [
     path('', include('core.urls')),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('accounts/', include('registration.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
     path('profiles/', include(profiles_patterns)),
+    path('messenger/', include(messenger_patterns)),
 ]
 
 if settings.DEBUG:
